@@ -1,0 +1,67 @@
+@import url('https://use.typekit.net/xii6anr.css');
+
+:root {
+  /* Fonts */
+  --primary-font: 'plantin', serif;
+  --secondary-font: 'canada-type-gibson', sans-serif;
+
+  --book: 300;
+  --regular: 400;
+  --medium: 500;
+  --semibold: 600;
+
+  --main-heading: 4rem;
+  --sub-heading: 2.5rem;
+  --small-heading: 2.25rem;
+  --large-body: 1.5rem;
+  --body: 1.125rem; /* 18 px */
+  --small-body: 0.875rem;
+  --logo: 2rem;
+  --ratings: 3rem;
+  --main-heading-tb: 2.875rem;
+  --small-heading-tb: 2rem;
+  --sub-heading-mb: 2.25rem;
+
+  /* Colours */
+  --cream: #faf8f5;
+  --bronze: #7f6d47;
+  --light-brown: #cec2b4;
+  --black: #202124;
+  --white: #fffdfa;
+  --light-grey: #f2f0ec;
+  --success: #16a34a;
+  --error: #dc2626;
+  --disabled: #94a3b8;
+  --interactive: #196cff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: var(--black);
+}

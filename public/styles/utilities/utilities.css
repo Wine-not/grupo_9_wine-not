@@ -1,0 +1,33 @@
+@import url('../utilities/vars.css');
+
+.btn {
+  font-family: var(--secondary-font);
+  font-size: var(--small-body);
+  font-weight: var(--book);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: var(--black);
+  color: var(--white);
+  transition: background-color 300ms;
+}
+
+.btn--primary:hover {
+  background-color: var(--bronze);
+}
+
+.btn--interactive {
+  background-color: var(--interactive);
+  color: var(--white);
+  transition: opacity 300ms;
+}
+
+.btn--interactive:hover {
+  background-color: var(--interactive);
+  opacity: 0.9;
+}
