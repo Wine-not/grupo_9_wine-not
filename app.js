@@ -6,3 +6,12 @@ const app = express();
 
 const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
+
+app.set('view engine', 'ejs');
+app.set('views', path.resolve(__dirname, './src/views'));
+
+app.listen(PORT, () => console.log(`[Server] running at port ${PORT}`));
+
+app.get('/', (req, res) => {
+  res.render('index');
+});

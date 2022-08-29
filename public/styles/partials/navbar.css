@@ -1,0 +1,133 @@
+@import url('../utilities/vars.css');
+
+.icon__container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: var(--black);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.mobile-menu__nav {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-menu__close {
+  position: absolute;
+  top: 2.5rem;
+  right: 1.5rem;
+  color: var(--white);
+}
+
+.mobile-menu__items {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.mobile-menu__links {
+  font-family: var(--secondary-font);
+  font-size: var(--sub-heading-mb);
+  font-weight: var(--book);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.mobile-menu__links a {
+  color: var(--white);
+}
+
+.mobile-menu__item > a {
+  color: var(--black);
+  font-size: var(--body);
+}
+
+.mobile-menu__icons {
+  display: flex;
+  gap: 10px;
+}
+
+.section--nav {
+  background-color: var(--cream);
+  padding: 2.5rem 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__logo {
+  font-size: 1.75rem;
+  font-family: var(--primary-font);
+  color: var(--black);
+  font-weight: var(--semibold);
+}
+
+.navbar__desktop-menu {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-menu__icons {
+    gap: 25px;
+  }
+
+  .section--nav {
+    padding: 3.75rem;
+  }
+
+  .mobile-menu__close {
+    top: 3.75rem;
+    right: 3.75rem;
+    color: var(--white);
+  }
+
+  .navbar__logo {
+    font-size: var(--logo);
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .section--nav {
+    padding: 3.75rem 6.25rem;
+  }
+
+  .navbar__menu-icon {
+    display: none;
+  }
+
+  .navbar__desktop-menu {
+    display: block;
+  }
+
+  .desktop-menu__items {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .desktop-menu__links {
+    font-size: 1rem;
+    font-weight: var(--book);
+    font-family: var(--secondary-font);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  .desktop-menu__links > a {
+    color: var(--black);
+  }
+}
