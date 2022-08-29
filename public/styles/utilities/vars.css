@@ -65,3 +65,7 @@ a {
 a:active {
   color: var(--black);
 }
+
+.section-padding {
+  padding: 50px 20px;
+}
