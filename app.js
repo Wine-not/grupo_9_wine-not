@@ -15,3 +15,6 @@ app.listen(PORT, () => console.log(`[Server] running at port ${PORT}`));
 app.get('/', (req, res) => {
   res.render('index');
 });
+app.get('/productCart', (req, res) => {
+  res.render('./products/productCart');
+});
