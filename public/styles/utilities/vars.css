@@ -10,17 +10,18 @@
   --medium: 500;
   --semibold: 600;
 
-  --main-heading: 4rem;
-  --sub-heading: 2.5rem;
-  --small-heading: 2.25rem;
-  --large-body: 1.5rem;
+  --main-heading: 4rem; /* 64px */
+  --sub-heading: 2.5rem; /* 40px */
+  --small-heading: 2.25rem; /* 36px */
+  --large-body: 1.5rem; /* 24px */
   --body: 1.125rem; /* 18 px */
-  --small-body: 0.875rem;
-  --logo: 2rem;
-  --ratings: 3rem;
-  --main-heading-tb: 2.875rem;
-  --small-heading-tb: 2rem;
-  --sub-heading-mb: 2.25rem;
+  --small-body: 0.875rem; /* 14px */
+  --caption-card: 1.25rem; /* 20px */
+  --logo: 2rem; /* 32px */
+  --ratings: 3rem; /* 48px */
+  --main-heading-tb: 2.875rem; /* 46px */
+  --small-heading-tb: 2rem; /* 32px */
+  --sub-heading-mb: 2.25rem; /* 36px */
 
   /* Colours */
   --cream: #faf8f5;

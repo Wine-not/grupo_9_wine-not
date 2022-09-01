@@ -1,6 +1,7 @@
 @import url('../utilities/vars.css');
 
 .btn {
+  display: inline-block;
   font-family: var(--secondary-font);
   font-size: var(--small-body);
   font-weight: var(--book);
@@ -30,4 +31,34 @@
 .btn--interactive:hover {
   background-color: var(--interactive);
   opacity: 0.9;
+}
+
+.hero--padding {
+  background-color: var(--cream);
+  padding: 1.25rem 1.25rem 3rem;
+}
+
+.section--padding {
+  background-color: var(--cream);
+  padding: 3rem 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero--padding {
+    padding: 1.875rem 3.75rem 3.5rem;
+  }
+
+  .section--padding {
+    padding: 3.75rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .hero--padding {
+    padding: 3.75rem 6.25rem 3.5rem;
+  }
+
+  .section--padding {
+    padding: 4rem 6.25rem;
+  }
 }

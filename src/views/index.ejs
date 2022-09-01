@@ -12,7 +12,54 @@
         <%- include('./partials/navbar') %>
     </div>
 
-    <script src="/javascripts/utilities.js"></script>
+    <section class="hero hero--padding">
+        <div class="hero__images">
+            <div class="image__container">
+                <img src="/images/norton.png" alt="">
+            </div>
+            <div class="image__container">
+                <img src="/images/rutini.png" alt="">
+            </div>
+        </div>
+        <div class="hero__copy">
+            <h1 class="hero__title">Shop Winery-Direct Exclusive</h1>
+            <p class="hero__desc">Shop the latest releases of Malbec, Cabernet Sauvignon, along with exclusive offers,
+                rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
+            <a href="/" class="btn btn--primary">Shop all</a>
+        </div>
+    </section>
+
+    <section class="section--padding">
+        <h2 class="section__title">Bestsellers around the globe</h2>
+        <%- include('./partials/card') %>
+    </section>
+
+    <section class="section--padding">
+        <h2 class="section__title">Dive into million of wines</h2>
+        <div class="offer__card-container">
+            <div class="offer__card">
+                <div class="offer__image"></div>
+                <div class="offer__copy">
+                    <p class="offer__text">Great offers, wine-not?</p>
+                </div>
+            </div>
+            <div class="offer__card">
+                <div class="offer__image"></div>
+                <div class="offer__copy">
+                    <p class="offer__text">Great offers, wine-not?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--padding">
+        <h2 class="section__title">Wine-not collection</h2>
+        <%- include('./partials/card') %>
+    </section>
+
+    <%- include('./partials/footer') %>
+
+        <script src="/javascripts/utilities.js"></script>
 </body>
 
 </html>
