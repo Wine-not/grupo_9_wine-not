@@ -1,2 +1,115 @@
+@import url('./utilities/utilities.css');
 @import url('./partials/navbar.css');
-@import url('./partials/footer.css');
+
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__images {
+  display: flex;
+}
+
+.image__container {
+  width: 50%;
+  height: 19rem;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.image__container img {
+  max-width: 50%;
+}
+
+.hero__title {
+  font-family: var(--primary-font);
+  font-size: var(--main-heading-tb);
+  font-weight: var(--regular);
+  margin-top: 1.75rem;
+}
+
+.hero__desc {
+  font-family: var(--secondary-font);
+  font-size: var(--body);
+  font-weight: var(--book);
+  line-height: 1.4;
+  margin: 1.25rem 0;
+}
+
+.section__title {
+  font-family: var(--primary-font);
+  font-size: var(--sub-heading-mb);
+  font-weight: var(--regular);
+  margin-bottom: 2.5rem;
+}
+
+.offer__card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.offer__image {
+  background: url('../images/bebidas.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 11.5rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.offer__copy {
+  background-color: var(--white);
+  border-radius: 0 0 16px 16px;
+  font-family: var(--secondary-font);
+  font-size: var(--caption-card);
+  /* font-weight: var(--book); */
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+  }
+
+  .hero__images,
+  .hero__copy {
+    width: 50%;
+  }
+
+  .hero__title {
+    margin-top: 0;
+  }
+
+  .image__container {
+    width: 50%;
+    height: auto;
+  }
+
+  .offer__card-container {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .offer__card {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .hero__images {
+    padding-right: 30px;
+  }
+
+  .hero__title {
+    font-size: var(--main-heading);
+    font-weight: 200;
+  }
+
+  .section__title {
+    font-size: var(--sub-heading);
+    font-weight: var(--regular);
+  }
+}
