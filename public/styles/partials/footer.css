@@ -1,0 +1,59 @@
+@import url('../utilities/vars.css');
+
+.top-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: var(--black);
+    font-size: 13px;
+    line-height: 20px;
+    padding: 32px 0px 56px;
+    margin: 20px
+}
+.top-section h2 {
+    width: 100%;
+    font-size: var(--large-body);
+    font-weight: var(--medium);
+    font-family: var(--primary-font);
+    padding: 15px;
+}
+.top-section p {
+    font-size: var(--body);
+}
+.top-section i {
+    font-size: 18px;
+    color: var(--black);
+}
+.top-section-boxes {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: var(--white);
+    background-color: var(--black);
+    font-size: 13px;
+    line-height: 20px;
+    margin: 20px;
+}
+
+.bottom-section h4 {
+    font-weight: var(--semibold);
+}
+
+.bottom-section-box {
+    width: calc(33% - 2rem);
+    padding: 15px;
+    text-align: center;
+    font-size: var(--small-body);
+    line-height: 20px;
+    margin: 5px;
+    
+}
+  
