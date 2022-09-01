@@ -18,3 +18,6 @@ app.get('/', (req, res) => {
 app.get('/productCart', (req, res) => {
   res.render('./products/productCart');
 });
+app.get('/register', (req, res) => {
+  res.render('./users/register');
+});
