@@ -1,4 +1,5 @@
 @import url('./partials/navbar.css');
+@import url('../utilities/vars.css');
 
 
 * {
@@ -6,7 +7,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--primary-font);
-
   }
 
 .card__main-container{
@@ -14,6 +14,7 @@
 }
 .heading__main-container {
     margin-bottom: 30px;
+
 }
 .heading__main {
     font-size: var(--main-heading-tb);
@@ -23,45 +24,204 @@
 
 .card__individual-container {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    border: 1px solid black;
-    height: 30vh;
+    height: 25vh;
     margin-bottom: 20px;
+    border: 1px solid black;
 }
 
 
-.card__img {
-    width: 20%;
-    height: 90%;
-}
-
-.card__img img {
-    width: 100%;
+.card__img-container {
+    width: 30%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.card__description {
+
+.card__img-container img {
+    height: 7rem;
+    width: 2.5rem;
+}
+
+.card__description-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    width: 65%;
-    height: 100%;
-    
+    align-items: left;
+    width: 70%;
+    height: 100%;    
+}
+
+.card__wine-name {
+    font-size: 1.2rem;    
+    font-weight: 200;
+}
+.card__wine-price {
+    font-family: var(--secondary-font);
+    font-size: 1.1rem;
+    font-weight: 400;  
+}
+
+.card__product-input {
+    border: none;
+    background-color: lightgrey;
+    padding: 5px 10px;
+    text-align: center;
+}
+ .card__input-container > a {
+    color: black;
+    font-family: var(--secondary-font);
+    font-size: 0.8rem;
+    margin-left: 10px;
+    letter-spacing: 2px;
+ }
+
+
+/* total value section */
+
+.total__main-container {
+    margin: 20px;
 }
 
 
+.total__price-container {
+    display: flex;
+    flex-direction: column;  
+    padding: 10px;  
+    background-color: #e8ded3;
+    padding: 20px;
+}
 
+.total__btn-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+}
 
-/* media querys */
+.total__subtotal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.total__subtotal > p, .total__subtotal > h2 {
+    font-family: var(--secondary-font);
+    padding-top: 10px;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    font-weight: 300;
+    padding-bottom: 15px;
+} 
+
+.total__shipping {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px dotted black;
+    letter-spacing: 1.5px;
+}
+.total__shipping > h2 {
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    padding-bottom: 10px;
+    font-size: 1rem;
+}
+
+.shipping-standard, .shipping-express{
+    display: flex;
+}
+.shipping-standard > label, .shipping-express > label{
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+}
+
+.total__final {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.total__final > h2, .total__final > p {
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+}
+
+.total__btn-container > button {
+    border: none;
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.btn-checkout {
+    color: white;
+    background-color: var(--black);
+    padding: 15px 10px;
+    letter-spacing: 1.5px;
+
+}
+.btn-continue {
+    padding: 15px 10px; 
+    border: 1px solid black;  
+}
+.total__btn-container > .btn-continue {
+    border: 1px solid black;
+    letter-spacing: 1.5px;
+}
 
 @media only screen and (min-width: 768px) {
-    
+    .card__img-container {
+        width: 20%;
+    }
+    .card__img-container img {
+        height: 8rem;
+        width: 2.8rem;
+    }
+    .card__description-container {
+        width: 80%;
+    }
+    .card__individual-container {
+        height: 30vh;
+    }
+
+    .card__main-container{
+        margin: 40px;
+    }
+    .total__main-container {
+        margin: 40px; 
+    }
+    .total__price-container {
+        padding: 40px;
+    }
+  }
+  
+  @media only screen and (min-width: 1280px) {  
+    .master-container {
+        display: flex;
+    }
+    .card__main-container {
+        min-width: 800px;
+    }
+    .total__main-container {
+        margin-top: 18.5vh;
+        width: 100%;
+    }
+    .total__main-container::before {
+        content: 'Total';
+        font-size: var(--main-heading-tb);
+        position: absolute;
+        margin-top: -12vh;        
+    }
 
   }
   
-  @media only screen and (min-width: 1280px) {
-    .card__main-container{
-         max-width: 70vw; 
-    }
-  }
+
