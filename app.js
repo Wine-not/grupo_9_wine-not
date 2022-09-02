@@ -23,3 +23,4 @@ app.get('/productCart', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('./users/register');
 });
+
