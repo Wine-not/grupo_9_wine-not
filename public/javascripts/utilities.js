@@ -1,3 +1,4 @@
+// Menu mobile
 const openMark = document.querySelector('.navbar__menu-icon');
 const closeMark = document.querySelector('.mobile-menu__close');
 const nav = document.querySelector('.mobile-menu');

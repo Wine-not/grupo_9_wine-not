@@ -1,2 +1,82 @@
 @import url('./utilities/utilities.css');
 @import url('./partials/navbar.css');
+@import url('./partials/footer.css');
+
+.form {
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  padding: 1.875rem 1.25rem;
+}
+
+.form__title {
+  font-family: var(--primary-font);
+  font-size: var(--sub-heading-mb);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.form__label {
+  font-family: var(--secondary-font);
+  font-weight: var(--regular);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.form__input {
+  font-family: var(--secondary-font);
+  border: none;
+  border-radius: 5px;
+  padding: 15px 0px 15px 10px;
+}
+
+.form__checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.form__checkbox__label {
+  font-size: 1rem;
+  font-family: var(--secondary-font);
+  font-weight: var(--book);
+  line-height: 1.2;
+}
+
+.form__group--check {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.form__link--login {
+  margin-top: 5px;
+  font-family: var(--secondary-font);
+  font-size: var(--small-body);
+  font-weight: var(--book);
+  text-align: center;
+}
+
+.form__message {
+  display: none;
+}
+
+.error {
+  border: 1px solid var(--error);
+}
+
+.success {
+  border: 1px solid var(--success);
+}
+
+@media only screen and (min-width: 1280px) {
+  .form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
