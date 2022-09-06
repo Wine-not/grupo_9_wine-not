@@ -2,6 +2,7 @@
 @import url('../utilities/utilities.css');
 
 .sect2rating{
+    font-family: var(--secondary-font);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -48,13 +49,14 @@
 }
 
 .btn_price{
-    margin: 25%;
-    min-width: 65%;
-    max-width: 75%;
-    height: 15%;
-    background-color: #594E32;
+    margin: 35%;
+    min-width: 70%;
+    max-width: 85%;
+    height: 20%;
+    background-color: #7b6b42;
     border: none;
     color: white;
+    padding: 10%;
 }
 
 .wine-info{
