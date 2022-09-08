@@ -2,96 +2,94 @@
 <html lang="en">
 
 <head>
-    <%- include('../partials/head') %>
+    <%- include('../partials/head', { title: 'Product Cart' }) %>
         <link rel="stylesheet" href="/styles/productCart.css">
-        <title>Document</title>
 </head>
 
 <body>
-    <div class="section--nav">
-        <%- include('../partials/navbar') %>
-    </div>
-    <div class="heading__main-container">
-        <h1 class="heading__main">Cart</h1> 
-    </div>
-    <div class="master-container">
-        <!-- card display -->
-        <section class="card__main-container">
-            <article class="card__individual-container">
-                <div class="card__img-container">
-                    <img src="./images/rutini.png" alt="">
-                </div>
-                <div class="card__description-container">
-                    <h2 class="card__wine-name">Felipe Rutini 2008</h2>
-                    <h2 class="card__wine-price">$5000.00</h2>
-                    <div class="card__input-container">
-                        <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
-                        <a href="">REMOVE</a>
+    <%- include('../partials/navbar') %>
+
+        <div class="heading__main-container">
+            <h1 class="heading__main">Cart</h1>
+        </div>
+        <div class="master-container">
+            <!-- card display -->
+            <section class="card__main-container">
+                <article class="card__individual-container">
+                    <div class="card__img-container">
+                        <img src="./images/rutini.png" alt="">
                     </div>
-                </div>
-            </article>            
-            <article class="card__individual-container">
-                <div class="card__img-container">
-                    <img src="./images/rutini.png" alt="">
-                </div>
-                <div class="card__description-container">
-                    <h2 class="card__wine-name">Felipe Rutini 2008</h2>
-                    <h2 class="card__wine-price">$5000.00</h2>
-                    <div class="card__input-container">
-                        <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
-                        <a href="">REMOVE</a>
-                    </div>
-                </div>
-            </article>            
-            <article class="card__individual-container">
-                <div class="card__img-container">
-                    <img src="./images/rutini.png" alt="">
-                </div>
-                <div class="card__description-container">
-                    <h2 class="card__wine-name">Felipe Rutini 2008</h2>
-                    <h2 class="card__wine-price">$5000.00</h2>
-                    <div class="card__input-container">
-                        <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
-                        <a href="">REMOVE</a>
-                    </div>
-                </div>
-            </article>            
-        </section>
-        <!-- total card -->
-        <section class="total__main-container">
-            <div class="total__price-container">
-                <div class="total__subtotal-container">
-                    <div class="total__subtotal">
-                        <h2>Subtotal</h2>
-                        <p>$1200.00</p>
-                    </div>
-                    <div class="total__shipping">
-                        <h2>Shipping</h2>
-                        <div class="shipping-standard">
-                            <input type="radio">
-                            <label for="">Standard (free)</label>
-                        </div>                        
-                        <div class="shipping-express">
-                            <input type="radio">
-                            <label for="">Express shipping ($20)</label>
+                    <div class="card__description-container">
+                        <h2 class="card__wine-name">Felipe Rutini 2008</h2>
+                        <h2 class="card__wine-price">$5000.00</h2>
+                        <div class="card__input-container">
+                            <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
+                            <a href="">REMOVE</a>
                         </div>
                     </div>
+                </article>
+                <article class="card__individual-container">
+                    <div class="card__img-container">
+                        <img src="./images/rutini.png" alt="">
+                    </div>
+                    <div class="card__description-container">
+                        <h2 class="card__wine-name">Felipe Rutini 2008</h2>
+                        <h2 class="card__wine-price">$5000.00</h2>
+                        <div class="card__input-container">
+                            <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
+                            <a href="">REMOVE</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="card__individual-container">
+                    <div class="card__img-container">
+                        <img src="./images/rutini.png" alt="">
+                    </div>
+                    <div class="card__description-container">
+                        <h2 class="card__wine-name">Felipe Rutini 2008</h2>
+                        <h2 class="card__wine-price">$5000.00</h2>
+                        <div class="card__input-container">
+                            <input type="number" placeholder="1" class="card__product-input" min="1" max="5">
+                            <a href="">REMOVE</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <!-- total card -->
+            <section class="total__main-container">
+                <div class="total__price-container">
+                    <div class="total__subtotal-container">
+                        <div class="total__subtotal">
+                            <h2>Subtotal</h2>
+                            <p>$1200.00</p>
+                        </div>
+                        <div class="total__shipping">
+                            <h2>Shipping</h2>
+                            <div class="shipping-standard">
+                                <input type="radio">
+                                <label for="">Standard (free)</label>
+                            </div>
+                            <div class="shipping-express">
+                                <input type="radio">
+                                <label for="">Express shipping ($20)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total__final">
+                        <h2>Total</h2>
+                        <p>$1200.00</p>
+                    </div>
                 </div>
-                <div class="total__final">
-                    <h2>Total</h2>
-                    <p>$1200.00</p>
+                <div class="total__btn-container">
+                    <button class="btn-checkout">CHECKOUT</button>
+                    <button class="btn-continue">CONTINUE SHOPPING</button>
                 </div>
-            </div>
-            <div class="total__btn-container">
-                <button class="btn-checkout">CHECKOUT</button>
-                <button class="btn-continue">CONTINUE SHOPPING</button>
-            </div>
-        </section>
-    </div>
-    <footer>
-        <%- include('../partials/footer') %>    
-    </footer>
-    <script src="/javascripts/utilities.js"></script>
+            </section>
+        </div>
+        <footer>
+            <%- include('../partials/footer') %>
+        </footer>
+        <script src="/javascripts/utilities.js"></script>
 </body>
 
 </html>
