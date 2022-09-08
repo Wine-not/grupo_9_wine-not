@@ -1,0 +1,41 @@
+@import url('../styles/partials/navbar.css');
+@import url('../styles/partials/footer.css');
+
+/* ------------------ FORM ------------------ */
+.product__form__title {
+  margin-bottom: 1rem;
+}
+
+.product__form__qty {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.qty__button {
+  background-color: transparent;
+  color: var(--black);
+  border-radius: 50%;
+  border: 1px solid var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  font-size: var(--large-body);
+}
+
+.qty__input {
+  background-color: #e1dfdc;
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-size: var(--body);
+  width: 55px;
+  height: 40px;
+  border: 0;
+  margin: 0 0.5rem;
+}
+
+.btn--qty {
+  width: 100%;
+}
