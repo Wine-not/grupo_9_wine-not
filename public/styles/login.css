@@ -1,5 +1,6 @@
-@import url('./utilities/utilities.css');
 @import url('./partials/navbar.css');
+@import url('../utilities/vars.css');
+@import url('../styles/partials/footer.css');
 
 * {
     box-sizing: border-box;
@@ -11,8 +12,8 @@
 .main__form-container {
     margin: 3em auto;
     border-radius: 20px;
-    width: 90vw;
-    max-width: 500px;
+    width: 80vw;
+    max-width: 450px;
     background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
@@ -74,7 +75,7 @@
     background-color: var(--interactive);
     border: none;
     padding: 0.8rem 1.5rem;
-    border-radius: 7px;
+    border-radius: 6px;
 }
 .alternative-login > a {
     color: black;
@@ -85,6 +86,14 @@
 .alternative-login {
     padding-bottom: 3rem;
 }
+
+.email > label {
+    padding-left: 5px;
+}
+.password > label {
+    padding-left: 5px;
+}
+
 
 @media only screen and (min-width: 768px) {
     .name {
