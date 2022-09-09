@@ -3,6 +3,8 @@
 @import url('./partials/card.css');
 @import url('./partials/footer.css');
 
+
+
 .hero {
   display: flex;
   flex-direction: column;
