@@ -1,8 +1,7 @@
 @import url('./utilities/utilities.css');
 @import url('./partials/navbar.css');
-@import url('./partials/footer.css');
 @import url('./partials/card.css');
-
+@import url('./partials/footer.css');
 
 .hero {
   display: flex;

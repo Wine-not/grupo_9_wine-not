@@ -1,7 +1,74 @@
 @import url('../styles/partials/navbar.css');
+@import url('../styles/partials/card.css');
 @import url('../styles/partials/footer.css');
 
+.product-hero__image {
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 1.8rem;
+}
+
+.product-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-hero__breadcrumb {
+  margin-bottom: 1.2rem;
+}
+
+.breadcrumb__page {
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  font-weight: var(--book);
+  color: var(--disabled);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.breadcrumb__page::after {
+  content: '>';
+  margin: 0 10px 0 10px;
+}
+
+.breadcrumb__page:last-child::after {
+  content: '';
+}
+
+.product-hero__title {
+  font-family: var(--primary-font);
+  font-size: var(--small-heading);
+  font-weight: var(--regular);
+  margin-bottom: 1rem;
+}
+
+.product-hero__price {
+  font-family: var(--secondary-font);
+  font-size: var(--large-body);
+  font-weight: var(--regular);
+  margin-bottom: 2rem;
+}
+
+.product__form__title {
+  font-family: var(--secondary-font);
+  font-size: var(--body);
+  font-weight: var(--book);
+  margin-bottom: 1rem;
+}
+
+.product-hero__description {
+  font-family: var(--secondary-font);
+  font-size: var(--body);
+  font-weight: var(--book);
+  line-height: 1.5;
+}
+
 /* ------------------ FORM ------------------ */
+.product__form {
+  margin-bottom: 3rem;
+}
+
 .product__form__title {
   margin-bottom: 1rem;
 }
@@ -38,4 +105,50 @@
 
 .btn--qty {
   width: 100%;
+}
+/* ------------------ FORM ------------------ */
+
+.suggestions__title {
+  font-family: var(--primary-font);
+  font-size: var(--sub-heading-mb);
+  font-weight: var(--regular);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .product-hero {
+    display: flex;
+  }
+
+  .product-hero__image,
+  .product-hero__copy {
+    width: 50%;
+  }
+
+  .product-hero__image {
+    height: 31.5rem;
+  }
+
+  .product-hero__copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product__form {
+    order: 5;
+    margin: 0;
+  }
+
+  .product-hero__description {
+    margin-bottom: 3rem;
+  }
+
+  .product-hero__title {
+    font-size: var(--sub-heading);
+  }
+
+  .suggestions__title {
+    font-size: var(--sub-heading);
+  }
 }
