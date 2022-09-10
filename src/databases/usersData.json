@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "Ciaran",
+    "surname": "Burris",
+    "age": 25,
+    "mail": "tincidunt.neque@aol.org",
+    "password": "********",
+    "address": {
+      "street": "26081 Norway Maple Junction",
+      "postcode": "93446",
+      "city": "Kelso"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Dara",
+    "surname": "Booth",
+    "age": 25,
+    "mail": "duis.sit@icloud.ca",
+    "password": "********",
+    "address": {
+      "street": "72861 Fisk Lane",
+      "postcode": "94312",
+      "city": "Redruth"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Savannah",
+    "surname": "George",
+    "age": 25,
+    "mail": "non.massa@aol.net",
+    "password": "********",
+    "address": {
+      "street": "12653 Oakridge Street",
+      "postcode": "18181",
+      "city": "Basildon"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Louis",
+    "surname": "Hampton",
+    "age": 25,
+    "mail": "dictum.mi.ac@google.ca",
+    "password": "********",
+    "address": {
+      "street": "8 Eagle Crest Drive",
+      "postcode": "59334",
+      "city": "Tillicoultry"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Zenaida",
+    "surname": "Witt",
+    "age": 25,
+    "mail": "id.erat@hotmail.edu",
+    "password": "********",
+    "address": {
+      "street": "026 Redwing Street",
+      "postcode": "58144",
+      "city": "March"
+    }
+  }
+]

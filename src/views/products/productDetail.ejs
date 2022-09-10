@@ -2,8 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products Details Page</title>
+    <%- include('../partials/head', {title: 'Nombre del producto' }) %>
+        <link rel="stylesheet" href="/styles/productDetail.css">
 </head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+        <main class="product-hero hero--padding">
+            <div class="product-hero__image">
+                <img src="/images/rutini.png" alt="" srcset="">
+            </div>
+            <div class="product-hero__copy">
+                <div class="product-hero__breadcrumb">
+                    <a href="/" class="breadcrumb__page">Home</a>
+                    <a href="#" class="breadcrumb__page">Malbec</a>
+                    <a href="#" class="breadcrumb__page">Rutini</a>
+                </div>
+                <h1 class="product-hero__title">Felipe Rutini 2008</h1>
+                <h2 class="product-hero__price">$500</h2>
+                <form action="#" method="get" class="product__form">
+                    <p class="product__form__title">Quantity:</p>
+                    <div class="product__form__qty">
+                        <button type="button" class="qty__button minus">-</button>
+                        <input type="number" name="quantity" id="quantity" class="qty__input" min="1" max="12"
+                            value="1">
+                        <button type="button" class="qty__button plus">+</button>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--qty">Add to cart</button>
+                </form>
+                <p class="product-hero__description">
+                    Our 2017 Napa Valley Cabernet Sauvignon is ruby in color with notes of blackberry, blueberry,
+                    roasted coffee beans, coriander and a hint of nutmeg. Smooth upon entry, this wine is broad and
+                    plush on the mid-palate. It has an elegant density throughout and a long, generous finish. Given
+                    proper cellaring conditions, this wine will show beautifully through 2041.
+                </p>
+            </div>
+        </main>
+
+        <section class="suggestions section--padding">
+            <h3 class="suggestions__title">Our suggestions</h3>
+            <%- include('../partials/card') %>
+        </section>
+
+        <%- include('../partials/footer') %>
+
+            <script src="/javascripts/utilities.js"></script>
+</body>
+
+</html>

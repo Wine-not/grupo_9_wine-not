@@ -1,0 +1,109 @@
+@import url('./partials/navbar.css');
+@import url('../utilities/vars.css');
+@import url('../styles/partials/footer.css');
+
+
+.main__container {
+    width: 100vw;    
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs__container {
+    margin: 40px;
+    background-color: var(--light-grey);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    align-self: center;
+    width: 80vw;
+    
+}
+
+.inputs__container  div {
+    margin-bottom: 20px;
+    width: 90%;
+}
+
+.inputs__container div label {
+    font-size: var( --large-body);
+    margin-bottom: 10px;
+    margin-left: 4px;
+}
+.inputs__container div input {
+    border: none;
+    padding: 0.6rem;
+    border-radius: 7px;
+}
+
+
+
+.name__container{
+    display: flex;
+    flex-direction: column;
+}
+.name__container label {
+    font-family: var(--secondary-font);
+}
+
+.winery__container{
+    display: flex;
+    flex-direction: column;
+}
+.winery__container label {
+    font-family: var(--secondary-font);
+}
+
+.price__container{
+    display: flex;
+    flex-direction: column;
+}
+.price__container label {
+    font-family: var(--secondary-font);
+}
+
+.class__container{
+    display: flex;
+    flex-direction: column;
+}
+.class__container label {
+    font-family: var(--secondary-font);
+}
+
+.button__container {
+    margin-top: 25px;
+    text-align: center;
+}
+.button__container > button {
+    color: white;
+    background-color: var(--interactive);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.5rem ;
+    font-family: var(--secondary-font);
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* @media only screen and (min-width: 768px) {
+    .main__container {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .inputs__container {
+        min-width: 400px;
+    }
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+  } */
