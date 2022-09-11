@@ -4,16 +4,17 @@
 
 
 .main__container {
-    width: 100vw;    
+    width: 100%;    
     display: flex;   
     justify-content: center;
     align-items: center;
+    margin: 20px 0px;
 }
 
 .inputs__container {
-    margin: 40px;
+    margin: 20px;
     background-color: var(--light-grey);
-    padding: 20px;
+    padding: 35px 20px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -21,8 +22,14 @@
     align-items: center;
     max-width: 400px;
     align-self: center;
-    width: 80vw;
-    
+    width: 80%;    
+}
+
+.inputs__container::before {
+    content: 'New Product';
+    font-size: 2rem;
+    font-family: var(--secondary-font);
+    margin-bottom: 45px;
 }
 
 .inputs__container  div {
@@ -43,35 +50,11 @@
 
 
 
-.name__container{
+.data__container{
     display: flex;
     flex-direction: column;
 }
-.name__container label {
-    font-family: var(--secondary-font);
-}
-
-.winery__container{
-    display: flex;
-    flex-direction: column;
-}
-.winery__container label {
-    font-family: var(--secondary-font);
-}
-
-.price__container{
-    display: flex;
-    flex-direction: column;
-}
-.price__container label {
-    font-family: var(--secondary-font);
-}
-
-.class__container{
-    display: flex;
-    flex-direction: column;
-}
-.class__container label {
+.data__container label {
     font-family: var(--secondary-font);
 }
 
@@ -91,19 +74,7 @@
     padding-bottom: 10px;
 }
 
-/* @media only screen and (min-width: 768px) {
-    .main__container {
-        margin: auto;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .inputs__container {
-        min-width: 400px;
-    }
+.image input {
+    font-family: var(--secondary-font);
 }
 
-
-@media only screen and (min-width: 1280px) {
-
-  } */

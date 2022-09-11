@@ -10,35 +10,35 @@
     <!-- Navbar -->
     <%- include('../partials/navbar') %>    
     <section class="main__container"> 
-        <div class="inputs__container">
-            <div class="name__container">
-                <label for="">Input</label>
-                <input type="text">
+        <form class="inputs__container" action="/products" method="POST" enctype="multipart/form-data">
+            <div class="data__container">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text">
             </div>
-            <div class="winery__container">
-                <label for="">Input</label>
-                <input type="text">
+            <div class="data__container">
+                <label for="price">Price</label>
+                <input id="price" name="price" type="number">
             </div>
-            <div class="price__container">
-                <label for="">Input</label>
-                <input type="text" name="" id="">
+            <div class="data__container">
+                <label for="brand">Brand</label>
+                <input id="brand" name="brand" type="text" name="" id="">
             </div>
-            <div class="class__container">
-                <label for="">Input</label>
-                <input type="text">
+            <div class="data__container">
+                <label for="grape">Grape</label>
+                <input id="grape" name="grape" type="text">
             </div>
-            <div class="class__container">
-                <label for="">Input</label>
-                <input type="text">
+            <div class="data__container">
+                <label for="region">Region</label>
+                <input id="region" name="region" type="text">
             </div>
-            <div class="class__container">
-                <label for="">Input</label>
-                <input type="text">
+            <div class="data__container image">
+                <label for="image">Image</label>
+                <input id="image" name="image" type="file">
             </div>
             <div class="button__container">
-                <button>Input</button>
+                <button type="submit">Create!</button>
             </div>
-        </div>
+        </form>
     </section>
 
         <%- include('../partials/footer') %>
