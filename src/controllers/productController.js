@@ -7,7 +7,7 @@ const productController = {
     },
     productCreate: (req, res) => {
         res.render('./products/productCreate')
-    }
+    },
 }
 
 module.exports = productController;
