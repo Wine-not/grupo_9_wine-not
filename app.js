@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const app = express();
 const publicPath = path.resolve(__dirname, './public');
-const logmiddleware = require('./src/middleware/logMiddleware');
+const logMiddleware = require('./src/middleware/logMiddleware');
 
 //EJS configuration
 app.use(express.static(publicPath));
@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, './src/views'));
 
 //Middlewares
-app.use(logmiddleware);
+app.use(logMiddleware);
 
 //Routes
 const userRouter = require('./src/routes/userRouter');

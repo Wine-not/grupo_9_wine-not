@@ -9,7 +9,7 @@ const multer = require('multer');
 // users/
 router.get('/login', userController.login);
 router.get('/register', userController.register);
-router.post('/register', userController.create);
+router.post('/register', logDBMiddleware, userController.create);
 router.get('/edit/:idUser', userController.edit);
 router.put('/edit/:idUser', userController.update);
 router.get('/profile', userController.profile);

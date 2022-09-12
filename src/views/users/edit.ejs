@@ -13,14 +13,14 @@
             <form action="/users/edit/<%= userToEdit.userId %>?_method=PUT" method="POST" class="form" id="form">
                 <h1 class="form__title">Edit your account</h1>
                 <div class="form__group">
-                    <label for="name" class="form__label">Name</label>
-                    <input type="text" name="name" id="name" class="form__input" value="<%= userToEdit.name %> ">
+                    <label for="firstName" class="form__label">Name</label>
+                    <input type="text" name="firstName" id="firstName" class="form__input" value="<%= userToEdit.name %> ">
                     <small class="form__message"></small>
                 </div>
 
                 <div class="form__group">
-                    <label for="surname" class="form__label">Surname</label>
-                    <input type="text" name="surname" id="surname" class="form__input" value="<%= userToEdit.surname %> ">
+                    <label for="lastName" class="form__label">Surname</label>
+                    <input type="text" name="lastName" id="lastName" class="form__input" value="<%= userToEdit.surname %> ">
                     <small class="form__message"></small>
                 </div>
 

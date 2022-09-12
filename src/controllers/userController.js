@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { validationResult} = require('express-validator');
+const bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
 const usersFilePath = path.join(__dirname, '../data/users.json');
 let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
@@ -23,9 +24,15 @@ const userController = {
             let oldData = req.body;
             return res.render('./users/register', { errors: errors.mapped(), oldData });
         } else {
+            const hashedPassword = bcrypt.hashSync(req.body.password, 10);
             let newUser = {
-                id: users[users.length - 1].id + 1,
-                ...req.body,
+                id: Date.now().toString(),
+                userId : req.body.userId,
+                firstName : req.body.firstName,
+                lastName : req.body.lastName,
+                email : req.body.email,
+                password: hashedPassword,
+                birthdate : req.body.birthdate,
             };
             users.push(newUser);
             fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
