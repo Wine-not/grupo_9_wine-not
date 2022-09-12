@@ -18,18 +18,19 @@ const userController = {
     },
 
     create: (req, res) => {
-        let user = {
-            userId: req.body.nickname,
-            name: req.body.name,
-            surname: req.body.surname,
-            email: req.body.email,
-            password: req.body.password,
-            birthdate: req.body.birthdate,
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let oldData = req.body;
+            return res.render('./users/register', { errors: errors.mapped(), oldData });
+        } else {
+            let newUser = {
+                id: users[users.length - 1].id + 1,
+                ...req.body,
+            };
+            users.push(newUser);
+            fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
+            res.redirect('/users/login');
         }
-
-
-
-        res.redirect('./users/login');
     },
 
     edit: (req, res) => {
@@ -55,6 +56,7 @@ const userController = {
         })
 
         fs.writeFileSync(usersFilePath, JSON.stringify(usersUpdated, null, ' '));
+        users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
         res.redirect('./users/profile');
     }
 }

@@ -1,5 +1,6 @@
 [
  {
+  "id": 1,
   "userId": "afilipponi0",
   "first-name": "Alfie",
   "last_name": "Filipponi",
@@ -8,6 +9,7 @@
   "birthdate": "12/1/1960"
  },
  {
+  "id": 2,
   "userId": "mdiiorio1",
   "first-name": "Muffin",
   "last_name": "Di Iorio",
@@ -16,6 +18,7 @@
   "birthdate": "9/16/1960"
  },
  {
+  "id": 3,
   "userId": "ahighton2",
   "first-name": "Alysa",
   "last_name": "Highton",
@@ -24,6 +27,7 @@
   "birthdate": "7/8/1945"
  },
  {
+  "id": 4,
   "userId": "pservice3",
   "first-name": "Puff",
   "last_name": "Service",
@@ -32,6 +36,7 @@
   "birthdate": "3/26/1976"
  },
  {
+  "id": 5,
   "userId": "dmcneillie4",
   "first-name": "Dennis",
   "last_name": "McNeillie",
@@ -40,6 +45,7 @@
   "birthdate": "11/25/1953"
  },
  {
+  "id": 6,
   "userId": "moddie5",
   "first-name": "Melva",
   "last_name": "Oddie",
@@ -48,6 +54,7 @@
   "birthdate": "4/7/1968"
  },
  {
+  "id": 7,
   "userId": "odomney6",
   "first-name": "Odele",
   "last_name": "Domney",
@@ -56,6 +63,7 @@
   "birthdate": "3/20/1952"
  },
  {
+  "id": 8,
   "userId": "dheigho7",
   "first-name": "Doris",
   "last_name": "Heigho",
@@ -64,6 +72,7 @@
   "birthdate": "9/16/1968"
  },
  {
+  "id": 9,
   "userId": "kbolwell8",
   "first-name": "Kipp",
   "last_name": "Bolwell",
@@ -72,6 +81,7 @@
   "birthdate": "12/4/1997"
  },
  {
+  "id": 10,
   "userId": "njeanel9",
   "first-name": "Nerissa",
   "last_name": "Jeanel",
@@ -80,6 +90,7 @@
   "birthdate": "10/29/1965"
  },
  {
+  "id": 11,
   "userId": "amquharga",
   "first-name": "Ashely",
   "last_name": "M'Quharg",
@@ -88,6 +99,7 @@
   "birthdate": "9/10/1991"
  },
  {
+  "id": 12,
   "userId": "ejaineb",
   "first-name": "Elsbeth",
   "last_name": "Jaine",
@@ -96,6 +108,7 @@
   "birthdate": "1/2/1960"
  },
  {
+  "id": 13,
   "userId": "tchazierc",
   "first-name": "Thain",
   "last_name": "Chazier",
@@ -104,6 +117,7 @@
   "birthdate": "11/3/1968"
  },
  {
+  "id": 14,
   "userId": "hhallgalleyd",
   "first-name": "Horton",
   "last_name": "Hallgalley",
@@ -112,6 +126,7 @@
   "birthdate": "5/14/1944"
  },
  {
+  "id": 15,
   "userId": "bandriche",
   "first-name": "Brinna",
   "last_name": "Andrich",
@@ -120,6 +135,7 @@
   "birthdate": "11/29/1964"
  },
  {
+  "id": 16,
   "userId": "dbottomoref",
   "first-name": "Donna",
   "last_name": "Bottomore",
@@ -128,6 +144,7 @@
   "birthdate": "2/6/1998"
  },
  {
+  "id": 17,
   "userId": "wmarveng",
   "first-name": "Wolfgang",
   "last_name": "Marven",
@@ -136,6 +153,7 @@
   "birthdate": "7/26/1966"
  },
  {
+  "id": 18,
   "userId": "csperlingh",
   "first-name": "Cobbie",
   "last_name": "Sperling",
@@ -144,6 +162,7 @@
   "birthdate": "12/3/1994"
  },
  {
+  "id": 19,
   "userId": "mthomasseni",
   "first-name": "Marthe",
   "last_name": "Thomassen",
@@ -152,6 +171,7 @@
   "birthdate": "9/6/1990"
  },
  {
+  "id": 20,
   "userId": "aduddanj",
   "first-name": "Artair",
   "last_name": "Duddan",
@@ -160,6 +180,7 @@
   "birthdate": "4/26/1979"
  },
  {
+  "id": 21,
   "userId": "mtaplink",
   "first-name": "Moses",
   "last_name": "Taplin",
@@ -168,6 +189,7 @@
   "birthdate": "3/24/1950"
  },
  {
+  "id": 22,
   "userId": "ckinclal",
   "first-name": "Cymbre",
   "last_name": "Kincla",
@@ -176,6 +198,7 @@
   "birthdate": "2/9/1968"
  },
  {
+  "id": 23,
   "userId": "mmcrobertsm",
   "first-name": "Marylin",
   "last_name": "McRoberts",
@@ -184,6 +207,7 @@
   "birthdate": "9/14/1992"
  },
  {
+  "id": 24,
   "userId": "ssmittonn",
   "first-name": "Shanan",
   "last_name": "Smitton",
@@ -192,6 +216,7 @@
   "birthdate": "11/30/1968"
  },
  {
+  "id": 25,
   "userId": "jmccardleo",
   "first-name": "Jena",
   "last_name": "McCardle",
@@ -200,6 +225,7 @@
   "birthdate": "6/23/1997"
  },
  {
+  "id": 26,
   "userId": "groddanp",
   "first-name": "Gilburt",
   "last_name": "Roddan",
@@ -208,6 +234,7 @@
   "birthdate": "12/10/1974"
  },
  {
+  "id": 27,
   "userId": "bmawbyq",
   "first-name": "Bernetta",
   "last_name": "Mawby",
@@ -216,6 +243,7 @@
   "birthdate": "7/27/1979"
  },
  {
+  "id": 28,
   "userId": "amalleboner",
   "first-name": "Anastasia",
   "last_name": "Mallebone",
@@ -224,6 +252,7 @@
   "birthdate": "6/12/1974"
  },
  {
+  "id": 29,
   "userId": "mkennifecks",
   "first-name": "Madelyn",
   "last_name": "Kennifeck",
@@ -232,11 +261,34 @@
   "birthdate": "11/14/1944"
  },
  {
+  "id": 30,
   "userId": "tabramowitzt",
   "first-name": "Tabby",
   "last_name": "Abramowitz",
   "email": "tabramowitzt@ask.com",
   "password": "Senekal",
   "birthdate": "8/4/1982"
+ },
+ {
+  "id": 31,
+  "nickname": "Zob",
+  "name": "Karim",
+  "surname": "Barragan",
+  "email": "karim@gmail.com",
+  "password": "123456",
+  "passwordrepeat": "123456",
+  "birthdate": "1985-07-11",
+  "terms": "on"
+ },
+ {
+  "id": 32,
+  "nickname": "Priviet",
+  "first-name": "Nikola",
+  "surname": "Tesla",
+  "email": "tesla@tesla.com",
+  "password": "123456",
+  "passwordrepeat": "123456",
+  "birthdate": "1973-06-07",
+  "terms": "on"
  }
 ]

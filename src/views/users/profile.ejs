@@ -10,23 +10,23 @@
     <%- include('../partials/navbar') %>
 
         <section class="section--padding">
-            <form action="/users/profile/<%= userToEdit.userId %>" method="GET" class="form" id="form">
+            <form action="/users/profile/ method="GET" class="form" id="form">
                 <h1 class="form__title">Welcome back </h1>
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
-                    <input type="text" name="name" id="name" class="form__input" value="<%= userToEdit.name %> ">
+                    <input type="text" name="name" id="name" class="form__input" >
                     <small class="form__message"></small>
                 </div>
 
                 <div class="form__group">
                     <label for="surname" class="form__label">Surname</label>
-                    <input type="text" name="surname" id="surname" class="form__input" value="<%= userToEdit.surname %> ">
+                    <input type="text" name="surname" id="surname" class="form__input" >
                     <small class="form__message"></small>
                 </div>
 
                 <div class="form__group">
                     <label for="email" class="form__label">Email</label>
-                    <input type="email" name="email" id="email" class="form__input" value="<%= userToEdit.email %> ">
+                    <input type="email" name="email" id="email" class="form__input" >
                     <small class="form__message"></small>
                 </div>
 
