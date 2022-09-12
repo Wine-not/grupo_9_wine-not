@@ -290,5 +290,14 @@
   "passwordrepeat": "123456",
   "birthdate": "1973-06-07",
   "terms": "on"
+ },
+ {
+  "id": "1663026039151",
+  "userId": "jguzman",
+  "firstName": "Joaquin",
+  "lastName": "Guzman",
+  "email": "joaquin@guzman.com",
+  "password": "$2b$10$Cmo0/Y28YJibB.6lSy36nOg44On5WsX/fvWucbTTpOnEkRRNbacMa",
+  "birthdate": "1999-12-03"
  }
 ]
