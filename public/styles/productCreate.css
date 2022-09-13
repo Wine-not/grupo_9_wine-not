@@ -2,35 +2,6 @@
 @import url('../styles/partials/navbar.css');
 @import url('../styles/partials/footer.css');
 
-/* .main__container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0px;
-} */
-
-/* .inputs__container {
-  margin: 20px;
-  background-color: var(--light-grey);
-  padding: 35px 20px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 400px;
-  align-self: center;
-  width: 80%;
-}
-
-.inputs__container::before {
-  content: 'New Product';
-  font-size: 2rem;
-  font-family: var(--secondary-font);
-  margin-bottom: 45px;
-} */
-
 .form {
   background-color: var(--light-grey);
   border-radius: 5px;
@@ -66,49 +37,22 @@
   padding: 15px 0px 15px 10px;
 }
 
-/* .inputs__container div {
-  margin-bottom: 20px;
-  width: 90%;
-} */
-
-/* .inputs__container div label {
-  font-size: var(--large-body);
-  margin-bottom: 10px;
-  margin-left: 4px;
+.form__checkbox {
+  width: 24px;
+  height: 24px;
 }
-.inputs__container div input {
-  border: none;
-  padding: 0.6rem;
-  border-radius: 7px;
-} */
 
-/* .data__container {
-  display: flex;
-  flex-direction: column;
+.form__checkbox__label {
+  font-size: 1rem;
+  font-family: var(--secondary-font);
+  font-weight: var(--book);
+  line-height: 1.2;
 }
-.data__container label {
-  font-family: var(--secondary-font);
-} */
 
-/* .button__container {
-  margin-top: 25px;
-  text-align: center;
+.form__group--check {
+  flex-direction: row;
+  align-items: flex-start;
 }
-.button__container > button {
-  color: white;
-  background-color: var(--interactive);
-  border: none;
-  border-radius: 6px;
-  font-size: 1.5rem;
-  font-family: var(--secondary-font);
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-} */
-
-/* .image input {
-  font-family: var(--secondary-font);
-} */
 
 @media only screen and (min-width: 1280px) {
   .form {

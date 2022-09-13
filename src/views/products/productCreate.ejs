@@ -16,46 +16,54 @@
 
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
-                    <input id="name" name="name" type="text" class="form__input">
+                    <input type="text" name="name" id="name" class="form__input">
                 </div>
 
                 <div class="form__group">
                     <label for="price" class="form__label">Price</label>
-                    <input id="price" name="price" type="number" class="form__input">
+                    <input type="number" name="price" id="price" class="form__input">
                 </div>
 
                 <div class="form__group">
                     <label for="brand" class="form__label">Brand</label>
-                    <input id="brand" name="brand" type="text" name="" id="" class="form__input">
+                    <input type="text" name="brand" id="brand" class="form__input">
                 </div>
 
                 <div class="form__group">
                     <label for="grape" class="form__label">Grape</label>
-                    <input id="grape" name="grape" type="text" class="form__input">
+                    <input type="text" name="grape" id="grape" class="form__input">
                 </div>
 
                 <div class="form__group">
-                    <label for="grape" class="form__label">Rating</label>
-                    <input id="grape" name="grape" type="number" min="1" max="5" class="form__input">
+                    <label for="rating" class="form__label">Rating</label>
+                    <input type="number" name="rating" id="rating" class="form__input">
                 </div>
 
                 <div class="form__group">
                     <label for="region" class="form__label">Region</label>
-                    <input id="region" name="region" type="text" class="form__input">
+                    <input type="text" name="region" id="region" class="form__input">
                 </div>
 
-                <div class="form__group image">
+                <div class="form__group form__group--check">
+                    <label for="inSale" class="form__checkbox__label">Is product for sale? </label>
+                    <input type="radio" name="inSale" id="inSale" class="form__checkbox">
+                </div>
+
+                <div class="form__group form__group--check">
+                    <label for="isSelected" class="form__checkbox__label">Is a selected product? </label>
+                    <input type="radio" name="isSelected" id="isSelected" class="form__checkbox">
+                </div>
+
+                <div class="form__group">
                     <label for="image" class="form__label">Image</label>
-                    <input id="image" name="image" type="file" class="form__input">
+                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="image"
+                        class="form__input">
                 </div>
 
                 <div class="form__group">
                     <button type="submit" class="btn btn--interactive">Create product</button>
                 </div>
 
-                <!-- <div class="button__container">
-                    <button type="submit">Create!</button>
-                </div> -->
             </form>
         </section>
 
