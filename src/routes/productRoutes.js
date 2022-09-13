@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const uploadImage = multer(storage);
 
-let validation = [
+let validations = [
   check('name')
     .notEmpty()
     .withMessage('Enter the product name')
@@ -53,6 +53,10 @@ let validation = [
     .bail()
     .isLength({ min: 5, max: 35 })
     .withMessage('Region must be between 5 and 35 characters'),
+  check('image')
+    .notEmpty()
+    .withMessage('An image of the product must be uploaded')
+    .bail(),
 ];
 
 // Product cart
@@ -66,6 +70,7 @@ router.get('/productCreate', productController.productCreate);
 router.post(
   '/',
   uploadImage.single('image'),
+  validations,
   productController.productCreateProcess
 );
 

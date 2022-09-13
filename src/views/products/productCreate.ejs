@@ -16,17 +16,34 @@
 
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
-                    <input type="text" name="name" id="name" class="form__input">
+                    <input type="text" name="name" id="name" class="form__input" value="<%= locals.old && old.name %>">
+                    <% if (locals.errors && errors.name) { %>
+                        <small class="form__message">
+                            <%= errors.name.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="price" class="form__label">Price</label>
-                    <input type="number" name="price" id="price" class="form__input">
+                    <input type="number" name="price" id="price" class="form__input"
+                        value="<%= locals.old && old.price %>">
+                    <% if (locals.errors && errors.price) { %>
+                        <small class="form__message">
+                            <%= errors.price.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="brand" class="form__label">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form__input">
+                    <input type="text" name="brand" id="brand" class="form__input"
+                        value="<%= locals.old && old.brand %>">
+                    <% if (locals.errors && errors.brand) {%>
+                        <small class="form__message">
+                            <%= errors.brand.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
