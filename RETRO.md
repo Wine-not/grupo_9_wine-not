@@ -42,3 +42,17 @@ We all agree it has not been easy but we have done the best we could and its bee
 <h3>¿What can we improve?</h3>
 There is always room for improvement. We have worked well with Trello and we have meetings very often. That is something that we have improved but could be better. 
 <br/>
+<h3>💡 Let's now think this through :</h3>
+<ul>Where to begin (What should we start doing).
+<li>-Continue with our daily meetings (15-20 mins)</li>
+<li>-Acquire more responsibility on individual tasks, we have improved this part but again, we can improve it even more.</li>
+</ul>
+<ul>Keep doing it.
+<li>-DO NOT GIVE UP</li>
+</ul>
+<ul>Do less.
+<li>-Stop putting more work and overwhelming tasks on some of the team members.</li>
+</ul>
+<ul>Stop doing it.
+<li>-Not communicating well enough and being absent for too long, team works requires effort but also time.</li>
+</ul>
