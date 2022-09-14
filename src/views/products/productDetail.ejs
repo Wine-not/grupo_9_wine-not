@@ -19,8 +19,11 @@
                     <a href="#" class="breadcrumb__page">Malbec</a>
                     <a href="#" class="breadcrumb__page">Rutini</a>
                 </div>
-                <h1 class="product-hero__title"> <%= product.name %>  </h1>
-                <h2 class="product-hero__price">$ <%= product.price %>  </h2>
+                <h1 class="product-hero__title">
+                    <%= product.name %>
+                </h1>
+                <h2 class="product-hero__price">$ <%= product.price %>
+                </h2>
                 <form action="/products/<%=product.id%>?_method=DELETE" method="POST" class="product__form">
                     <p class="product__form__title">Quantity:</p>
                     <div class="product__form__qty">
@@ -44,7 +47,7 @@
 
         <section class="suggestions section--padding">
             <h3 class="suggestions__title">Our suggestions</h3>
-            <%- include('../partials/card') %>
+            <%- // include('../partials/card') %>
         </section>
 
         <%- include('../partials/footer') %>
