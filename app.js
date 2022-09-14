@@ -23,7 +23,7 @@ app.use(session({
 }));
 
 //Middlewares
-app.use(logMiddleware);
+//app.use(logMiddleware);
 
 //Routes
 const userRouter = require('./src/routes/userRouter');
