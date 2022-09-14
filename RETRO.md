@@ -30,3 +30,15 @@ Do more.</li>
 <ul>Stop doing it.
 <li>-Not communicating well enough and being absent for too long, team works requires effort but also time.</li>
 </ul>
+
+<h1>🔁 Feedback Sprint 1</h1> 
+
+<h3>¿What did we do right?</h3>
+We had to merge our projets, as we were put into a new group. We communicated properly, and all of us were very flexible regarding this change as we knew it was for the best. 
+<br/>
+<h3>¿How did we feel about it?</h3>
+We all agree it has not been easy but we have done the best we could and its been a smooth transition. Each and every single one of us has something to add to the group and the project itself. Little by little we have gathered our knowledge and efforts and we have made it possible to complete each stage. This is something that makes us truly proud of our time management ad communication skills.  
+<br/>
+<h3>¿What can we improve?</h3>
+There is always room for improvement. We have worked well with Trello and we have meetings very often. That is something that we have improved but could be better. 
+<br/>
