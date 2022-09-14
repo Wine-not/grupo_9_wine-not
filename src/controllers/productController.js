@@ -76,6 +76,15 @@ module.exports = {
     let id = req.params.id;
     let producToEdit = products.find((product) => product.id == id);
 
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render('./products/productCreate', {
+        errors: errors.mapped(),
+        old: req.body,
+      });
+    }
+
     producToEdit = {
       id: producToEdit.id,
       ...req.body,
