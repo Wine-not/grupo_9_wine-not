@@ -1,0 +1,27 @@
+@import url('./utilities/utilities.css');
+@import url('./partials/navbar.css');
+@import url('./partials/card.css');
+@import url('./partials/footer.css');
+
+.main__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;    
+}
+.card-wine-info{
+    display: flex;
+    min-height: 0;
+    max-height: 350px;
+    border-radius: 10px;
+    background-color: #FDF9F4;
+    border: 1px solid black;
+    margin: 2rem;
+}
+
+.title {
+    text-align: center;
+    font-family: var(--secondary-font);
+    font-size: 3em;
+    margin-top: 25px;
+}

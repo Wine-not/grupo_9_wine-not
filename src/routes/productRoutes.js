@@ -14,9 +14,9 @@ const storage = multer.diskStorage({
   },
 });
 
-const uploadImage = multer(storage);
+const uploadImage = multer({ storage });
 
-let validation = [
+let validations = [
   check('name')
     .notEmpty()
     .withMessage('Enter the product name')
@@ -53,20 +53,41 @@ let validation = [
     .bail()
     .isLength({ min: 5, max: 35 })
     .withMessage('Region must be between 5 and 35 characters'),
+  check('stock')
+    .notEmpty()
+    .withMessage('Add stock quantity')
+    .bail()
+    .isNumeric()
+    .withMessage('Stock must be a number'),
+  check('image')
+    .notEmpty()
+    .withMessage('An image of the product must be uploaded')
+    .bail(),
 ];
 
 // Product cart
 router.get('/productCart', productController.productCart);
 
 // Show products
-router.get('/productDetail', productController.productDetail);
+router.get('/productDetail/:id', productController.productDetail);
 
 // Create products
 router.get('/productCreate', productController.productCreate);
 router.post(
   '/',
   uploadImage.single('image'),
+  validations,
   productController.productCreateProcess
 );
+
+// Edit products
+router.get('/productEdit/:id', productController.productEdit);
+router.put('/:id', validations ,productController.productUpdate)
+
+//Delete product
+router.delete('/:id', productController.delete);
+
+//Product List
+router.get('/shopAll', productController.shopAll);
 
 module.exports = router;

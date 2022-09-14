@@ -105,7 +105,10 @@
 
 .btn--qty {
   width: 100%;
+  margin-bottom: 10px;
 }
+
+
 /* ------------------ FORM ------------------ */
 
 .suggestions__title {
@@ -114,6 +117,10 @@
   font-weight: var(--regular);
   text-align: center;
   margin-bottom: 2.5rem;
+}
+
+.product__form > a {
+  text-align: center;
 }
 
 @media only screen and (min-width: 1280px) {

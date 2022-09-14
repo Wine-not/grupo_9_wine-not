@@ -13,7 +13,7 @@ router.post('/login', [
     check('password').isLength({ min: 10 }).withMessage('The password must be at least 10 characters long'),
 ], userController.loginProcess);
 router.get('/register', userController.register);
-router.post('/register', logDBMiddleware, userController.create);
+router.post('/register', userController.create);
 router.get('/edit/:idUser', userController.edit);
 router.put('/edit/:idUser', userController.update);
 router.get('/profile', userController.profile);

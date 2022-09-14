@@ -128,5 +128,18 @@
     "rating": 4.3,
     "region": "Chablis, France",
     "image": "url"
+  },
+  {
+    "id": 11,
+    "name": "Garrus Rosé 2020",
+    "price": 129.99,
+    "brand": "Château d'Esclans",
+    "stock": 15,
+    "inSale": false,
+    "isSelection": true,
+    "grape": "Grenache Blanc",
+    "rating": 4.6,
+    "region": "Côtes de Provence",
+    "image": "1663120531294_img_.png"
   }
 ]
