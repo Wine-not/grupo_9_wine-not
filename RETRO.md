@@ -31,7 +31,7 @@ Do more.</li>
 <li>-Not communicating well enough and being absent for too long, team works requires effort but also time.</li>
 </ul>
 
-<h1>🔁 Feedback Sprint 1</h1> 
+<h1>🔁 Feedback Sprint 4</h1> 
 
 <h3>¿What did we do right?</h3>
 We had to merge our projets, as we were put into a new group. We communicated properly, and all of us were very flexible regarding this change as we knew it was for the best. 
