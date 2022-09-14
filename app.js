@@ -5,6 +5,8 @@ const methodOverride = require('method-override');
 const app = express();
 const publicPath = path.resolve(__dirname, './public');
 const logMiddleware = require('./src/middleware/logMiddleware');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 //EJS configuration
 app.use(express.static(publicPath));
@@ -13,6 +15,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, './src/views'));
+app.use(cookieParser());
+app.use(session({ 
+    secret: 'Secreto',
+    resave: false,
+    saveUninitialized: false
+}));
 
 //Middlewares
 app.use(logMiddleware);

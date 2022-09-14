@@ -270,26 +270,16 @@
   "birthdate": "8/4/1982"
  },
  {
-  "id": 31,
-  "nickname": "Zob",
-  "name": "Karim",
-  "surname": "Barragan",
-  "email": "karim@gmail.com",
-  "password": "123456",
-  "passwordrepeat": "123456",
-  "birthdate": "1985-07-11",
-  "terms": "on"
+  "firstName": " ",
+  "lastName": " ",
+  "email": "ahighton2@flickr.com",
+  "password": ""
  },
  {
-  "id": 32,
-  "nickname": "Priviet",
-  "first-name": "Nikola",
-  "surname": "Tesla",
-  "email": "tesla@tesla.com",
-  "password": "123456",
-  "passwordrepeat": "123456",
-  "birthdate": "1973-06-07",
-  "terms": "on"
+  "firstName": " ",
+  "lastName": " ",
+  "email": "ahighton2@flickr.com",
+  "password": ""
  },
  {
   "id": "1663026039151",
@@ -299,5 +289,14 @@
   "email": "joaquin@guzman.com",
   "password": "$2b$10$Cmo0/Y28YJibB.6lSy36nOg44On5WsX/fvWucbTTpOnEkRRNbacMa",
   "birthdate": "1999-12-03"
+ },
+ {
+  "id": "1663112947702",
+  "userId": "Zob1",
+  "firstName": "Karim",
+  "lastName": "Barragan",
+  "email": "karim@gmail.com",
+  "password": "$2b$10$U34jeLejMpL.C6wrzasz2.E/AULHCif.FH1EQiOW0.PrFDpAaUxbW",
+  "birthdate": "1985-06-12"
  }
 ]

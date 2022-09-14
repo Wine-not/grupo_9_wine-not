@@ -37,6 +37,13 @@
 .form-inputs  div {
     margin: 1em;
 }
+
+.form__error {
+    color: red;
+    font-size: 0.8rem;
+    margin: 0.5em;
+}
+
 .input {
     display: flex;
     flex-direction: column; 
