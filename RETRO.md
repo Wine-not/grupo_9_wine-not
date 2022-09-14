@@ -48,7 +48,7 @@ There is always room for improvement. We have worked well with Trello and we hav
 <li>-Acquire more responsibility on individual tasks, we have improved this part but again, we can improve it even more.</li>
 </ul>
 <ul>Keep doing it.
-<li>-DO NOT GIVE UP</li>
+<li>-DO NOT GIVE UP 💥</li>
 </ul>
 <ul>Do less.
 <li>-Stop putting more work and overwhelming tasks on some of the team members.</li>
