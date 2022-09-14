@@ -20,14 +20,24 @@
         </div>
         <div class="card__cta">
             <div class="card__rating">
-                <p class="card__rating-points">4.4</p>
-                <p class="card__rating-qty">3880 ratings</p>
+                <p class="card__rating-points">
+                    <%= rating %>
+                </p>
+                <p class="card__rating-qty">
+                    <%= ratingQty %>
+                </p>
             </div>
-            <a href="#" class="btn btn--primary">$37.98</a>
+            <a href="#" class="btn btn--primary">
+                <%= price %>
+            </a>
         </div>
     </div>
     <div class="card__copy">
-        <p class="card__wine-brand">Rombauer Vineyards</p>
-        <p class="card__wine-name">Chardonnay 2021</p>
+        <p class="card__wine-brand">
+            <%= brand %>
+        </p>
+        <p class="card__wine-name">
+            <%= name %>
+        </p>
     </div>
 </div>
