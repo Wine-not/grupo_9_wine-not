@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const uploadImage = multer(storage);
+const uploadImage = multer({ storage });
 
 let validations = [
   check('name')
@@ -53,6 +53,12 @@ let validations = [
     .bail()
     .isLength({ min: 5, max: 35 })
     .withMessage('Region must be between 5 and 35 characters'),
+  check('stock')
+    .notEmpty()
+    .withMessage('Add stock quantity')
+    .bail()
+    .isNumeric()
+    .withMessage('Stock must be a number'),
   check('image')
     .notEmpty()
     .withMessage('An image of the product must be uploaded')
