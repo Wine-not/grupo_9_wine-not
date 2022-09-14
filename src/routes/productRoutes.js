@@ -69,7 +69,7 @@ let validations = [
 router.get('/productCart', productController.productCart);
 
 // Show products
-router.get('/productDetail', productController.productDetail);
+router.get('/productDetail/:id', productController.productDetail);
 
 // Create products
 router.get('/productCreate', productController.productCreate);
@@ -79,5 +79,15 @@ router.post(
   validations,
   productController.productCreateProcess
 );
+
+// Edit products
+router.get('/productEdit/:id', productController.productEdit);
+router.put('/:id', validations ,productController.productUpdate)
+
+//Delete product
+router.delete('/:id', productController.delete);
+
+//Product List
+router.get('/shopAll', productController.shopAll);
 
 module.exports = router;

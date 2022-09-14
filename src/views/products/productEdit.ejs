@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head', {title: 'Nombre del producto' }) %>
+        <link rel="stylesheet" href="/styles/productCreate.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+
+        <section class="section--padding main__container">
+            <form class="inputs__container form" action="/products/<%=product.id%>?_method=PUT" method="POST" >
+                <h1 class="form__title">Edit current product</h1>
+
+                <div class="form__group">
+                    <label for="name" class="form__label"> Name  </label>
+                    <input type="text" name="name" id="name" class="form__input" value="<%= product.name %>">
+                    <% if (locals.errors && errors.name) { %>
+                        <small class="form__message" id="name-msg">
+                            <%= errors.name.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="price" class="form__label">Price</label>
+                    <input type="number" name="price" id="price" class="form__input" min="0" step="0.01"
+                        value="<%= product.price %>">
+                    <% if (locals.errors && errors.price) { %>
+                        <small class="form__message" id="price-msg">
+                            <%= errors.price.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="brand" class="form__label">Brand</label>
+                    <input type="text" name="brand" id="brand" class="form__input"
+                        value="<%= product.brand %>">
+                    <% if (locals.errors && errors.brand) { %>
+                        <small class="form__message" id="brand-msg">
+                            <%= errors.brand.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="grape" class="form__label">Grape</label>
+                    <input type="text" name="grape" id="grape" class="form__input"
+                        value="<%= product.grape %>">
+                    <% if (locals.errors && errors.grape) { %>
+                        <small class="form__message" id="grape-msg">
+                            <%= errors.grape.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="rating" class="form__label">Rating</label>
+                    <input type="number" name="rating" id="rating" class="form__input" step="0.1"
+                        value="<%= product.rating %>">
+                    <% if (locals.errors && errors.rating) { %>
+                        <small class="form__message" id="rating-msg">
+                            <%= errors.rating.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="region" class="form__label">Region</label>
+                    <input type="text" name="region" id="region" class="form__input"
+                        value="<%= product.region %>">
+                    <% if (locals.errors && errors.region) { %>
+                        <small class="form__message" id="region-msg">
+                            <%= errors.region.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <label for="stock" class="form__label">Stock</label>
+                    <input type="text" name="stock" id="stock" class="form__input"
+                        value="<%= product.stock %>">
+                    <% if (locals.errors && errors.stock) { %>
+                        <small class="form__message" id="stock-msg">
+                            <%= errors.stock.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group form__group--check">
+                    <label for="inSale" class="form__checkbox__label">Is product for sale? </label>
+                    <input type="radio" name="inSale" id="inSale" class="form__checkbox">
+                </div>
+
+                <div class="form__group form__group--check">
+                    <label for="isSelection" class="form__checkbox__label">Is a selected product? </label>
+                    <input type="radio" name="isSelection" id="isSelection" class="form__checkbox">
+                </div>
+
+                <div class="form__group">
+                    <label for="image" class="form__label">Image</label>
+                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="image"
+                        class="form__input">
+                    <% if (locals.errors && errors.image) { %>
+                        <small class="form__message" id="image-msg">
+                            <%= errors.image.msg %>
+                        </small>
+                        <% } %>
+                </div>
+
+                <div class="form__group">
+                    <button type="submit" class="btn btn--interactive">Done!</button>
+                </div>
+
+            </form>
+        </section>
+
+        <%- include('../partials/footer') %>
+
+            <script src="/javascripts/utilities.js"></script>
+            <script src="/javascripts/formValidation.js"></script>
+</body>
+
+</html>

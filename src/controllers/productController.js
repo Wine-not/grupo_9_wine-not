@@ -19,7 +19,9 @@ module.exports = {
 
   // Show one product
   productDetail: (req, res) => {
-    res.render('./products/productDetail');
+    let id = req.params.id;
+		let product = products.find(oneProduct => oneProduct.id == id );
+		res.render('./products/productDetail', {product: product})
   },
 
   // Show product create form
@@ -69,4 +71,46 @@ module.exports = {
 
     res.redirect('/');
   },
+  productEdit: (req, res) => {
+    let id = req.params.id;
+    let product = products.find(oneProduct => oneProduct.id == id);
+    res.render('./products/productEdit.ejs', { product: product })    
+  },
+  productUpdate: (req, res) => {
+		let id = req.params.id
+		let producToEdit = products.find(product => product.id == id)
+
+		producToEdit = {
+			id: producToEdit.id,
+			...req.body,
+			image: producToEdit.image
+		};
+
+		   let newProducts = products.map(product=>{
+		   	if (product.id == producToEdit.id){
+		   		return product = {...producToEdit}
+		   	}
+		   	return product;
+		   })
+
+       fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
+       products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+       res.redirect('/products/shopAll');
+    
+  },
+  shopAll: (req, res) => {
+    res.render('./products/shopAll', {products: products})
+  },
+  delete : (req, res) => {
+    let id = req.params.id
+    let finalProducts = products.filter(product=> product.id != id);
+    fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
+    fs.readFile(productsFilePath, (err, productData) => {
+      if (err) throw err;
+    
+      products = JSON.parse(productData);
+    });    
+    res.redirect('/products/shopAll');
+
+    }
 };

@@ -19,9 +19,9 @@
                     <a href="#" class="breadcrumb__page">Malbec</a>
                     <a href="#" class="breadcrumb__page">Rutini</a>
                 </div>
-                <h1 class="product-hero__title">Felipe Rutini 2008</h1>
-                <h2 class="product-hero__price">$500</h2>
-                <form action="#" method="get" class="product__form">
+                <h1 class="product-hero__title"> <%= product.name %>  </h1>
+                <h2 class="product-hero__price">$ <%= product.price %>  </h2>
+                <form action="/products/<%=product.id%>?_method=DELETE" method="POST" class="product__form">
                     <p class="product__form__title">Quantity:</p>
                     <div class="product__form__qty">
                         <button type="button" class="qty__button minus">-</button>
@@ -30,6 +30,8 @@
                         <button type="button" class="qty__button plus">+</button>
                     </div>
                     <button type="submit" class="btn btn--primary btn--qty">Add to cart</button>
+                    <a href="/products/productEdit/<%=product.id%>" class="btn btn--primary btn--qty">Edit</a>
+                    <button type="submit" class="btn btn--primary btn--qty delete">Delete</button>
                 </form>
                 <p class="product-hero__description">
                     Our 2017 Napa Valley Cabernet Sauvignon is ruby in color with notes of blackberry, blueberry,
