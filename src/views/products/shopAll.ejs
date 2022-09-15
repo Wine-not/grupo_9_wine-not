@@ -9,27 +9,15 @@
 <body>
     <%- include('../partials/navbar') %>
 
-    <h1 class="title">Shop All</h1>
-    <section class="main__container">
-        <% for(let product of products) { %> 
-            <div class="card-wine-info">
-                <div class="img-rating">
-                    <a href="/products/productDetail/<%= product.id %>">                
-                    <img src="/images/bonanza cabernet sauvignon .png">
-                    </a>
-                    <div class="rating">
-                        <p class="points"><%= product.price %> </p> 
-                        <p class="num_rating"><%= product.rating %> </p>
-                        <button class="btn_price"><%= product.price %> </button>
-                    </div>
-                </div>
-                <div class="wine-info">
-                    <p><%= product.name %> </p>
-                    <p><%= product.region %> </p>                
-                </div>
+        <div class="hero--padding">
+            <h1 class="title">Shop All</h1>
+            <div class="section--cards section--list">
+                <% products.forEach((product)=> { %>
+                    <%- include('../partials/card', { product }) %>
+                        <% }); %>
             </div>
-            <% } %> 
-    </section>
+        </div>
+
         <%- include('../partials/footer') %>
 
             <script src="/javascripts/utilities.js"></script>

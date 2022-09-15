@@ -11,7 +11,7 @@
 
         <main class="product-hero hero--padding">
             <div class="product-hero__image">
-                <img src="/images/rutini.png" alt="" srcset="">
+                <img src="/images/products/<%= product.image %>" alt="" srcset="">
             </div>
             <div class="product-hero__copy">
                 <div class="product-hero__breadcrumb">
@@ -24,7 +24,7 @@
                 </h1>
                 <h2 class="product-hero__price">$ <%= product.price %>
                 </h2>
-                <form action="/products/<%=product.id%>?_method=DELETE" method="POST" class="product__form">
+                <form action="/products/<%= product.id %>?_method=DELETE" method="POST" class="product__form">
                     <p class="product__form__title">Quantity:</p>
                     <div class="product__form__qty">
                         <button type="button" class="qty__button minus">-</button>
@@ -33,7 +33,7 @@
                         <button type="button" class="qty__button plus">+</button>
                     </div>
                     <button type="submit" class="btn btn--primary btn--qty">Add to cart</button>
-                    <a href="/products/productEdit/<%=product.id%>" class="btn btn--primary btn--qty">Edit</a>
+                    <a href="/products/productEdit/<%= product.id %>" class="btn btn--primary btn--qty">Edit</a>
                     <button type="submit" class="btn btn--primary btn--qty delete">Delete</button>
                 </form>
                 <p class="product-hero__description">
@@ -47,7 +47,11 @@
 
         <section class="suggestions section--padding">
             <h3 class="suggestions__title">Our suggestions</h3>
-            <%- // include('../partials/card') %>
+            <div class="section--cards">
+                <% selectedProducts.slice(-4).forEach((product)=> { %>
+                    <%- include('../partials/card', { product }) %>
+                        <% }); %>
+            </div>
         </section>
 
         <%- include('../partials/footer') %>

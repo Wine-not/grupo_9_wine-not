@@ -43,6 +43,12 @@
   padding: 3rem 1.25rem;
 }
 
+.section--cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   .hero--padding {
     padding: 1.875rem 3.75rem 3.5rem;
@@ -50,6 +56,11 @@
 
   .section--padding {
     padding: 3.75rem;
+  }
+
+  .section--cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -65,5 +76,9 @@
   .btn--card {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .section--cards {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

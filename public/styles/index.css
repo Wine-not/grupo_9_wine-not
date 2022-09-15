@@ -66,15 +66,8 @@
   border-radius: 0 0 16px 16px;
   font-family: var(--secondary-font);
   font-size: var(--caption-card);
-  /* font-weight: var(--book); */
   text-align: center;
   padding: 1.5rem 0;
-}
-
-.section--cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -104,11 +97,6 @@
   .offer__card {
     width: 100%;
   }
-
-  .section--cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media only screen and (min-width: 1280px) {
@@ -124,9 +112,5 @@
   .section__title {
     font-size: var(--sub-heading);
     font-weight: var(--regular);
-  }
-
-  .section--cards {
-    grid-template-columns: repeat(4, 1fr);
   }
 }

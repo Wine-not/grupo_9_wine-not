@@ -10,6 +10,9 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 //   products = JSON.parse(productData);
 //   console.log(products);
 // });
+const selectedProducts = products.filter((product) => {
+  return product.isSelection == true;
+});
 
 module.exports = {
   // Show product cart
@@ -21,7 +24,10 @@ module.exports = {
   productDetail: (req, res) => {
     let id = req.params.id;
     let product = products.find((oneProduct) => oneProduct.id == id);
-    res.render('./products/productDetail', { product: product });
+    res.render('./products/productDetail', {
+      product: product,
+      selectedProducts,
+    });
   },
 
   // Show product create form
@@ -104,7 +110,7 @@ module.exports = {
   },
 
   shopAll: (req, res) => {
-    res.render('./products/shopAll');
+    res.render('./products/shopAll', { products });
   },
 
   delete: (req, res) => {
