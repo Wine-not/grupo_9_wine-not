@@ -1,15 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
-
 const productsFilePath = path.join(__dirname, '../data/products.json');
-let products = [];
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-fs.readFile(productsFilePath, (err, productData) => {
-  if (err) throw err;
+// fs.readFile(productsFilePath, (err, productData) => {
+//   if (err) throw err;
 
-  products = JSON.parse(productData);
-});
+//   products = JSON.parse(productData);
+//   console.log(products);
+// });
 
 module.exports = {
   // Show product cart
@@ -104,7 +104,7 @@ module.exports = {
   },
 
   shopAll: (req, res) => {
-    res.render('./products/shopAll', { products: products });
+    res.render('./products/shopAll');
   },
 
   delete: (req, res) => {

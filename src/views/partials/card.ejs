@@ -1,43 +1,26 @@
-<!-- <div class="card">
-    <div class="img-rating">
-        <img src="/images/bonanza cabernet sauvignon .png" alt="">
-        <div class="rating">
-            <p class="points">4.4</p>
-            <p class="num_rating">6880 Rating</p>
-            <button class="btn_price">$19.9</button>
-        </div>
-    </div>
-    <div class="wine-info">
-        <p>Wine name</p>
-        <p>Wine class</p>
-    </div>
-</div> -->
-
 <div class="card">
     <div class="card__media">
         <div class="card__image">
-            <img src="/images/products/6_id_chardonnay.png" alt="" srcset="">
+            <img src="/images/products/<%= product.image %>" alt="" srcset="">
         </div>
         <div class="card__cta">
             <div class="card__rating">
                 <p class="card__rating-points">
-                    <%= rating %>
+                    <%= product.rating %>
                 </p>
-                <p class="card__rating-qty">
-                    <%= ratingQty %>
-                </p>
+                <p class="card__rating-qty">3880 ratings</p>
             </div>
-            <a href="#" class="btn btn--primary">
-                <%= price %>
+            <a href="/products/productDetail/<%= product.id %>" class="btn btn--primary btn--card">
+                $<%= product.price %>
             </a>
         </div>
     </div>
     <div class="card__copy">
         <p class="card__wine-brand">
-            <%= brand %>
+            <%= product.brand %>
         </p>
         <p class="card__wine-name">
-            <%= name %>
+            <%= product.name %>
         </p>
     </div>
 </div>

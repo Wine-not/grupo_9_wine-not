@@ -67,6 +67,18 @@
   font-weight: var(--medium);
 }
 
+@media only screen and (min-width: 1280px) {
+  .card {
+    max-width: 350px;
+  }
+  .card__media {
+    gap: 10px;
+  }
+  .card__copy {
+    margin-top: 0.5rem;
+  }
+}
+
 /* .rating {
   display: flex;
   flex-wrap: wrap;

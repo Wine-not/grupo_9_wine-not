@@ -1,6 +1,5 @@
 @import url('../utilities/vars.css');
 
-
 .btn {
   display: inline-block;
   font-family: var(--secondary-font);
@@ -61,5 +60,10 @@
 
   .section--padding {
     padding: 4rem 6.25rem;
+  }
+
+  .btn--card {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
