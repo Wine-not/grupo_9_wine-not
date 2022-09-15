@@ -25,7 +25,7 @@ module.exports = {
     let id = req.params.id;
     let product = products.find((oneProduct) => oneProduct.id == id);
     res.render('./products/productDetail', {
-      product: product,
+      product,
       selectedProducts,
     });
   },

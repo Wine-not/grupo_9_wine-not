@@ -10,7 +10,8 @@
     "grape": "Malbec",
     "rating": "4.4",
     "region": "Lujan de Cuyo, Argentina",
-    "image": "1_id_malbec.png"
+    "image": "1_id_malbec.png",
+    "description": "La couleur grenat dense du Bramare Luján de Cuyo Malbec de la Bodega Viña Cobos accompagne un nez terreux, riche en arômes de cassis, de moka et de lavande. Le palais est gras et complexe. Cassis, tannins mûrs et minéralité trouvent un équilibre parfait. Ou comme l'écrit James Suckling à propos du Bramare Luján de Cuyo Malbec 2013, 'C'est vraiment beau avec de la terre cuite, du carrelage et du poivre blanc plus des fruits noirs. Plein et intense. Soyeux et ouvert avec tant de choses à faire. Un vin magnifique et séduisant'"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "grape": "Malbec",
     "rating": 4.3,
     "region": "Uco Valley, Argentina",
-    "image": "2_id_malbec.png"
+    "image": "2_id_malbec.png",
+    "description": "La couleur grenat dense du Bramare Luján de Cuyo Malbec de la Bodega Viña Cobos accompagne un nez terreux, riche en arômes de cassis, de moka et de lavande. Le palais est gras et complexe. Cassis, tannins mûrs et minéralité trouvent un équilibre parfait. Ou comme l'écrit James Suckling à propos du Bramare Luján de Cuyo Malbec 2013, 'C'est vraiment beau avec de la terre cuite, du carrelage et du poivre blanc plus des fruits noirs. Plein et intense. Soyeux et ouvert avec tant de choses à faire. Un vin magnifique et séduisant'"
   },
   {
     "id": 3,

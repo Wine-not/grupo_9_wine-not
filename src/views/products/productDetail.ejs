@@ -16,8 +16,12 @@
             <div class="product-hero__copy">
                 <div class="product-hero__breadcrumb">
                     <a href="/" class="breadcrumb__page">Home</a>
-                    <a href="#" class="breadcrumb__page">Malbec</a>
-                    <a href="#" class="breadcrumb__page">Rutini</a>
+                    <a href="#" class="breadcrumb__page">
+                        <%= product.grape %>
+                    </a>
+                    <a href="#" class="breadcrumb__page">
+                        <%= product.brand %>
+                    </a>
                 </div>
                 <h1 class="product-hero__title">
                     <%= product.name %>
@@ -37,10 +41,7 @@
                     <button type="submit" class="btn btn--primary btn--qty delete">Delete</button>
                 </form>
                 <p class="product-hero__description">
-                    Our 2017 Napa Valley Cabernet Sauvignon is ruby in color with notes of blackberry, blueberry,
-                    roasted coffee beans, coriander and a hint of nutmeg. Smooth upon entry, this wine is broad and
-                    plush on the mid-palate. It has an elegant density throughout and a long, generous finish. Given
-                    proper cellaring conditions, this wine will show beautifully through 2041.
+                    <%= product.description %>
                 </p>
             </div>
         </main>
