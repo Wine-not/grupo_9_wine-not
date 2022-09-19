@@ -25,12 +25,16 @@
                 <div class="form__inputs-container">
                     <form class="form-inputs" action="/users/login" method="POST">
                         <div class="email input">
-                            <label for="">Email</label>
-                            <input placeholder="johndoe@gmail.com" type="email">
+                            <label for="email">Email</label>
+                            <input placeholder="johndoe@gmail.com" type="email" name="email">
                         </div>
                         <div class="password input">
-                            <label for="">Paswword</label>
-                            <input placeholder="**********" type="password">
+                            <label for="password">Paswword</label>
+                            <input placeholder="**********" type="password" name="password">
+                        </div>
+                        <div class="">
+                            <input type="checkbox" name="rememberMe" id="rememberMe" class="form__checkbox">
+                            <label for="rememberMe" class="form__checkbox__label">Keep me logged in</label>
                         </div>
                         <div class="create-account-button input">
                             <button type="submit">SIGN IN</button>

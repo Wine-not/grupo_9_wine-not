@@ -4,12 +4,6 @@ const { validationResult } = require('express-validator');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-// fs.readFile(productsFilePath, (err, productData) => {
-//   if (err) throw err;
-
-//   products = JSON.parse(productData);
-//   console.log(products);
-// });
 const selectedProducts = products.filter((product) => {
   return product.isSelection == true;
 });
