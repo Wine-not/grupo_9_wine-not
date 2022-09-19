@@ -307,5 +307,12 @@
     "email": "",
     "password": "$2b$10$Xfktm0mlPaZznFgGDUwBG.NPbWe7k73sjAbmksw4ntlRY8lv5AiQK",
     "birthdate": ""
+  },
+  {
+    "id": "1663627435449",
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "birthdate": ""
   }
 ]

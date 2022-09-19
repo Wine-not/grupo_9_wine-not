@@ -1,10 +1,10 @@
+// const logDBMiddleware = require('../middleware/logDBMiddleware');
+// const path = require('path');
+// const multer = require('multer');
 const express = require('express');
 const router = express.Router();
-const logDBMiddleware = require('../middleware/logDBMiddleware');
 const userController = require('../controllers/userController');
 const { check } = require('express-validator');
-const path = require('path');
-const multer = require('multer');
 
 let validationsLogin = [
   check('email')
@@ -46,7 +46,8 @@ let validationsRegister = [
   check('birthdate').notEmpty().withMessage('Please enter your birth date'),
   check('terms')
     .notEmpty()
-    .withMessage('You must agree with our terms and conditions to register'),
+    .withMessage('You must agree with our terms and conditions to register')
+    .bail(),
 ];
 
 // Log in a user

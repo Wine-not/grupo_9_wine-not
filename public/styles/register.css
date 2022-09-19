@@ -62,9 +62,9 @@
   text-align: center;
 }
 
-.form__message {
+/* .form__message {
   display: none;
-}
+} */
 
 .error {
   border: 1px solid var(--error);
@@ -72,6 +72,13 @@
 
 .success {
   border: 1px solid var(--success);
+}
+
+.form__message {
+  font-size: var(--small-body);
+  font-weight: var(--book);
+  font-family: var(--secondary-font);
+  color: var(--error);
 }
 
 @media only screen and (min-width: 1280px) {
