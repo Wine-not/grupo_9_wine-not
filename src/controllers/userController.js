@@ -58,27 +58,6 @@ const userController = {
   },
 
   create: (req, res) => {
-    // let errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   let oldData = req.body;
-    //   res.render('./users/register', {
-    //     errors: errors.mapped(),
-    //     old: oldData,
-    //   });
-    // }
-    //   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    //   let newUser = {
-    //     id: Date.now().toString(),
-    //     userId: req.body.userId,
-    //     firstName: req.body.firstName,
-    //     lastName: req.body.lastName,
-    //     email: req.body.email,
-    //     password: hashedPassword,
-    //     birthdate: req.body.birthdate,
-    //   };
-    //   users.push(newUser);
-    //   fs.writeFileSync(usersFilePath, JSON.stringify(users, ' '));
-    //   res.redirect('/users/login');
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -86,7 +65,6 @@ const userController = {
         errors: errors.mapped(),
         old: req.body,
       });
-      return;
     }
 
     let newUser = {
@@ -103,13 +81,13 @@ const userController = {
 
     users.push(newUser);
 
-    let userAdded = JSON.stringify(users, null, '');
+    let userAdded = JSON.stringify(users, null, ' ');
 
     fs.writeFile(usersFilePath, userAdded, (err) => {
       if (err) throw err;
     });
-
-    res.redirect('/');
+    return;
+    // res.redirect('/');
   },
 
   edit: (req, res) => {

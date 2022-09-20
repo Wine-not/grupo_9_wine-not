@@ -21,6 +21,7 @@ let validationsLogin = [
 ];
 
 let validationsRegister = [
+  check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
   check('name').notEmpty().withMessage('Enter your name please').bail(),
   check('surname').notEmpty().bail(),
   check('email')
