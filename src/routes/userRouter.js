@@ -52,11 +52,11 @@ let validationsRegister = [
 
 // Log in a user
 router.get('/login', userController.login);
-router.post('/login', validationsLogin, userController.loginProcess);
+router.post('/login', userController.loginProcess);
 
 // Register new user
 router.get('/register', userController.register);
-router.post('/register', validationsRegister, userController.create);
+router.post('/register', userController.create);
 
 // Edit a user
 router.get('/edit/:idUser', userController.edit);
