@@ -86,6 +86,7 @@ const userController = {
         errors: errors.mapped(),
         old: req.body,
       });
+      return;
     }
 
     let newUser = {

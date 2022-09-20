@@ -57,13 +57,13 @@ module.exports = {
 
     products.push(newProduct);
 
-    let productAdded = JSON.stringify(products);
+    let productAdded = JSON.stringify(products, null, ' ');
 
     fs.writeFile(productsFilePath, productAdded, (err) => {
       if (err) throw err;
     });
-
-    res.redirect('/');
+    return;
+    // res.redirect('/');
   },
 
   productEdit: (req, res) => {
