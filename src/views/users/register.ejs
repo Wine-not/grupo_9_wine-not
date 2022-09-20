@@ -13,24 +13,23 @@
             <form action="/users/register" method="POST" class="form" id="form">
                 <h1 class="form__title">Create your account</h1>
                 <div class="form__group">
-                    <label for="userId" class="form__label">Nickname</label>
-                    <input type="text" name="userId" id="userId" class="form__input">
+                    <label for="nickname" class="form__label">Nickname</label>
+                    <input type="text" name="nickname" id="nickname" class="form__input">
                     <small class="form__message"></small>
                 </div>
                 <div class="form__group">
-                    <label for="firstName" class="form__label">Name</label>
-                    <input type="text" name="firstName" id="firstName" class="form__input"
-                        value="<%= locals.old && old.firstName %>">
-                    <% if (locals.errors && errors.name) { %>
+                    <label for="name" class="form__label">Name</label>
+                    <input type="text" name="name" id="name" class="form__input">
+                    <% // if (locals.errors && errors.name) { %>
                         <small class="form__message">
-                            <%= errors.firstName.msg %>
+                            <%= // errors.firstName.msg %>
                         </small>
-                        <% } %>
+                        <% //} %>
                 </div>
 
                 <div class="form__group">
-                    <label for="lastName" class="form__label">Surname</label>
-                    <input type="text" name="lastName" id="lastName" class="form__input">
+                    <label for="surname" class="form__label">Surname</label>
+                    <input type="text" name="surname" id="surname" class="form__input">
                     <small class="form__message"></small>
                 </div>
 
@@ -47,7 +46,7 @@
                 </div>
 
                 <div class="form__group">
-                    <label for="passwordRepeat" class="form__label">Repeat your password</label>
+                    <label for="passwordrepeat" class="form__label">Repeat your password</label>
                     <input type="password" name="passwordrepeat" id="passwordrepeat" class="form__input">
                     <small class="form__message"></small>
                 </div>

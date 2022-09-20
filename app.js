@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const app = express();
 const publicPath = path.resolve(__dirname, './public');
-const logMiddleware = require('./src/middleware/logMiddleware');
+// const logMiddleware = require('./src/middleware/logMiddleware');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
@@ -16,11 +16,13 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, './src/views'));
 app.use(cookieParser());
-app.use(session({ 
+app.use(
+  session({
     secret: 'Secreto',
     resave: false,
-    saveUninitialized: false
-}));
+    saveUninitialized: false,
+  })
+);
 
 //Middlewares
 //app.use(logMiddleware);

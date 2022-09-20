@@ -21,8 +21,8 @@ let validationsLogin = [
 ];
 
 let validationsRegister = [
-  check('firstName').notEmpty().withMessage('Enter your name please').bail(),
-  check('lastName').notEmpty().bail(),
+  check('name').notEmpty().withMessage('Enter your name please').bail(),
+  check('surname').notEmpty().bail(),
   check('email')
     .notEmpty()
     .withMessage('Please enter your email')
@@ -52,20 +52,20 @@ let validationsRegister = [
 
 // Log in a user
 router.get('/login', userController.login);
-router.post('/login', userController.loginProcess);
+// router.post('/login', userController.loginProcess);
 
 // Register new user
 router.get('/register', userController.register);
 router.post('/register', validationsRegister, userController.create);
 
 // Edit a user
-router.get('/edit/:idUser', userController.edit);
-router.put('/edit/:idUser', userController.update);
+// router.get('/edit/:idUser', userController.edit);
+// router.put('/edit/:idUser', userController.update);
 
 // Delete a user
-router.delete('/delete/:idUser', userController.delete);
+// router.delete('/delete/:idUser', userController.delete);
 
 // Show user profile
-router.get('/profile', userController.profile);
+// router.get('/profile', userController.profile);
 
 module.exports = router;
