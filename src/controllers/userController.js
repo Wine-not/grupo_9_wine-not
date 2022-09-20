@@ -66,7 +66,7 @@ const userController = {
         errors: errors.mapped(),
         old: oldData,
       });
-    } else {
+    }
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       let newUser = {
         id: Date.now().toString(),
@@ -78,9 +78,9 @@ const userController = {
         birthdate: req.body.birthdate,
       };
       users.push(newUser);
-      fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
+      fs.writeFileSync(usersFilePath, JSON.stringify(users, ' '));
       res.redirect('/users/login');
-    }
+    
   },
 
   edit: (req, res) => {

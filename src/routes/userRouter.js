@@ -56,7 +56,7 @@ router.post('/login', userController.loginProcess);
 
 // Register new user
 router.get('/register', userController.register);
-router.post('/register', userController.create);
+router.post('/register', validationsRegister, userController.create);
 
 // Edit a user
 router.get('/edit/:idUser', userController.edit);
