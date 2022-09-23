@@ -23,22 +23,23 @@
                         <% } %>
                 </div>
                 <div class="form__group">
-                    <label for="name" class="form__label">Name</label>
-                    <input type="text" name="name" id="name" class="form__input" value="<%= locals.old && old.name %> ">
-                    <% if (locals.errors && errors.name) { %>
+                    <label for="firstName" class="form__label">First Name</label>
+                    <input type="text" name="firstName" id="firstName" class="form__input" 
+                    value="<%= locals.old && old.firstName %> ">
+                    <% if (locals.errors && errors.firstName) { %>
                         <small class="form__message">
-                            <%= errors.name.msg %>
+                            <%= errors.firstName.msg %>
                         </small>
                         <% } %>
                 </div>
 
                 <div class="form__group">
-                    <label for="surname" class="form__label">Surname</label>
-                    <input type="text" name="surname" id="surname" class="form__input"
-                        value="<%= locals.old && old.surname %>">
-                    <% if (locals.errors && errors.surname) { %>
+                    <label for="lastName" class="form__label">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" class="form__input"
+                        value="<%= locals.old && old.lastName %>">
+                    <% if (locals.errors && errors.lastName) { %>
                         <small class="form__message">
-                            <%= errors.surname.msg %>
+                            <%= errors.lastName.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -56,27 +57,47 @@
 
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
-                    <input type="password" name="password" id="password" class="form__input">
-                    <small class="form__message"></small>
+                    <input type="password" name="password" id="password" class="form__input"
+                        value="<%= locals.old && old.password %>">    
+                    <% if (locals.errors && errors.password) { %>
+                        <small class="form__message">
+                            <%= errors.password.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
-                    <label for="passwordrepeat" class="form__label">Repeat your password</label>
-                    <input type="password" name="passwordrepeat" id="passwordrepeat" class="form__input">
-                    <small class="form__message"></small>
+                    <label for="passwordRepeat" class="form__label">Repeat your password</label>
+                    <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input"
+                        value="<%= locals.old && old.passwordRepeat %>">    
+                    <% if (locals.errors && errors.passwordRepeat) { %>
+                        <small class="form__message">
+                            <%= errors.passwordRepeat.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="birthdate" class="form__label">Birth date</label>
-                    <input type="date" name="birthdate" id="birthdate" class="form__input">
-                    <small class="form__message"></small>
+                    <input type="date" name="birthdate" id="birthdate" class="form__input"
+                        value="<%= locals.old && old.birthdate %>">    
+                    <% if (locals.errors && errors.birthdate) { %>
+                        <small class="form__message">
+                            <%= errors.birthdate.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group form__group--check">
-                    <input type="checkbox" name="terms" id="terms" class="form__checkbox">
+                    <input type="checkbox" name="terms" id="terms" class="form__checkbox"
+                    value="<%= locals.old && old.terms %>">  
                     <label for="terms" class="form__checkbox__label">Please confirm you agree with the <a href="#"
-                            target="_blank" rel="noopener noreferrer">Terms & Conditions</a></label>
-                    <small class="form__message"></small>
+                        target="_blank" rel="noopener noreferrer">Terms & Conditions</a></label>
+                    <% if (locals.errors && errors.terms) { %>
+                        <small class="form__message">
+                            <%= errors.terms.msg %>
+                            </small>
+                            <% } %>
                 </div>
 
                 <div class="form__group">

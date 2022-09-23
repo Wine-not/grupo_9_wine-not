@@ -270,10 +270,108 @@
   "birthdate": "8/4/1982"
  },
  {
-  "id": 31,
+  "firstName": " ",
+  "lastName": " ",
+  "email": "ahighton2@flickr.com",
+  "password": ""
+ },
+ {
+  "firstName": " ",
+  "lastName": " ",
+  "email": "ahighton2@flickr.com",
+  "password": ""
+ },
+ {
+  "id": "1663026039151",
+  "userId": "jguzman",
+  "firstName": "Joaquin",
+  "lastName": "Guzman",
+  "email": "joaquin@guzman.com",
+  "password": "$2b$10$Cmo0/Y28YJibB.6lSy36nOg44On5WsX/fvWucbTTpOnEkRRNbacMa",
+  "birthdate": "1999-12-03"
+ },
+ {
+  "id": "1663112947702",
+  "userId": "Zob1",
+  "firstName": "Karim",
+  "lastName": "Barragan",
+  "email": "karim@gmail.com",
+  "password": "$2b$10$U34jeLejMpL.C6wrzasz2.E/AULHCif.FH1EQiOW0.PrFDpAaUxbW",
+  "birthdate": "1985-06-12"
+ },
+ {
+  "id": "1663198142759",
+  "userId": "",
+  "firstName": "",
+  "lastName": "",
+  "email": "",
+  "password": "$2b$10$Xfktm0mlPaZznFgGDUwBG.NPbWe7k73sjAbmksw4ntlRY8lv5AiQK",
+  "birthdate": ""
+ },
+ {
+  "id": "1663627435449",
+  "firstName": "",
+  "lastName": "",
+  "email": "",
+  "birthdate": ""
+ },
+ {
+  "id": "1663633081326",
+  "userId": "pepitoper4ez",
+  "firstName": "pepito",
+  "lastName": "perez",
+  "email": "p@p.com",
+  "password": "$2b$10$bfcMJxlQBOlGeAcS6itN/um1z3xUE3DhRNZJQ9BwGCDFyre1ZKYEy",
+  "birthdate": "2001-01-01"
+ },
+ {
+  "id": "16636330813261",
+  "nickname": "pepelepu",
+  "email": "a@a.com",
+  "password": "12345",
+  "repeatPassword": "12345",
+  "birthdate": "2001-01-01",
+  "terms": true
+ },
+ {
+  "id": "166363308132611",
+  "nickname": "pepelepu",
+  "email": "a@a.com",
+  "password": "",
+  "repeatPassword": "",
+  "birthdate": "",
+  "terms": false
+ },
+ {
+  "id": "1663633081326111",
+  "nickname": "pepelepu",
+  "email": "",
+  "password": "",
+  "repeatPassword": "",
+  "birthdate": "",
+  "terms": false
+ },
+ {
+  "id": "16636330813261111",
+  "nickname": "pepelepu",
+  "email": "",
+  "password": "",
+  "repeatPassword": "",
+  "birthdate": "",
+  "terms": false
+ },
+ {
+  "id": "166363308132611111",
   "nickname": "",
-  "name": "  ",
-  "surname": "asdfasd",
+  "email": "",
+  "password": "",
+  "repeatPassword": "",
+  "birthdate": "",
+  "terms": false
+ },
+ {
+  "id": "1663633081326111111",
+  "nickname": "",
   "email": "",
   "password": "",
   "repeatPassword": "",
