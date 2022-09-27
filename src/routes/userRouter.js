@@ -22,8 +22,8 @@ let validationsLogin = [
 
 let validationsRegister = [
   check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
-  check('name').notEmpty().withMessage('Enter your name please').bail(),
-  check('surname').notEmpty().bail(),
+  check('firstName').notEmpty().withMessage('Enter your name please').bail(),
+  check('lastName').notEmpty().bail(),
   check('email')
     .notEmpty()
     .withMessage('Please enter your email')
@@ -47,7 +47,7 @@ let validationsRegister = [
   check('birthdate').notEmpty().withMessage('Please enter your birth date'),
   check('terms')
     .notEmpty()
-    .withMessage('You must agree with our terms and conditions to register')
+    .withMessage('You must agree with terms and conditions')
     .bail(),
 ];
 
