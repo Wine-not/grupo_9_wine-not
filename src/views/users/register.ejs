@@ -57,7 +57,11 @@
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
                     <input type="password" name="password" id="password" class="form__input">
-                    <small class="form__message"></small>
+                    <% if (locals.errors && errors.email) {%>
+                        <small class="form__message">
+                            <%= errors.password.msg %>
+                        </small>
+                        <% } %>
                 </div>
 
                 <div class="form__group">
