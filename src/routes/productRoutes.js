@@ -66,23 +66,23 @@ let validations = [
 ];
 
 // Product cart
-router.get('/productCart', productController.productCart);
+router.get('/productCart', productController.cart);
 
 // Show products
-router.get('/productDetail/:id', productController.productDetail);
+router.get('/productDetail/:id', productController.detail);
 
 // Create products
-router.get('/productCreate', productController.productCreate);
+router.get('/productCreate', productController.create);
 router.post(
   '/',
   uploadImage.single('image'),
   validations,
-  productController.productCreateProcess
+  productController.createProcess
 );
 
 // Edit products
-router.get('/productEdit/:id', productController.productEdit);
-router.put('/:id', validations ,productController.productUpdate)
+router.get('/productEdit/:id', productController.edit);
+router.put('/:id', validations, productController.update);
 
 //Delete product
 router.delete('/:id', productController.delete);

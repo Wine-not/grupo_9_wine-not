@@ -5,11 +5,13 @@ const { validationResult } = require('express-validator');
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
-const userController = {
+module.exports = {
+  // Show login form
   login: (req, res) => {
     res.render('./users/login');
   },
 
+  // Process login form
   loginProcess: (req, res) => {
     let errors = validationResult(req);
     if (errors.isEmpty()) {
@@ -49,14 +51,17 @@ const userController = {
     });
   },
 
+  // Shows user profile
   profile: (req, res) => {
     res.render('./users/profile');
   },
 
+  // Shows register form
   register: (req, res) => {
     res.render('./users/register');
   },
 
+  // Process register form
   create: (req, res) => {
     let errors = validationResult(req);
 
@@ -83,12 +88,14 @@ const userController = {
     }
   },
 
+  // Shows user to edit
   edit: (req, res) => {
     let userId = req.params.idUser;
     let userToEdit = users.find((user) => user.userId == userId);
     res.render('./users/edit', { userToEdit: userToEdit });
   },
 
+  // Edit the user
   update: (req, res) => {
     let userId = req.params.userId;
     let userToEdit = users.find((user) => user.userId == userId);
@@ -110,6 +117,7 @@ const userController = {
     res.redirect('./users/profile');
   },
 
+  // Delete the user
   delete: (req, res) => {
     let userId = req.params.userId;
     let finalUsers = users.filter((user) => user.userId != userId);
@@ -118,5 +126,3 @@ const userController = {
     res.redirect('/');
   },
 };
-
-module.exports = userController;

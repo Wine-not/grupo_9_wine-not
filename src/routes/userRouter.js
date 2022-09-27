@@ -53,7 +53,7 @@ let validationsRegister = [
 
 // Log in a user
 router.get('/login', userController.login);
-router.post('/login', userController.loginProcess);
+router.post('/login', validationsLogin, userController.loginProcess);
 
 // Register new user
 router.get('/register', userController.register);

@@ -14,23 +14,25 @@
                 <div class="form__heading">
                     <h1>Welcome Back!</h1>
                 </div>
-                <!-- <% //if (typeof errors !== 'undefined') { %>
-                    <div class="form__error">
-                        <ul>
-                            <% //errors.forEach(function(error) { %>
-                                <li>//<%//= error %></li>
-                            <% //}) %>
-                        </ul>
-                    </div> -->
                 <div class="form__inputs-container">
                     <form class="form-inputs" action="/users/login" method="POST">
                         <div class="email input">
                             <label for="email">Email</label>
-                            <input placeholder="johndoe@gmail.com" type="email" name="email">
+                            <input type="email" name="email" id="loginEmail" placeholder="johndoe@gmail.com">
+                            <% if (locals.errors && errors.name) { %>
+                                <small class="form__message" id="emailLogin-msg">
+                                    <%= errors.email.msg %>
+                                </small>
+                                <% } %>
                         </div>
                         <div class="password input">
                             <label for="password">Paswword</label>
                             <input placeholder="**********" type="password" name="password">
+                            <% if (locals.errors && errors.name) { %>
+                                <small class="form__message" id="pwdLogin-msg">
+                                    <%= errors.password.msg %>
+                                </small>
+                                <% } %>
                         </div>
                         <div class="">
                             <input type="checkbox" name="rememberMe" id="rememberMe" class="form__checkbox">
