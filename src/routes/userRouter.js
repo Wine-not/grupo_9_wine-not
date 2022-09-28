@@ -22,8 +22,8 @@ let validationsLogin = [
 
 let validationsRegister = [
   check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
-  check('firstName').notEmpty().withMessage('Enter your name please').bail(),
-  check('lastName').notEmpty().bail(),
+  check('name').notEmpty().withMessage('Enter your name please').bail(),
+  check('lastName').notEmpty().withMessage('Enter your surname please').bail(),
   check('email')
     .notEmpty()
     .withMessage('Please enter your email')
@@ -42,8 +42,13 @@ let validationsRegister = [
     .notEmpty()
     .withMessage('Please repeat your password')
     .bail()
-    .equals('password')
-    .withMessage('Passwords do not match'),
+    .custom((value, { req, loc, path }) => {
+      if (value !== req.body.password) {
+        throw new Error('Passwords do not match');
+      } else {
+        return value;
+      }
+    }),
   check('birthdate').notEmpty().withMessage('Please enter your birth date'),
   check('terms')
     .notEmpty()
@@ -53,7 +58,7 @@ let validationsRegister = [
 
 // Log in a user
 router.get('/login', userController.login);
-router.post('/login', userController.loginProcess);
+router.post('/login', validationsLogin, userController.loginProcess);
 
 // Register new user
 router.get('/register', userController.register);

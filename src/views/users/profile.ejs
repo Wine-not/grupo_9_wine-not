@@ -9,44 +9,11 @@
 <body>
     <%- include('../partials/navbar') %>
 
-        <section class="section--padding">
-            <form action="/users/profile/ method="GET" class="form" id="form">
-                <h1 class="form__title">Welcome back </h1>
-                <div class="form__group">
-                    <label for="firstName" class="form__label">Name</label>
-                    <input type="text" name="firstName" id="firstName" class="form__input" >
-                    <small class="form__message"></small>
-                </div>
+        <h1>Hola</h1>
 
-                <div class="form__group">
-                    <label for="lastName" class="form__label">Surname</label>
-                    <input type="text" name="lastName" id="lastName" class="form__input" >
-                    <small class="form__message"></small>
-                </div>
-
-                <div class="form__group">
-                    <label for="email" class="form__label">Email</label>
-                    <input type="email" name="email" id="email" class="form__input" >
-                    <small class="form__message"></small>
-                </div>
-
-                <div class="form__group">
-                    <label for="password" class="form__label">Password</label>
-                    <input type="password" name="password" id="password" class="form__input">
-                    <small class="form__message"></small>
-                </div>
-
-                <div class="form__group">
-                    <button type="submit" class="btn btn--primary">Save Changes</button>
-                    <a href="/" class="form__link--login">Go back to home</a>
-                </div>
-            </form>
-        </section>
-
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
 
             <script src="/javascripts/utilities.js"></script>
-            <script src="/javascripts/formValidation.js"></script>
 </body>
 
 </html>

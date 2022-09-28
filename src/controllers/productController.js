@@ -10,14 +10,15 @@ const selectedProducts = products.filter((product) => {
 
 module.exports = {
   // Show product cart
-  productCart: (req, res) => {
+  cart: (req, res) => {
     res.render('./products/productCart');
   },
 
   // Show one product
-  productDetail: (req, res) => {
+  detail: (req, res) => {
     let id = req.params.id;
     let product = products.find((oneProduct) => oneProduct.id == id);
+
     res.render('./products/productDetail', {
       product,
       selectedProducts,
@@ -25,13 +26,12 @@ module.exports = {
   },
 
   // Show product create form
-  productCreate: (req, res) => {
+  create: (req, res) => {
     res.render('./products/productCreate');
   },
 
   // Process product create form
-  productCreateProcess: (req, res, next) => {
-    // const file = req.file;
+  createProcess: (req, res, next) => {
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -66,13 +66,13 @@ module.exports = {
     // res.redirect('/');
   },
 
-  productEdit: (req, res) => {
+  edit: (req, res) => {
     let id = req.params.id;
     let product = products.find((oneProduct) => oneProduct.id == id);
     res.render('./products/productEdit.ejs', { product: product });
   },
 
-  productUpdate: (req, res) => {
+  update: (req, res) => {
     let id = req.params.id;
     let producToEdit = products.find((product) => product.id == id);
 
@@ -110,15 +110,18 @@ module.exports = {
   delete: (req, res) => {
     let id = req.params.id;
     let finalProducts = products.filter((product) => product.id != id);
+
     fs.writeFileSync(
       productsFilePath,
       JSON.stringify(finalProducts, null, ' ')
     );
+
     fs.readFile(productsFilePath, (err, productData) => {
       if (err) throw err;
 
       products = JSON.parse(productData);
     });
+
     res.redirect('/products/shopAll');
   },
 };

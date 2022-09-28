@@ -377,5 +377,13 @@
   "repeatPassword": "",
   "birthdate": "",
   "terms": false
+ },
+ {
+  "id": "1664369038596",
+  "name": "Joaquin",
+  "lastName": "Guzman",
+  "email": "joaquin@mail.com",
+  "password": "$2b$10$bMlYBSZudS2SYHVGjmgmRuRw66/RwLcYPWBp4XKRvtMMR2DaE3/aK",
+  "birthdate": "1999-12-03"
  }
 ]
