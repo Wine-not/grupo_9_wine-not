@@ -14,8 +14,10 @@ module.exports = {
   // Process login form
   loginProcess: (req, res) => {
     let errors = validationResult(req);
+
     if (errors.isEmpty()) {
       let userToLogin = users.find((user) => user.email == req.body.email);
+
       if (userToLogin) {
         let isOkThePassword = bcrypt.compareSync(
           req.body.password,
@@ -37,6 +39,7 @@ module.exports = {
           },
         });
       }
+
       return res.render('./users/login', {
         errors: {
           email: {
@@ -45,6 +48,7 @@ module.exports = {
         },
       });
     }
+
     return res.render('./users/login', {
       errors: errors.mapped(),
       old: req.body,
@@ -65,6 +69,8 @@ module.exports = {
   create: (req, res) => {
     let errors = validationResult(req);
 
+    console.log(errors.mapped());
+
     if (!errors.isEmpty()) {
       let oldData = req.body;
       res.render('./users/register', {
@@ -76,7 +82,7 @@ module.exports = {
       let newUser = {
         id: Date.now().toString(),
         userId: req.body.userId,
-        firstName: req.body.firstName,
+        name: req.body.name,
         lastName: req.body.lastName,
         email: req.body.email,
         password: hashedPassword,

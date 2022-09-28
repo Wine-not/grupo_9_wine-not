@@ -19,7 +19,7 @@
                         <div class="email input">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="loginEmail" placeholder="johndoe@gmail.com">
-                            <% if (locals.errors && errors.name) { %>
+                            <% if (locals.errors && errors.email) { %>
                                 <small class="form__message" id="emailLogin-msg">
                                     <%= errors.email.msg %>
                                 </small>
@@ -28,7 +28,7 @@
                         <div class="password input">
                             <label for="password">Paswword</label>
                             <input placeholder="**********" type="password" name="password">
-                            <% if (locals.errors && errors.name) { %>
+                            <% if (locals.errors && errors.password) { %>
                                 <small class="form__message" id="pwdLogin-msg">
                                     <%= errors.password.msg %>
                                 </small>
