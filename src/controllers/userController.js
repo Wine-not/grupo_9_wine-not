@@ -33,7 +33,7 @@ module.exports = {
         }
         return res.render('./users/login', {
           errors: {
-            email: {
+            password: {
               msg: 'Incorrect password',
             },
           },
