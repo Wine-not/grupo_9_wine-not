@@ -7,6 +7,7 @@ const publicPath = path.resolve(__dirname, './public');
 const logMiddleware = require('./src/middleware/logMiddleware');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+/*const rememberLoggedUser = require('./src/middleware/rememberLoggedUser');*/
 
 //EJS configuration
 app.use(express.static(publicPath));
@@ -23,6 +24,7 @@ app.use(session({
 }));
 
 //Middlewares
+/*app.use(rememberLoggedUser);*/
 //
 
 app.use(logMiddleware);

@@ -51,50 +51,11 @@ module.exports = {
             if (req.body.rememberMe !== undefined) {
               res.cookie('rememberUser', userToLogin.email, { maxAge: 300000 })
             }
+
+            res.send('Logged In, Cookie created')
           }
         })
     }
-
-    /*let errors = validationResult(req);
-
-    if (errors.isEmpty()) {
-      let userToLogin = users.find((user) => user.email === req.body.email);
-
-      if (userToLogin) {
-        let isOkThePassword = bcrypt.compareSync(
-          req.body.password,
-          userToLogin.password
-        );
-        if (isOkThePassword) {
-          delete userToLogin.password;
-          req.session.userLogged = userToLogin;
-          if (req.body.remember_user) {
-            res.cookie('userEmail', req.body.email, { maxAge: 1000 * 60 * 60 });
-          }
-          return res.render('./users/profile', { userToLogin });
-        }
-        return res.render('./users/login', {
-          errors: {
-            password: {
-              msg: 'Incorrect password',
-            },
-          },
-        });
-      }
-
-      return res.render('./users/login', {
-        errors: {
-          email: {
-            msg: 'You are not registered',
-          },
-        },
-      });
-    }
-
-    return res.render('./users/login', {
-      errors: errors.mapped(),
-      old: req.body,
-    });*/
   },
 
   // Shows user profile
