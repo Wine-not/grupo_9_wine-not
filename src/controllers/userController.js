@@ -15,8 +15,50 @@ module.exports = {
   loginProcess: (req, res) => {
     let errors = validationResult(req);
 
+    if (!errors.isEmpty()) {
+      let oldData = req.body;
+      res.render('./users/login', {
+        errors: errors.mapped(),
+        old: oldData
+      })
+    }
+
+    let userToLogin = users.find(user => user.email === req.body.email);
+
+    if (!userToLogin) {
+      res.render('./users/login', {
+        errors: {
+          email: {
+            msg: 'Email is not registered'
+          }
+        }
+      })
+    } else {
+      bcrypt.compare(req.body.password, userToLogin.password)
+        .then(result => {
+          if (!result) {
+            res.render('./users/login', {
+              errors: {
+                password: {
+                  msg: 'Invalid password'
+                }
+              }
+            })
+          } else {
+            delete userToLogin.password;
+            req.session.loggedUser = userToLogin;
+
+            if (req.body.rememberMe !== undefined) {
+              res.cookie('rememberUser', userToLogin.email, { maxAge: 300000 })
+            }
+          }
+        })
+    }
+
+    /*let errors = validationResult(req);
+
     if (errors.isEmpty()) {
-      let userToLogin = users.find((user) => user.email == req.body.email);
+      let userToLogin = users.find((user) => user.email === req.body.email);
 
       if (userToLogin) {
         let isOkThePassword = bcrypt.compareSync(
@@ -29,7 +71,7 @@ module.exports = {
           if (req.body.remember_user) {
             res.cookie('userEmail', req.body.email, { maxAge: 1000 * 60 * 60 });
           }
-          return res.redirect('/users/profile');
+          return res.render('./users/profile', { userToLogin });
         }
         return res.render('./users/login', {
           errors: {
@@ -52,7 +94,7 @@ module.exports = {
     return res.render('./users/login', {
       errors: errors.mapped(),
       old: req.body,
-    });
+    });*/
   },
 
   // Shows user profile
