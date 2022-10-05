@@ -1,7 +1,7 @@
 const fsPromises = require('fs').promises;
 const path = require('path');
 
-rememberLoggedUser = (req, res, next) => {
+module.exports = rememberLoggedUser = (req, res, next) => {
   if (req.cookies.rememberUser !== undefined && req.session.loggedUser === undefined) {
     const usersFilePath = path.join(__dirname, '../data/users.json');
 
@@ -24,6 +24,3 @@ rememberLoggedUser = (req, res, next) => {
 
   next();
 }
-
-
-module.exports = rememberLoggedUser;

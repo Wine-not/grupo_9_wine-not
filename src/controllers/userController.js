@@ -48,11 +48,11 @@ module.exports = {
             delete userToLogin.password;
             req.session.loggedUser = userToLogin;
 
-            if (req.body.rememberMe !== undefined) {
-              res.cookie('rememberUser', userToLogin.email, { maxAge: 300000 })
+            if (req.body.rememberMe) {
+              res.cookie('rememberUser', req.body.email, { maxAge: 300000 })
             }
 
-            res.send('Logged In, Cookie created')
+            res.redirect('profile');
           }
         })
     }
@@ -60,7 +60,7 @@ module.exports = {
 
   // Shows user profile
   profile: (req, res) => {
-    res.render('./users/profile');
+    res.render('./users/profile', { user: req.session.loggedUser });
   },
 
   // Shows register form
