@@ -45,7 +45,7 @@ module.exports = {
               }
             })
           } else {
-            delete userToLogin.password;
+            delete userToLogin.password; /* TODO replace delete */
             req.session.loggedUser = userToLogin;
 
             if (req.body.rememberMe) {

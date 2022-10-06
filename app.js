@@ -4,10 +4,10 @@ const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const app = express();
 const publicPath = path.resolve(__dirname, './public');
-const logMiddleware = require('./src/middleware/logMiddleware');
+/*const logMiddleware = require('./src/middleware/logMiddleware');*/
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-/*const rememberLoggedUser = require('./src/middleware/rememberLoggedUser');*/
+const rememberLoggedUser = require('./src/middleware/rememberLoggedUser');
 
 //EJS configuration
 app.use(express.static(publicPath));
@@ -24,10 +24,10 @@ app.use(session({
 }));
 
 //Middlewares
-/*app.use(rememberLoggedUser);*/
+app.use(rememberLoggedUser);
 //
 
-app.use(logMiddleware);
+/*app.use(logMiddleware);*/
 
 //Routes
 const userRouter = require('./src/routes/userRouter');
