@@ -15,49 +15,52 @@ module.exports = {
   loginProcess: (req, res) => {
     let errors = validationResult(req);
 
-    if (errors.isEmpty()) {
-      let userToLogin = users.find((user) => user.email == req.body.email);
-
-      if (userToLogin) {
-        let isOkThePassword = bcrypt.compareSync(
-          req.body.password,
-          userToLogin.password
-        );
-        if (isOkThePassword) {
-          delete userToLogin.password;
-          req.session.userLogged = userToLogin;
-          if (req.body.remember_user) {
-            res.cookie('userEmail', req.body.email, { maxAge: 1000 * 60 * 60 });
-          }
-          return res.redirect('/users/profile');
-        }
-        return res.render('./users/login', {
-          errors: {
-            password: {
-              msg: 'Incorrect password',
-            },
-          },
-        });
-      }
-
-      return res.render('./users/login', {
-        errors: {
-          email: {
-            msg: 'You are not registered',
-          },
-        },
-      });
+    if (!errors.isEmpty()) {
+      let oldData = req.body;
+      res.render('./users/login', {
+        errors: errors.mapped(),
+        old: oldData
+      })
     }
 
-    return res.render('./users/login', {
-      errors: errors.mapped(),
-      old: req.body,
-    });
+    let userToLogin = users.find(user => user.email === req.body.email);
+
+    if (!userToLogin) {
+      res.render('./users/login', {
+        errors: {
+          email: {
+            msg: 'Email is not registered'
+          }
+        }
+      })
+    } else {
+      bcrypt.compare(req.body.password, userToLogin.password)
+        .then(result => {
+          if (!result) {
+            res.render('./users/login', {
+              errors: {
+                password: {
+                  msg: 'Invalid password'
+                }
+              }
+            })
+          } else {
+            delete userToLogin.password; /* TODO replace delete */
+            req.session.loggedUser = userToLogin;
+
+            if (req.body.rememberMe) {
+              res.cookie('rememberUser', req.body.email, { maxAge: 300000 })
+            }
+
+            res.redirect('profile');
+          }
+        })
+    }
   },
 
   // Shows user profile
   profile: (req, res) => {
-    res.render('./users/profile');
+    res.render('./users/profile', { user: req.session.loggedUser });
   },
 
   // Shows register form

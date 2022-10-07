@@ -5,6 +5,8 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const { check } = require('express-validator');
+const guestMiddleware = require('../middleware/guestMiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
 
 let validationsLogin = [
   check('email')
@@ -57,11 +59,11 @@ let validationsRegister = [
 ];
 
 // Log in a user
-router.get('/login', userController.login);
+router.get('/login', guestMiddleware, userController.login);
 router.post('/login', validationsLogin, userController.loginProcess);
 
 // Register new user
-router.get('/register', userController.register);
+router.get('/register', guestMiddleware, userController.register);
 router.post('/register', validationsRegister, userController.create);
 
 // Edit a user
@@ -72,6 +74,6 @@ router.put('/edit/:idUser', userController.update);
 router.delete('/delete/:idUser', userController.delete);
 
 // Show user profile
-router.get('/profile', userController.profile);
+router.get('/profile', authMiddleware, userController.profile);
 
 module.exports = router;

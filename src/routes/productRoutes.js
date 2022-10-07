@@ -73,12 +73,7 @@ router.get('/productDetail/:id', productController.detail);
 
 // Create products
 router.get('/productCreate', productController.create);
-router.post(
-  '/',
-  uploadImage.single('image'),
-  validations,
-  productController.createProcess
-);
+router.post('/', uploadImage.single('image'), validations, productController.createProcess);
 
 // Edit products
 router.get('/productEdit/:id', productController.edit);
