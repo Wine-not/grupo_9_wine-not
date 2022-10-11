@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
+const { validateLogin } = require('../utilities/validateLogin');
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
 
 module.exports = {
   // Show login form
@@ -13,49 +15,27 @@ module.exports = {
 
   // Process login form
   loginProcess: (req, res) => {
-    let errors = validationResult(req);
+    let errors = validateLogin(req);
 
-    if (!errors.isEmpty()) {
-      let oldData = req.body;
+    if (errors) {
+      console.log(errors);
       res.render('./users/login', {
         errors: errors.mapped(),
-        old: oldData
-      })
+        old: req.body,
+      });
+      return
     }
 
     let userToLogin = users.find(user => user.email === req.body.email);
 
-    if (!userToLogin) {
-      res.render('./users/login', {
-        errors: {
-          email: {
-            msg: 'Email is not registered'
-          }
-        }
-      })
-    } else {
-      bcrypt.compare(req.body.password, userToLogin.password)
-        .then(result => {
-          if (!result) {
-            res.render('./users/login', {
-              errors: {
-                password: {
-                  msg: 'Invalid password'
-                }
-              }
-            })
-          } else {
-            delete userToLogin.password; /* TODO replace delete */
-            req.session.loggedUser = userToLogin;
+    const { password, ...user} = userToLogin;
+    req.session.loggedUser = user;
 
-            if (req.body.rememberMe) {
-              res.cookie('rememberUser', req.body.email, { maxAge: 300000 })
-            }
-
-            res.redirect('profile');
-          }
-        })
+    if (req.body.rememberMe) {
+      res.cookie('userMail', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
     }
+    res.redirect('/users/profile');
+
   },
 
   // Shows user profile
@@ -135,3 +115,4 @@ module.exports = {
     res.redirect('/');
   },
 };
+

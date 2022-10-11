@@ -393,5 +393,13 @@
   "email": "isaac@mail.com",
   "password": "$2b$10$rWxiiphnpEV0QI2bS5py2.IOXSAM/rs1C36ZL4siyAxuj9t5dWuhy",
   "birthdate": "1999-12-03"
+ },
+ {
+  "id": "1665414494365",
+  "name": "karim",
+  "lastName": "karim",
+  "email": "k@k.com",
+  "password": "$2b$10$ne5L0ffiTqvseBFRRu6Gi.6DEHKlx6QyVy5acKDUQbQEPSR1wwMPS",
+  "birthdate": "2008-01-01"
  }
 ]
