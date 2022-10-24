@@ -9,6 +9,13 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const rememberLoggedUser = require('./src/middleware/rememberLoggedUser');
 
+// connection to db
+require('dotenv').config()
+const mysql = require('mysql2')
+const connection = mysql.createConnection(process.env.DATABASE_URL)
+console.log('Connected to PlanetScale!')
+connection.end()
+
 //EJS configuration
 app.use(express.static(publicPath));
 app.use(methodOverride('_method'));
