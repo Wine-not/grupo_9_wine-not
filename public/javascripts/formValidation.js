@@ -17,36 +17,36 @@ regionMsg = document.querySelector('#region-msg');
 stockMsg = document.querySelector('#stock-msg');
 
 // Name
-nameMsg != undefined
+nameMsg !== undefined
   ? nameIn.classList.add('error')
   : nameIn.classList.remove('error');
 
 // Price
-priceMsg != undefined
+priceMsg !== undefined
   ? priceIn.classList.add('error')
   : priceIn.classList.remove('error');
 
 // Brand
-brandMsg != undefined
+brandMsg !== undefined
   ? brandIn.classList.add('error')
   : brandIn.classList.remove('error');
 
 // Grape
-grapeMsg != undefined
+grapeMsg !== undefined
   ? grapeIn.classList.add('error')
   : grapeIn.classList.remove('error');
 
 // Rating
-ratingMsg != undefined
+ratingMsg !== undefined
   ? ratingIn.classList.add('error')
   : ratingIn.classList.remove('error');
 
 // Region
-regionMsg != undefined
+regionMsg !== undefined
   ? regionIn.classList.add('error')
   : regionIn.classList.remove('error');
 
 // Stock
-stockMsg != undefined
+stockMsg !== undefined
   ? stockIn.classList.add('error')
   : stockIn.classList.remove('error');

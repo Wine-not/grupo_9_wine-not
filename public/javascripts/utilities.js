@@ -22,11 +22,11 @@ buttons.forEach((button) => {
       buttons[0].parentElement.querySelector('input').value
     );
 
-    if (button.textContent == '+') {
+    if (button.textContent === '+') {
       newValue = oldValue + 1;
     }
 
-    if (button.textContent == '-') {
+    if (button.textContent === '-') {
       if (oldValue > 0) {
         newValue = oldValue - 1;
       } else {
