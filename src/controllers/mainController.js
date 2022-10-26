@@ -20,6 +20,8 @@ const saleProducts = products.filter((product) => {
 const controller = {
   index: (req, res) => {
     res.render('index', { selectedProducts, saleProducts });
+
+    console.log('Working');
   },
 };
 
