@@ -9,7 +9,7 @@ const selectedProducts = products.filter((product) => {
 });
 
 module.exports = {
-  // Show product cart
+  // Show product cart             
   cart: (req, res) => {
     res.render('./products/productCart');
   },
