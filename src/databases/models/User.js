@@ -39,11 +39,9 @@ module.exports = (sequelize, dataTypes) => {
     updatedAt: 'updated_at'
   }
 
-  const User = sequelize.define(alias, cols, config);
+  const User = sequelize.define(alias, cols, config); // return sequelize.define(alias, cols, config);
 
-  // Associate here
+  // Associations here
 
   return User;
-
-  // return sequelize.define(alias, cols, config);
 }
