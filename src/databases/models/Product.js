@@ -24,11 +24,23 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
         },
         description: {
-            type: dataTypes.STRING(500),
+            type: dataTypes.TEXT,
             allowNull: false,
         },
         in_sale: {
             type: dataTypes.BOOLEAN()
+        },
+        brand_id: {
+            allowNull: false,
+            type: foreignKey,
+        },
+        grape_id: {
+            type: foreignKey,
+            allowNull: false,
+        }, 
+        image_id: {
+            type: foreignKey,
+            allowNull: false,
         },
         created_at: {
             type: dataTypes.DATE
