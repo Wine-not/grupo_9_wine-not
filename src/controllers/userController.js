@@ -3,6 +3,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
+const db = require('../databases/models')
 // const usersFilePath = path.join(__dirname, '../data/users.json');
 // const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
@@ -49,6 +50,14 @@ module.exports = {
 
   // Process register form
   create: (req, res) => {
+    db.User.create({
+      username: req.body.nickname,
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name,
+      lastname: req.body.lastName,
+      birthdate: req.body.birthdate
+    });
     // let errors = validationResult(req);
     //
     // console.log(errors.mapped());
