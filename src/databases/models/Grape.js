@@ -1,8 +1,9 @@
 const sequelize = require("sequelize");
+const Grape = require('../models/Product');
 
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Grape',
-    cols = {
+    let alias = 'Grape';
+    let cols = {
         id: {
             type: dataTypes.INT(100),
             primaryKey: true,
@@ -23,13 +24,13 @@ module.exports = (sequelize, dataTypes) => {
         updated_at: {
             type: dataTypes.DATE
         },
-    },        
-    config = {
+    };
+    let config = {
         timestamps: true,
         createdAt: "created_at",
         updatedAt: "updated_at",
         deletedAt: false,
-        }  
+    };
     
         
     const Grape = sequelize.define(alias, cols, config);

@@ -1,9 +1,10 @@
 const { INTEGER, STRING, TINYINT } = require("sequelize");
 const sequelize = require("sequelize");
+const Brand = require('../models/Brand');
 
 module.exports = (sequelize, dataTypes) => {
-    alias = 'Product'
-    cols = {
+    let alias = 'Product';
+    let cols = {
         id: {
             type: dataTypes.BIGINT(10),
             primaryKey: true,
@@ -39,14 +40,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(500),
             allowNull: false,
         },        
-    },
+    };
 
-    config = {
+    let config = {
         timestamps: true,
         createdAt: "created_at",
         updatedAt: "updated_at",
         deletedAt: false,
-    }   
+    };
 
 
     const Product = sequelize.define(alias, cols, config);

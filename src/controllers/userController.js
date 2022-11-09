@@ -3,8 +3,8 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// const usersFilePath = path.join(__dirname, '../data/users.json');
+// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 
 module.exports = {
@@ -15,31 +15,31 @@ module.exports = {
 
   // Process login form
   loginProcess: (req, res) => {
-    let errors = validateLogin(req);
+    // let errors = validateLogin(req);
+    //
+    // if (errors) {
+    //   res.render('./users/login', {
+    //     errors: errors.mapped(),
+    //     old: req.body,
+    //   });
+    //   return
+    // }
 
-    if (errors) {
-      res.render('./users/login', {
-        errors: errors.mapped(),
-        old: req.body,
-      });
-      return
-    }
+    // let userToLogin = users.find(user => user.email === req.body.email);
 
-    let userToLogin = users.find(user => user.email === req.body.email);
-
-    const { password, ...user} = userToLogin;
-    req.session.loggedUser = user;
-
-    if (req.body.rememberMe) {
-      res.cookie('userMail', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
-    }
-    res.redirect('/users/profile');
-
+    // const { password, ...user} = userToLogin;
+    // req.session.loggedUser = user;
+    //
+    // if (req.body.rememberMe) {
+    //   res.cookie('userMail', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
+    // }
+    // res.redirect('/users/profile');
   },
 
   // Shows user profile
   profile: (req, res) => {
-    res.render('./users/profile', { user: req.session.loggedUser });
+    // res.render('./users/profile', { user: req.session.loggedUser });
+    res.render('./users/profile');
   },
 
   // Shows register form
@@ -49,69 +49,69 @@ module.exports = {
 
   // Process register form
   create: (req, res) => {
-    let errors = validationResult(req);
-
-    console.log(errors.mapped());
-
-    if (!errors.isEmpty()) {
-      let oldData = req.body;
-      res.render('./users/register', {
-        errors: errors.mapped(),
-        old: oldData,
-      });
-    } else {
-      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-      let newUser = {
-        id: Date.now().toString(),
-        userId: req.body.userId,
-        name: req.body.name,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPassword,
-        birthdate: req.body.birthdate,
-      };
-      users.push(newUser);
-      fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-      res.redirect('/users/login');
-    }
+    // let errors = validationResult(req);
+    //
+    // console.log(errors.mapped());
+    //
+    // if (!errors.isEmpty()) {
+    //   let oldData = req.body;
+    //   res.render('./users/register', {
+    //     errors: errors.mapped(),
+    //     old: oldData,
+    //   });
+    // } else {
+    //   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    //   let newUser = {
+    //     id: Date.now().toString(),
+    //     userId: req.body.userId,
+    //     name: req.body.name,
+    //     lastName: req.body.lastName,
+    //     email: req.body.email,
+    //     password: hashedPassword,
+    //     birthdate: req.body.birthdate,
+    //   };
+    //   // users.push(newUser);
+    //   // fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
+    //   res.redirect('/users/login');
+    // }
   },
 
   // Shows user to edit
   edit: (req, res) => {
-    let userId = req.params.idUser;
-    let userToEdit = users.find((user) => user.userId == userId);
-    res.render('./users/edit', { userToEdit: userToEdit });
+    // let userId = req.params.idUser;
+    // let userToEdit = users.find((user) => user.userId == userId);
+    // res.render('./users/edit', { userToEdit: userToEdit });
   },
 
   // Edit the user
   update: (req, res) => {
-    let userId = req.params.userId;
-    let userToEdit = users.find((user) => user.userId == userId);
+    // let userId = req.params.userId;
+    // let userToEdit = users.find((user) => user.userId == userId);
 
-    userToEdit = {
-      userId: req.body.nickname,
-      ...req.body,
-    };
+    // userToEdit = {
+    //   userId: req.body.nickname,
+    //   ...req.body,
+    // };
 
-    let usersUpdated = users.map((user) => {
-      if (user.userId == userToEdit.userId) {
-        return (user = { ...userToEdit });
-      }
-      return user;
-    });
+    // let usersUpdated = users.map((user) => {
+      // if (user.userId == userToEdit.userId) {
+      //   return (user = { ...userToEdit });
+      // }
+      // return user;
+    // });
 
-    fs.writeFileSync(usersFilePath, JSON.stringify(usersUpdated, null, ' '));
-    users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    res.redirect('./users/profile');
+    // fs.writeFileSync(usersFilePath, JSON.stringify(usersUpdated, null, ' '));
+    // users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+    // res.redirect('./users/profile');
   },
 
   // Delete the user
   delete: (req, res) => {
-    let userId = req.params.userId;
-    let finalUsers = users.filter((user) => user.userId != userId);
-    console.log(finalUsers);
-    fs.writeFileSync(usersFilePath, JSON.stringify(finalUsers, null, ' '));
-    res.redirect('/');
+    // let userId = req.params.userId;
+    // let finalUsers = users.filter((user) => user.userId != userId);
+    // console.log(finalUsers);
+    // fs.writeFileSync(usersFilePath, JSON.stringify(finalUsers, null, ' '));
+    // res.redirect('/');
   },
 };
 

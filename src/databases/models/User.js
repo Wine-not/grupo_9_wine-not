@@ -1,6 +1,7 @@
-const { DataTypes } = require("sequelize");
+// const { DataTypes } = require("sequelize");
+const Role = require('../models/Role');
 
-module.exports = (sequelize, dataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   let alias = 'User';
 
   let cols = {
@@ -39,9 +40,13 @@ module.exports = (sequelize, dataTypes) => {
     updatedAt: 'updated_at'
   }
 
-  const User = sequelize.define(alias, cols, config); // return sequelize.define(alias, cols, config);
+  const User = sequelize.define(alias, cols, config);
 
   // Associations here
+  User.belongsTo(Role, {
+    as: 'user',
+    foreignKey: 'id'
+  });
 
   return User;
 }

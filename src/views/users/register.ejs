@@ -15,19 +15,19 @@
                 <div class="form__group">
                     <label for="nickname" class="form__label">Nickname</label>
                     <input type="text" name="nickname" id="nickname" class="form__input"
-                        value="<%= locals.old && old.nickname %>">
+                        value="<%= //locals.old && old.nickname %>">
                     <% if (locals.errors && errors.nickname) { %>
                         <small class="form__message">
-                            <%= errors.nickname.msg %>
+                            <%=// errors.nickname.msg %>
                         </small>
                         <% } %>
                 </div>
                 <div class="form__group">
                     <label for="name" class="form__label">First Name</label>
-                    <input type="text" name="name" id="name" class="form__input" value="<%= locals.old && old.name %>">
+                    <input type="text" name="name" id="name" class="form__input" value="<%=// locals.old && old.name %>">
                     <% if (locals.errors && errors.name) { %>
                         <small class="form__message">
-                            <%= errors.name.msg %>
+                            <%= //errors.name.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -35,10 +35,10 @@
                 <div class="form__group">
                     <label for="lastName" class="form__label">Last Name</label>
                     <input type="text" name="lastName" id="lastName" class="form__input"
-                        value="<%= locals.old && old.lastName %>">
+                        value="<%= //locals.old && old.lastName %>">
                     <% if (locals.errors && errors.lastName) { %>
                         <small class="form__message">
-                            <%= errors.lastName.msg %>
+                            <%= //errors.lastName.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -46,10 +46,10 @@
                 <div class="form__group">
                     <label for="email" class="form__label">Email</label>
                     <input type="email" name="email" id="email" class="form__input"
-                        value="<%= locals.old && old.email %>">
+                        value="<%=// locals.old && old.email %>">
                     <% if (locals.errors && errors.email) { %>
                         <small class="form__message">
-                            <%= errors.email.msg %>
+                            <%= //errors.email.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -57,10 +57,10 @@
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
                     <input type="password" name="password" id="password" class="form__input"
-                        value="<%= locals.old && old.password %>">
+                        value="<%= //locals.old && old.password %>">
                     <% if (locals.errors && errors.password) { %>
                         <small class="form__message">
-                            <%= errors.password.msg %>
+                            <%= //errors.password.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -68,10 +68,10 @@
                 <div class="form__group">
                     <label for="passwordRepeat" class="form__label">Repeat your password</label>
                     <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input"
-                        value="<%= locals.old && old.passwordRepeat %>">
+                        value="<%= //locals.old && old.passwordRepeat %>">
                     <% if (locals.errors && errors.passwordRepeat) { %>
                         <small class="form__message">
-                            <%= errors.passwordRepeat.msg %>
+                            <%= //errors.passwordRepeat.msg %>
                         </small>
                         <% } %>
                 </div>
@@ -79,22 +79,22 @@
                 <div class="form__group">
                     <label for="birthdate" class="form__label">Birth date</label>
                     <input type="date" name="birthdate" id="birthdate" class="form__input"
-                        value="<%= locals.old && old.birthdate %>">
+                        value="<%= //locals.old && old.birthdate %>">
                     <% if (locals.errors && errors.birthdate) { %>
                         <small class="form__message">
-                            <%= errors.birthdate.msg %>
+                            <%= //errors.birthdate.msg %>
                         </small>
                         <% } %>
                 </div>
 
                 <div class="form__group form__group--check">
                     <input type="checkbox" name="terms" id="terms" class="form__checkbox"
-                        value="accept<%= locals.old && old.terms %>">
+                        value="accept<%= //locals.old && old.terms %>">
                     <label for="terms" class="form__checkbox__label">Please confirm you agree with the <a href="#"
                             target="_blank" rel="noopener noreferrer">Terms & Conditions</a></label>
                     <% if (locals.errors && errors.terms) { %>
                         <small class="form__message">
-                            <%= errors.terms.msg %>
+                            <%= //errors.terms.msg %>
                         </small>
                         <% } %>
                 </div>

@@ -1,10 +1,10 @@
 const sequelize = require("sequelize");
 
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Image',
-    cols = {
+    let alias = 'Image';
+    let cols = {
         id: {
-            type: dataTypes.INT(100),
+            type: dataTypes.INTEGER(100),
             primaryKey: true,
             allowNull: false,
             autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
         },
         product_id: {
-            type: dataTypes.INT(100),
+            type: dataTypes.INTEGER(100),
             allowNull: false, 
         },
         created_at: {
@@ -23,13 +23,13 @@ module.exports = (sequelize, dataTypes) => {
         updated_at: {
             type: dataTypes.DATE
         },
-    },        
-    config = {
+    };
+    let config = {
         timestamps: true,
         createdAt: "created_at",
         updatedAt: "updated_at",
         deletedAt: false,
-        }  
+    };
     
         
     const Image = sequelize.define(alias, cols, config);
@@ -40,7 +40,7 @@ module.exports = (sequelize, dataTypes) => {
           foreignKey: "image_id",
           onDelete: "cascade",
         });
-      };
+    };
 
 
     return Image;

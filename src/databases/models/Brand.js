@@ -1,8 +1,9 @@
 const sequelize = require("sequelize");
+const Product = require('../models/Product');
 
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Brand',
-    cols = {
+    let alias = 'Brand';
+    let cols = {
         id: {
             type: dataTypes.BIGINT(10),
             primaryKey: true,
@@ -23,13 +24,13 @@ module.exports = (sequelize, dataTypes) => {
         updated_at: {
             type: dataTypes.DATE
         },
-    },        
-    config = {
+    };
+    let config = {
         timestamps: true,
         createdAt: "created_at",
         updatedAt: "updated_at",
         deletedAt: false,
-        }  
+    };
     
         
     const Brand = sequelize.define(alias, cols, config);
