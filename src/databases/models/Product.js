@@ -59,6 +59,20 @@ module.exports = (sequelize, dataTypes) => {
           onDelete: "cascade",
         });
     };
+    Product.associate = function (models) {
+        Product.belongsTo(models.Grape, {
+          as: "Grape",
+          foreignKey: "grapes_id",
+          onDelete: "cascade",
+        });
+    };
+    Product.associate = function (models) {
+        Product.belongsTo(models.Image, {
+          as: "Image",
+          foreignKey: "images_id",
+          onDelete: "cascade",
+        });
+    };
     
 return Product;
 }
