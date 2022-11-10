@@ -6,13 +6,13 @@ module.exports = (sequelize, dataTypes) => {
     let alias = 'Product';
     let cols = {
         id: {
-            type: dataTypes.BIGINT(10),
+            type: dataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true,
         },
         price: {
-            type: dataTypes.BIGINT(10),
+            type: dataTypes.INTEGER,
             allowNull: false,
         },
         name: {
@@ -31,15 +31,15 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.BOOLEAN()
         },
         brand_id: {
+            type: dataTypes.INTEGER,
             allowNull: false,
-            type: foreignKey,
         },
         grape_id: {
-            type: foreignKey,
+            type: dataTypes.INTEGER,
             allowNull: false,
         }, 
         image_id: {
-            type: foreignKey,
+            type: dataTypes.INTEGER,
             allowNull: false,
         },
         created_at: {
