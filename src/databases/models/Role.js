@@ -1,18 +1,15 @@
-// const { DataTypes } = require('sequelize');
-const User = require('../models/User')
-
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, dataTypes) => {
   let alias = 'Role';
 
   let cols = {
     id: {
-      type: DataTypes.INTEGER,
+      type: dataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
     title: {
-      type: DataTypes.STRING(45),
+      type: dataTypes.STRING(45),
       allowNull: false,
       unique: true
     }
@@ -26,10 +23,12 @@ module.exports = (sequelize, DataTypes) => {
   const Role = sequelize.define(alias, cols, config);
 
   // Relations
-  Role.hasMany(User, {
-    as: 'user',
-    foreignKey: 'id'
-  });
+  Role.associate = models => {
+    Role.hasMany(models.User, {
+      as: "user_roles",
+      foreignKey: "role_id"
+    });
+  };
 
-  return Role
+  return Role;
 }
