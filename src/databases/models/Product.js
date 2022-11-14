@@ -1,90 +1,75 @@
-const { INTEGER, STRING, TINYINT } = require("sequelize");
-const sequelize = require("sequelize");
-const Brand = require('../models/Brand');
-
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Product';
-    let cols = {
-        id: {
-            type: dataTypes.BIGINT(10),
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true,
-        },
-        price: {
-            type: dataTypes.BIGINT(10),
-            allowNull: false,
-        },
-        name: {
-            type: dataTypes.STRING(100),
-            allowNull: false,
-        },
-        region: {
-            type: dataTypes.STRING(100),
-            allowNull: false,
-        },
-        description: {
-            type: dataTypes.TEXT,
-            allowNull: false,
-        },
-        in_sale: {
-            type: dataTypes.BOOLEAN()
-        },
-        brand_id: {
-            allowNull: false,
-            type: foreignKey,
-        },
-        grape_id: {
-            type: foreignKey,
-            allowNull: false,
-        }, 
-        image_id: {
-            type: foreignKey,
-            allowNull: false,
-        },
-        created_at: {
-            type: dataTypes.DATE
-         },
-        updated_at: {
-            type: dataTypes.DATE
-        },
-        selection: {
-            type: dataTypes.STRING(500),
-            allowNull: false,
-        },        
-    };
-
-    let config = {
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at",
-        deletedAt: false,
-    };
-
-
-    const Product = sequelize.define(alias, cols, config);
+  let alias = 'Product';
+  
+  let cols = {
+    id: {
+      type: dataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: dataTypes.STRING(100),
+      allowNull: false,
+      unique: true
+    },
+    price: {
+      type: dataTypes.FLOAT,
+      allowNull: false
+    },
+    rating: {
+      type: dataTypes.FLOAT,
+      allowNull: false
+    },
+    description: {
+      type: dataTypes.TEXT,
+      allowNull: false
+    },
+    stock: {
+      type: dataTypes.INTEGER,
+      allowNull: false
+    },
+    in_sale: {
+      type: dataTypes.BOOLEAN,
+      defaultValue: 0,
+      allowNull: false
+    },
+    is_selection: {
+      type: dataTypes.BOOLEAN,
+      defaultValue: 0,
+      allowNull: false
+    }
+  };
+  
+  let config = {
+    tableName: 'products',
+    timestamps: false
+  };
+  
+  const Product = sequelize.define(alias, cols, config);
+  
+  // Associations
+  Product.associate = models => {
+    Product.belongsTo(models.Brand, {
+      as: 'product_brand',
+      foreignKey: 'brand_id'
+    });
     
-    Product.associate = function (models) {
-        Product.belongsTo(models.Brand, {
-          as: "Brand",
-          foreignKey: "brand_id",
-          onDelete: "cascade",
-        });
-    };
-    Product.associate = function (models) {
-        Product.belongsTo(models.Grape, {
-          as: "Grape",
-          foreignKey: "grapes_id",
-          onDelete: "cascade",
-        });
-    };
-    Product.associate = function (models) {
-        Product.belongsTo(models.Image, {
-          as: "Image",
-          foreignKey: "images_id",
-          onDelete: "cascade",
-        });
-    };
+    Product.belongsTo(models.Grape, {
+      as: 'product_grape',
+      foreignKey: 'grape_id'
+    });
     
-return Product;
+    Product.belongsTo(models.Region, {
+      as: 'product_region',
+      foreignKey: 'region_id'
+    });
+    
+    Product.belongsTo(models.Image, {
+      as: 'product_image',
+      foreignKey: 'image_id'
+    });
+  };
+  
+  return Product;
 }

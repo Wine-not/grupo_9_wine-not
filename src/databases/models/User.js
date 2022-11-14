@@ -1,52 +1,55 @@
-// const { DataTypes } = require("sequelize");
-const Role = require('../models/Role');
-
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, dataTypes) => {
   let alias = 'User';
 
   let cols = {
     id: {
-      type: DataTypes.INTEGER,
+      type: dataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    username: {
-      type: DataTypes.STRING(45),
-      allowNull: false,
-      unique: true
+    name: {
+      type: dataTypes.STRING(50),
+      allowNull: false
+    },
+    surname: {
+      type: dataTypes.STRING(450),
+      allowNull: false
     },
     email: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      unique: true
+      type: dataTypes.STRING(100),
+      allowNull: false
     },
     password: {
-      type: DataTypes.STRING(45),
-      allowNull: false,
-      unique: true
+      type: dataTypes.STRING(50),
+      allowNull: false
     },
-    address: DataTypes.STRING(100),
-    city: DataTypes.STRING(45),
-    postal_code: DataTypes.STRING(45),
-    country: DataTypes.STRING(45),
-    telephone: DataTypes.INTEGER
+    birthdate: {
+      type: dataTypes.DATE,
+      allowNull: false
+    }
   }
 
   let config = {
     tableName: 'users',
     timestamps: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: 'created_at'
   }
 
   const User = sequelize.define(alias, cols, config);
 
   // Associations here
-  User.belongsTo(Role, {
-    as: 'user',
-    foreignKey: 'id'
-  });
+  User.associate = models => {
+    User.belongsTo(models.Role, {
+      as: 'user_role',
+      foreignKey: 'role_id'
+    });
+
+    User.belongsTo((models.Address), {
+      as: 'user_address',
+      foreignKey: 'address_id'
+    });
+  };
 
   return User;
 }
