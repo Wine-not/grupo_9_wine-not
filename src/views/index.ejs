@@ -32,8 +32,10 @@
             <h2 class="section__title">Bestsellers around the globe</h2>
             <div class="section--cards">
                 <% selectedProducts.forEach((product)=> { %>
-                    <%- include('./partials/card', { product }) %>
-                        <% }); %>
+                    <% //console.log('--------------------------------------') %>
+                        <%= //console.log(product) %>
+                            <%- include('./partials/card', { product: product }) %>
+                                <% }); %>
             </div>
         </section>
 
@@ -59,11 +61,10 @@
             <h2 class="section__title">Wine-not collection</h2>
             <div class="section--cards">
                 <% saleProducts.forEach((product)=> { %>
-                    <%- include('./partials/card', { product }) %>
+                    <%- include('./partials/card', { product: product }) %>
                         <% }); %>
             </div>
         </section>
-
         <%- include('./partials/footer') %>
 
             <script src="/javascripts/utilities.js"></script>
