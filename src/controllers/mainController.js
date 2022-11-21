@@ -11,6 +11,9 @@ const controller = {
         },
       },
       limit: 4,
+      include: {
+        model: db.Image,
+      },
     });
 
     let saleProducts = await db.Product.findAll({
@@ -20,6 +23,9 @@ const controller = {
         },
       },
       limit: 4,
+      include: {
+        model: db.Image,
+      },
     });
 
     res.render('index', { selectedProducts, saleProducts });
