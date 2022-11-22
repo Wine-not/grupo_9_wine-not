@@ -51,12 +51,10 @@ module.exports = (sequelize, dataTypes) => {
   // Associations
   Product.associate = (models) => {
     Product.belongsTo(models.Brand, {
-      as: 'product_brand',
       foreignKey: 'brand_id',
     });
 
     Product.belongsTo(models.Grape, {
-      as: 'product_grape',
       foreignKey: 'grape_id',
     });
 
@@ -66,7 +64,6 @@ module.exports = (sequelize, dataTypes) => {
     });
 
     Product.belongsTo(models.Image, {
-      // as: 'product_image',
       foreignKey: 'image_id',
     });
   };

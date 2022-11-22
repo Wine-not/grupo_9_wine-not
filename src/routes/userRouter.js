@@ -1,4 +1,3 @@
-// const logDBMiddleware = require('../middleware/logDBMiddleware');
 // const path = require('path');
 // const multer = require('multer');
 const express = require('express');

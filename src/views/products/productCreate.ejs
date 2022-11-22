@@ -37,8 +37,15 @@
 
                 <div class="form__group">
                     <label for="brand" class="form__label">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form__input"
-                        value="<%= locals.old && old.brand %>">
+                    <select name="brand" id="brand" class="form__input">
+                        <option value="" disabled selected>- Select brand -</option>
+                        <% brands.forEach(brand=> { %>
+                            <option value="<%= brand.id %>">
+                                <%= brand.name %>
+                            </option>
+                            <% }); %>
+                    </select>
+
                     <% if (locals.errors && errors.brand) { %>
                         <small class="form__message" id="brand-msg">
                             <%= errors.brand.msg %>
@@ -48,8 +55,15 @@
 
                 <div class="form__group">
                     <label for="grape" class="form__label">Grape</label>
-                    <input type="text" name="grape" id="grape" class="form__input"
-                        value="<%= locals.old && old.grape %>">
+                    <select name="grape" id="grape" class="form__input">
+                        <option value="" disabled selected>- Select grape -</option>
+                        <% grapes.forEach(grape=> { %>
+                            <option value="<%= grape.id %>">
+                                <%= grape.name %>
+                            </option>
+                            <% }); %>
+                    </select>
+
                     <% if (locals.errors && errors.grape) { %>
                         <small class="form__message" id="grape-msg">
                             <%= errors.grape.msg %>
@@ -70,8 +84,14 @@
 
                 <div class="form__group">
                     <label for="region" class="form__label">Region</label>
-                    <input type="text" name="region" id="region" class="form__input"
-                        value="<%= locals.old && old.region %>">
+                    <select name="region" id="region" class="form__input">
+                        <option value="" disabled selected>- Select region -</option>
+                        <% regions.forEach(region=> { %>
+                            <option value="<%= region.id %>">
+                                <%= region.name %>
+                            </option>
+                            <% }); %>
+                    </select>
                     <% if (locals.errors && errors.region) { %>
                         <small class="form__message" id="region-msg">
                             <%= errors.region.msg %>
