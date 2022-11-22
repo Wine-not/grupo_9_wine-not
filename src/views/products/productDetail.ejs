@@ -8,19 +8,18 @@
 
 <body>
     <%- include('../partials/navbar') %>
-
         <main class="product-hero hero--padding">
             <div class="product-hero__image">
-                <img src="/images/products/<%= product.image %>" alt="" srcset="">
+                <img src="/images/products/<%= product.dataValues.Image.dataValues.path %>" alt="" srcset="">
             </div>
             <div class="product-hero__copy">
                 <div class="product-hero__breadcrumb">
                     <a href="/" class="breadcrumb__page">Home</a>
                     <a href="#" class="breadcrumb__page">
-                        <%= product.grape %>
+                        <%= product.dataValues.Grape.dataValues.name %>
                     </a>
                     <a href="#" class="breadcrumb__page">
-                        <%= product.brand %>
+                        <%= product.dataValues.Brand.dataValues.name %>
                     </a>
                 </div>
                 <h1 class="product-hero__title">
@@ -49,8 +48,8 @@
         <section class="suggestions section--padding">
             <h3 class="suggestions__title">Our suggestions</h3>
             <div class="section--cards">
-                <% selectedProducts.slice(-4).forEach((product)=> { %>
-                    <%- include('../partials/card', { product }) %>
+                <% recommendations.forEach((product)=> { %>
+                    <%- include('../partials/card', { product: product }) %>
                         <% }); %>
             </div>
         </section>

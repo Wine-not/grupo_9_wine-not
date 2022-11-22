@@ -32,10 +32,8 @@
             <h2 class="section__title">Bestsellers around the globe</h2>
             <div class="section--cards">
                 <% selectedProducts.forEach((product)=> { %>
-                    <% //console.log('--------------------------------------') %>
-                        <%= //console.log(product) %>
-                            <%- include('./partials/card', { product: product }) %>
-                                <% }); %>
+                    <%- include('./partials/card', { product: product }) %>
+                        <% }); %>
             </div>
         </section>
 
