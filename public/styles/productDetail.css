@@ -90,6 +90,7 @@
   height: 40px;
   width: 40px;
   font-size: var(--large-body);
+  cursor: pointer;
 }
 
 .qty__input {

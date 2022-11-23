@@ -6,6 +6,7 @@
   font-size: var(--small-body);
   font-weight: var(--book);
   text-transform: uppercase;
+  text-align: center;
   letter-spacing: 0.1rem;
   padding: 1rem 2.5rem;
   border: none;
@@ -30,6 +31,21 @@
 
 .btn--interactive:hover {
   background-color: var(--interactive);
+  opacity: 0.9;
+}
+
+.mg-top {
+  margin-top: 1rem;
+}
+
+.btn--secondary {
+  background-color: var(--light-grey);
+  color: var(--black);
+  transition: opacity 300ms;
+}
+
+.btn--secondary:hover {
+  background-color: var(--light-grey);
   opacity: 0.9;
 }
 

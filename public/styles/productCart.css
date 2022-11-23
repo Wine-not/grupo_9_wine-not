@@ -1,5 +1,5 @@
 @import url('./partials/navbar.css');
-@import url('../utilities/vars.css');
+@import url('./utilities/vars.css');
 @import url('../styles/partials/footer.css');
 
 
@@ -97,11 +97,9 @@
 }
 
 .total__btn-container {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: space-evenly;
 }
 
 .total__subtotal {
