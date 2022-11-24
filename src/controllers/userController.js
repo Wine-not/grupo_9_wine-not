@@ -3,7 +3,8 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
-const db = require('../databases/models')
+const db = require('../databases/models');
+const User = db.User;
 // const usersFilePath = path.join(__dirname, '../data/users.json');
 // const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
@@ -15,9 +16,34 @@ module.exports = {
   },
 
   // Process login form
-  loginProcess: (req, res) => {
-    // let errors = validateLogin(req);
-    //
+  loginProcess:  (req, res) => {
+    db.User.findAll()
+      .then((users) => {
+        let errors = validateLogin(req);
+        let loggedUser = [];
+
+        if (req.body.email != '' && req.body.password != '') {
+          loggedUser = users.filter(function (user) {
+            return user.email === req.body.email
+          });
+          if(bcrypt.compareSync(req.body.password, loggedUser[0].password) === false){
+            loggedUser = [];
+          console.log('test')
+          }
+        }
+        if (loggedUser.length === 0) {
+          return res.render(path.resolve(__dirname, '../views/users/login.ejs'), { errors: [{msg: 'Credenciales invalidas'}]})
+        } else {
+          req.session.user = loggedUser[0];
+        }
+        if (req.body.rememberMe) {
+          res.cookie('email',loggedUser[0].email,{maxAge: 1000 * 60 * 60 * 24})
+        }
+        return res.redirect('/'); 
+      }
+      
+    )
+    // let errors = validateLogin(req);    //
     // if (errors) {
     //   res.render('./users/login', {
     //     errors: errors.mapped(),
@@ -50,14 +76,28 @@ module.exports = {
 
   // Process register form
   create: (req, res) => {
+    let errors = validationResult(req);
+    console.log(errors)
+    if(!errors.isEmpty()) {
+      return res.render(path.resolve(__dirname, '../views/users/register.ejs'), {
+        errors: errors.errors, old: req.body
+      });
+    } 
+
     db.User.create({
-      username: req.body.nickname,
+      name: req.body.name,
+      surname: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
-      name: req.body.name,
-      lastname: req.body.lastName,
-      birthdate: req.body.birthdate
+      birthdate: req.body.birthdate,
+      role_id: 1,
+      address_id: 1
     });
+    console.log(User);
+
+    res.redirect('./login');
+
+
     // let errors = validationResult(req);
     //
     // console.log(errors.mapped());

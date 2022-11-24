@@ -55,6 +55,7 @@ VALUES
     ('Régnard'),
     ("Château d'Esclans");
     
+
 INSERT INTO products (name, price, rating, description, stock, in_sale, is_selection, brand_id, grape_id, region_id, image_id)
 VALUES
 	('Bramare Malbec Lujan de Cuyo', 39.99, 4.4, 'Description pending...', 5, 0, 1, 1, 1, 1, 2),

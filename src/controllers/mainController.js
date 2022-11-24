@@ -15,7 +15,7 @@ const controller = {
         model: db.Image,
       },
     });
-
+    console.log(selectedProducts)
     let saleProducts = await db.Product.findAll({
       where: {
         in_sale: {

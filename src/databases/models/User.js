@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
 
   let config = {
     tableName: 'users',
-    timestamps: true,
+    timestamps: false,
     createdAt: 'created_at'
   }
 
@@ -41,12 +41,10 @@ module.exports = (sequelize, dataTypes) => {
   // Associations here
   User.associate = models => {
     User.belongsTo(models.Role, {
-      as: 'user_role',
       foreignKey: 'role_id'
     });
 
     User.belongsTo((models.Address), {
-      as: 'user_address',
       foreignKey: 'address_id'
     });
   };

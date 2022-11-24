@@ -22,7 +22,7 @@ let validationsLogin = [
 ];
 
 let validationsRegister = [
-  check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
+  // check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
   check('name').notEmpty().withMessage('Enter your name please').bail(),
   check('lastName').notEmpty().withMessage('Enter your surname please').bail(),
   check('email')
@@ -31,25 +31,25 @@ let validationsRegister = [
     .bail()
     .isEmail()
     .withMessage('Please enter a correct email address'),
-  check('password')
-    .notEmpty()
-    .withMessage('Please enter a secure password')
-    .bail()
-    .isStrongPassword()
-    .withMessage(
-      'Make sure your password is at least 8 characters long and has 1 lowercase, 1 uppercase and 1 number.'
-    ),
-  check('passwordRepeat')
-    .notEmpty()
-    .withMessage('Please repeat your password')
-    .bail()
-    .custom((value, { req, loc, path }) => {
-      if (value !== req.body.password) {
-        throw new Error('Passwords do not match');
-      } else {
-        return value;
-      }
-    }),
+  // check('password')
+  //   .notEmpty()
+  //   .withMessage('Please enter a secure password')
+  //   .bail()
+  //   .isStrongPassword()
+  //   .withMessage(
+  //     'Make sure your password is at least 8 characters long and has 1 lowercase, 1 uppercase and 1 number.'
+  //   ),
+  // check('passwordRepeat')
+  //   .notEmpty()
+  //   .withMessage('Please repeat your password')
+  //   .bail()
+  //   .custom((value, { req, loc, path }) => {
+  //     if (value !== req.body.password) {
+  //       throw new Error('Passwords do not match');
+  //     } else {
+  //       return value;
+  //     }
+  //   }),
   check('birthdate').notEmpty().withMessage('Please enter your birth date'),
   check('terms')
     .notEmpty()

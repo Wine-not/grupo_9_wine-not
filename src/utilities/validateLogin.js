@@ -2,6 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
+const db = require('../databases/models');
+const User = db.User;
+const { Op } = require('sequelize');
+
+
+
 
 const validateLogin = (req) => {
   const resultValidateForm = validateForm(req);
@@ -9,8 +15,12 @@ const validateLogin = (req) => {
     return resultValidateForm;
   }
 
-  const { password } = req.body;
-  const userToLogin = users.find((user) => user.email === req.body.email);
+  const { password } = req.body; 
+  // const userToLogin = User.find((user) => user.email === req.body.email);
+  const userToLogin = User.findOne({
+    where: { email: req.body.email }
+  })
+  
 
   if (!userToLogin) {
     return {
