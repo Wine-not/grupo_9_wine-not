@@ -1,48 +1,32 @@
-const sequelize = require("sequelize");
-const Product = require('../models/Product');
-
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Brand';
-    let cols = {
-        id: {
-            type: dataTypes.BIGINT(10),
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true,
-        },
-        brand_name: {
-            type: dataTypes.STRING(100),
-            allowNull: false,
-        },
-        vineyard_name: {
-            type: dataTypes.STRING(100),
-            allowNull: false, 
-        },
-        created_at: {
-            type: dataTypes.DATE
-         },
-        updated_at: {
-            type: dataTypes.DATE
-        },
-    };
-    let config = {
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at",
-        deletedAt: false,
-    };
-    
-        
-    const Brand = sequelize.define(alias, cols, config);
+  let alias = 'Brand';
 
-    Brand.associate = function (models) {
-        Brand.hasMany(models.Product, {
-          as: "Product",
-          foreignKey: "brand_id",
-          onDelete: "cascade",
-        });
-      };
+  let cols = {
+    id: {
+      type: dataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: dataTypes.STRING(100),
+      allowNull: false,
+    },
+  };
 
+  let config = {
+    tableName: 'brands',
+    timestamps: false,
+  };
 
-    return Brand;
-}
+  const Brand = sequelize.define(alias, cols, config);
+
+  // Associations
+  Brand.associate = (models) => {
+    Brand.hasMany(models.Product, {
+      foreignKey: 'brand_id',
+    });
+  };
+
+  return Brand;
+};

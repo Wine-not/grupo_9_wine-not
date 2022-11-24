@@ -1,47 +1,34 @@
-const sequelize = require("sequelize");
-
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Image';
-    let cols = {
-        id: {
-            type: dataTypes.INTEGER(100),
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true,
-        },
-        image_path: {
-            type: dataTypes.STRING(100),
-            allowNull: false,
-        },
-        product_id: {
-            type: dataTypes.INTEGER(100),
-            allowNull: false, 
-        },
-        created_at: {
-            type: dataTypes.DATE
-         },
-        updated_at: {
-            type: dataTypes.DATE
-        },
-    };
-    let config = {
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at",
-        deletedAt: false,
-    };
-    
-        
-    const Image = sequelize.define(alias, cols, config);
+  let alias = 'Image';
 
-    Image.associate = function (models) {
-        Image.hasMany(models.Product, {
-          as: "Product",
-          foreignKey: "image_id",
-          onDelete: "cascade",
-        });
-    };
+  let cols = {
+    id: {
+      type: dataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    path: {
+      type: dataTypes.STRING(250),
+      allowNull: false,
+      defaultValue: 'product_default.jpg',
+    },
+  };
 
+  let config = {
+    tableName: 'images',
+    timestamps: false,
+  };
 
-    return Image;
-}
+  const Image = sequelize.define(alias, cols, config);
+
+  // Associations
+  Image.associate = function (models) {
+    Image.hasOne(models.Product, {
+      // as: 'product_image',
+      foreignKey: 'image_id',
+    });
+  };
+
+  return Image;
+};

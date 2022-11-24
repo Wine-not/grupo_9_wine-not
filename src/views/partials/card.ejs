@@ -1,14 +1,16 @@
 <div class="card">
     <div class="card__media">
         <div class="card__image">
-            <img src="/images/products/<%= product.image %>" alt="" srcset="">
+            <img src="/images/products/<%= product.dataValues.Image.dataValues.path %>" alt="" srcset="">
         </div>
         <div class="card__cta">
             <div class="card__rating">
                 <p class="card__rating-points">
                     <%= product.rating %>
                 </p>
-                <p class="card__rating-qty">3880 ratings</p>
+                <p class="card__rating-qty">
+                    <%= Math.floor(Math.random() * 50) %> ratings
+                </p>
             </div>
             <a href="/products/productDetail/<%= product.id %>" class="btn btn--primary btn--card">
                 $<%= product.price %>

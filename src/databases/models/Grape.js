@@ -1,7 +1,5 @@
-const sequelize = require("sequelize");
-const Grape = require('../models/Product');
-
 module.exports = (sequelize, dataTypes) => {
+<<<<<<< HEAD
     let alias = 'Grape';
     let cols = {
         id: {
@@ -34,15 +32,35 @@ module.exports = (sequelize, dataTypes) => {
     
         
     const Grape = sequelize.define(alias, cols, config);
+=======
+  let alias = 'Grape';
+>>>>>>> 7d971471084032a5b3c82b3942e082271df9fb74
 
-    Grape.associate = function (models) {
-        Grape.hasMany(models.Product, {
-          as: "Product",
-          foreignKey: "grape_id",
-          onDelete: "cascade",
-        });
-      };
+  let cols = {
+    id: {
+      type: dataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: dataTypes.STRING(50),
+      allowNull: false,
+    },
+  };
 
+  let config = {
+    tableName: 'grapes',
+    timestamps: false,
+  };
 
-    return Grape;
-}
+  const Grape = sequelize.define(alias, cols, config);
+
+  Grape.associate = (models) => {
+    Grape.hasMany(models.Product, {
+      foreignKey: 'grape_id',
+    });
+  };
+
+  return Grape;
+};
