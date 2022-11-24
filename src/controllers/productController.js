@@ -1,16 +1,7 @@
 const { validationResult } = require('express-validator');
 const db = require('../databases/models');
-<<<<<<< HEAD
-// const productsFilePath = path.join(__dirname, '../data/products.json');
-// const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
- const selectedProducts = db.Product.filter((product) => {
-   return product.isSelection == true;
- });
-=======
 const { Op } = require('sequelize');
 const sequelize = db.sequelize;
->>>>>>> 7d971471084032a5b3c82b3942e082271df9fb74
 
 module.exports = {
   // Show product cart
@@ -19,16 +10,6 @@ module.exports = {
   },
 
   // Show one product
-<<<<<<< HEAD
-  detail: (req, res) => {
-     let id = req.params.id;
-     let product = db.Product.findOne((oneProduct) => oneProduct.id == id);
-    
-     res.render('./products/productDetail', {
-       product,
-      selectedProducts,
-     });
-=======
   detail: async (req, res) => {
     let product = await db.Product.findOne({
       where: {
@@ -62,7 +43,6 @@ module.exports = {
     });
 
     res.render('./products/productDetail', { product, recommendations });
->>>>>>> 7d971471084032a5b3c82b3942e082271df9fb74
   },
 
   // Show product create form
@@ -76,32 +56,6 @@ module.exports = {
 
   // Process product create form
   createProcess: (req, res, next) => {
-<<<<<<< HEAD
-     let errors = validationResult(req);
-    
-     if (!errors.isEmpty()) {
-       res.render('./products/productCreate', {
-         errors: errors.mapped(),
-         old: req.body,
-       });
-     }
-    
-     db.Product.create({
-      name: req.body.name,
-      price: req.body.price,
-      brand: req.body.brand,
-      stock: req.body.stock,
-      inSale: req.body.inSale,
-      isSelection: req.body.isSelection,
-      grape: req.body.grape,
-      rating: req.body.rating,
-      description: req.body.description,
-      image: req.file.filename,
-     })
-
-     
-     res.redirect('/products');
-=======
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -134,7 +88,6 @@ module.exports = {
     // });
     // return;
     // res.redirect('/');
->>>>>>> 7d971471084032a5b3c82b3942e082271df9fb74
   },
 
   edit: (req, res) => {
