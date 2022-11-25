@@ -9,7 +9,8 @@
 <body>
     <%- include('../partials/navbar') %>
 
-        <h1>Hola <%= //user.name %> </h1>
+        <h1>Hola <%= userToLogin.name %> </h1>
+         <a href="/users/edit/:<%= userToLogin.id %>">Editar Usuario</a> 
 
         <%- include('../partials/footer') %>
 

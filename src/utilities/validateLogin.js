@@ -29,17 +29,6 @@ const validateLogin = (req) => {
       },
     };
   }
-  const isPasswordValid = bcrypt.compareSync(password, userToLogin.password);
-
-  if (!isPasswordValid) {
-    return {
-      password: {
-        msg: 'Invalid password',
-      },
-    };
-  }
-
-  return null;
 };
 
 const validateForm = (req) => {

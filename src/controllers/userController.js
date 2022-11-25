@@ -3,10 +3,8 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
+const validationsLogin = require('../routes/userRouter');
 const db = require('../databases/models');
-const User = db.User;
-// const usersFilePath = path.join(__dirname, '../data/users.json');
-// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 
 module.exports = {
@@ -16,56 +14,35 @@ module.exports = {
   },
 
   // Process login form
-  loginProcess:  (req, res) => {
-    db.User.findAll()
-      .then((users) => {
-        let errors = validateLogin(req);
-        let loggedUser = [];
-
-        if (req.body.email != '' && req.body.password != '') {
-          loggedUser = users.filter(function (user) {
-            return user.email === req.body.email
+  loginProcess: (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+          return res.status(400).json({
+              success: false,
+              errors: errors.array()
           });
-          if(bcrypt.compareSync(req.body.password, loggedUser[0].password) === false){
-            loggedUser = [];
-          console.log('test')
+      } else {
+        db.User.findAll()
+        .then((users) => {
+        for (let user of users) {       
+          if (req.body.email == user.email) {
+            let userToLogin = user;
+            bcrypt.compare(req.body.password, userToLogin.password, function(err, result) {
+              if (result == false) {
+               req.session.loggedUser = userToLogin;               
+                res.render('./users/profile', { userToLogin });
+              } else {
+                 res.json('error')
+              }
+            })
           }
         }
-        if (loggedUser.length === 0) {
-          return res.render(path.resolve(__dirname, '../views/users/login.ejs'), { errors: [{msg: 'Credenciales invalidas'}]})
-        } else {
-          req.session.user = loggedUser[0];
-        }
-        if (req.body.rememberMe) {
-          res.cookie('email',loggedUser[0].email,{maxAge: 1000 * 60 * 60 * 24})
-        }
-        return res.redirect('/'); 
-      }
-      
-    )
-    // let errors = validateLogin(req);    //
-    // if (errors) {
-    //   res.render('./users/login', {
-    //     errors: errors.mapped(),
-    //     old: req.body,
-    //   });
-    //   return
-    // }
-
-    // let userToLogin = users.find(user => user.email === req.body.email);
-
-    // const { password, ...user} = userToLogin;
-    // req.session.loggedUser = user;
-    //
-    // if (req.body.rememberMe) {
-    //   res.cookie('userMail', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
-    // }
-    // res.redirect('/users/profile');
+      }) 
+     }  
   },
 
   // Shows user profile
-  profile: (req, res) => {
-    // res.render('./users/profile', { user: req.session.loggedUser });
+  profile: (req, res) => {    
     res.render('./users/profile');
   },
 
@@ -85,51 +62,25 @@ module.exports = {
     } 
 
     db.User.create({
+      nickname: 'user',
       name: req.body.name,
       surname: req.body.lastName,
       email: req.body.email,
-      password: req.body.password,
+      password: bcrypt.hashSync(req.body.password, 5),
       birthdate: req.body.birthdate,
       role_id: 1,
       address_id: 1
-    });
-    console.log(User);
-
-    res.redirect('./login');
-
-
-    // let errors = validationResult(req);
-    //
-    // console.log(errors.mapped());
-    //
-    // if (!errors.isEmpty()) {
-    //   let oldData = req.body;
-    //   res.render('./users/register', {
-    //     errors: errors.mapped(),
-    //     old: oldData,
-    //   });
-    // } else {
-    //   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    //   let newUser = {
-    //     id: Date.now().toString(),
-    //     userId: req.body.userId,
-    //     name: req.body.name,
-    //     lastName: req.body.lastName,
-    //     email: req.body.email,
-    //     password: hashedPassword,
-    //     birthdate: req.body.birthdate,
-    //   };
-    //   // users.push(newUser);
-    //   // fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-    //   res.redirect('/users/login');
-    // }
+    })
+    res.redirect('./login')
   },
 
   // Shows user to edit
-  edit: (req, res) => {
-    // let userId = req.params.idUser;
-    // let userToEdit = users.find((user) => user.userId == userId);
-    // res.render('./users/edit', { userToEdit: userToEdit });
+  edit: (req, res) => {    
+    if (res.session.loggedUser == undefined) {
+      res.json('no estas logeado')
+    } else {
+      res.json('estas logeado')
+    }
   },
 
   // Edit the user

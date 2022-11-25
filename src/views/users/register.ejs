@@ -12,16 +12,16 @@
         <section class="section--padding">
             <form action="/users/register" method="POST" class="form" id="form">
                 <h1 class="form__title">Create your account</h1>
-                <!-- <div class="form__group">
+                 <div class="form__group">
                     <label for="nickname" class="form__label">Nickname</label>
                     <input type="text" name="nickname" id="nickname" class="form__input"
-                        value="<%= //locals.old && old.nickname %>">
+                        value="<%= locals.old && old.nickname %>">
                     <% if (locals.errors && errors.nickname) { %>
                         <small class="form__message">
-                            <%=// errors.nickname.msg %>
+                            <%= //errors.nickname.msg %>
                         </small>
                         <% } %>
-                </div> -->
+                </div> 
                 <div class="form__group">
                     <label for="name" class="form__label">First Name</label>
                     <input type="text" name="name" id="name" class="form__input" value="<%=// locals.old && old.name %>">
