@@ -51,43 +51,36 @@ module.exports = {
     let grapes = await db.Grape.findAll();
     let regions = await db.Region.findAll();
 
-    res.render('./products/productCreate', { brands, grapes, regions });
+    res.render('./products/productCreate', { brands: brands, grapes: grapes, regions: regions });
   },
 
   // Process product create form
   createProcess: (req, res, next) => {
-    let errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      res.render('./products/productCreate', {
-        errors: errors.mapped(),
-        old: req.body,
-      });
-    }
-
-    // let newProduct = {
-    //   id: products[products.length - 1].id + 1,
-    //   name: req.body.name,
-    //   price: parseFloat(req.body.price),
-    //   brand: req.body.brand,
-    //   stock: parseInt(req.body.stock, 10),
-    //   inSale: req.body.inSale == undefined ? false : true,
-    //   isSelection: req.body.isSelection == undefined ? false : true,
-    //   grape: req.body.grape,
-    //   rating: parseFloat(req.body.rating),
-    //   region: req.body.region,
-    //   image: req.file.filename,
-    // };
+    // let errors = validationResult(req);
     //
-    // products.push(newProduct);
-    //
-    // let productAdded = JSON.stringify(products, null, ' ');
-    //
-    // fs.writeFile(productsFilePath, productAdded, (err) => {
-    //   if (err) throw err;
-    // });
-    // return;
-    // res.redirect('/');
+    // if (!errors.isEmpty()) {
+    //   res.render('./products/productCreate', {
+    //     errors: errors.mapped(),
+    //     old: req.body,
+    //   });
+    // }
+    
+    db.Product.create({
+      name: req.body.name,
+      price: req.body.price,
+      rating: req.body.rating,
+      description: req.body.description,
+      stock: req.body.stock,
+      in_sale: req.body.inSale,
+      is_selection: req.body.isSelection,
+      brand_id: req.body.brand,
+      grape_id: req.body.grape,
+      region_id: req.body.region,
+      image_id: 1
+      // image_id: req.file.filename
+    });
+  
+    res.redirect('./products/shopAll');
   },
 
   edit: (req, res) => {
