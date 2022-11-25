@@ -77,10 +77,10 @@ router.post('/', uploadImage.single('image'), validations, productController.cre
 
 // Edit products
 router.get('/productEdit/:id', productController.edit);
-router.put('/:id', validations, productController.update);
+router.put('/productEdit/:id', productController.update);
 
 //Delete product
-router.delete('/:id', productController.delete);
+router.delete('/delete/:id', productController.delete);
 
 //Product List
 router.get('/shopAll', productController.shopAll);

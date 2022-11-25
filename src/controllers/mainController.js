@@ -29,7 +29,7 @@ const controller = {
     });
 
     res.render('index', { selectedProducts, saleProducts });
-  },
+  }
 };
 
 module.exports = controller;

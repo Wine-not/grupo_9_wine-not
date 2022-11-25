@@ -42,7 +42,11 @@ module.exports = {
       },
     });
 
-    res.render('./products/productDetail', { product, recommendations });
+    if (product === null || recommendations === null) {
+      res.render('./404');
+    } else {
+      res.render('./products/productDetail', { product, recommendations });
+    }
   },
 
   // Show product create form
@@ -55,7 +59,7 @@ module.exports = {
   },
 
   // Process product create form
-  createProcess: (req, res, next) => {
+  createProcess: (req, res) => {
     // let errors = validationResult(req);
     //
     // if (!errors.isEmpty()) {
@@ -83,41 +87,34 @@ module.exports = {
     res.redirect('./products/shopAll');
   },
 
-  edit: (req, res) => {
-     let id = req.params.id;
-     let product = products.find((oneProduct) => oneProduct.id == id);
-     res.render('./products/productEdit.ejs', { product: product });
+  edit: async (req, res) => {
+    let product = await db.Product.findByPk(req.params.id);
+    let brands = await db.Brand.findAll();
+    let grapes = await db.Grape.findAll();
+    let regions = await db.Region.findAll();
+    
+    res.render('./products/productEdit', { product: product,brands: brands, grapes: grapes, regions: regions })
   },
 
   update: (req, res) => {
-     let id = req.params.id;
-     let producToEdit = products.find((product) => product.id == id);
+    db.Product.update({
+      name: req.body.name,
+      price: req.body.price,
+      rating: req.body.rating,
+      description: req.body.description,
+      stock: req.body.stock,
+      in_sale: req.body.inSale,
+      is_selection: req.body.isSelection,
+      brand_id: req.body.brand,
+      grape_id: req.body.grape,
+      region_id: req.body.region,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
     
-     let errors = validationResult(req);
-    
-     if (!errors.isEmpty()) {
-       res.render('./products/productCreate', {
-         errors: errors.mapped(),
-         old: req.body,
-       });
-     }
-    
-     producToEdit = {
-       id: producToEdit.id,
-       ...req.body,
-       image: producToEdit.image,
-     };
-    
-     let newProducts = products.map((product) => {
-       if (product.id == producToEdit.id) {
-         return (product = { ...producToEdit });
-       }
-       return product;
-     });
-    
-     fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-     products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-     res.redirect('/products/shopAll');
+    res.redirect('/products/productDetail/' + req.params.id);
   },
 
   shopAll: async (req, res) => {
@@ -131,20 +128,12 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    //   let id = req.params.id;
-    //   let finalProducts = products.filter((product) => product.id != id);
-    //
-    //   fs.writeFileSync(
-    //     productsFilePath,
-    //     JSON.stringify(finalProducts, null, ' ')
-    //   );
-    //
-    //   fs.readFile(productsFilePath, (err, productData) => {
-    //     if (err) throw err;
-    //
-    //     products = JSON.parse(productData);
-    //   });
-    //
-    //   res.redirect('/products/shopAll');
+    db.Product.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    
+    res.redirect('/products/shopAll');
   },
 };
