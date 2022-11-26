@@ -10,19 +10,19 @@
     <%- include('../partials/navbar') %>
 
         <section class="section--padding">
-            <form action="/users/edit/<%= userToEdit.userId %>?_method=PUT" method="POST" class="form" id="form">
+            <form action="/users/edit/<%= userToEdit.id %>?_method=PUT" method="POST" class="form" id="form">
                 <h1 class="form__title">Edit your account</h1>
                 <div class="form__group">
                     <label for="firstName" class="form__label">First Name</label>
                     <input type="text" name="firstName" id="firstName" class="form__input" 
-                    value="<%= userToEdit.firstName %> ">
+                    value="<%= userToEdit.name %> ">
                     <small class="form__message"></small>
                 </div>
 
                 <div class="form__group">
                     <label for="lastName" class="form__label">Last Name</label>
                     <input type="text" name="lastName" id="lastName" class="form__input" 
-                    value="<%= userToEdit.lastName %> ">
+                    value="<%= userToEdit.surname %> ">
                     <small class="form__message"></small>
                 </div>
 
@@ -48,8 +48,9 @@
 
         <section class="">
             <div class="form__group">
-                <form action="/users/delete/:<%= userToEdit.userId %>?_method=DELETE" method="POST" class="form"></form>
+                <form action="/users/delete/:<%= userToEdit.id %>?_method=DELETE" method="POST" class="form">
                 <button type="submit" class="btn btn--primary">Delete Account</button>
+                </form>
             </div>
         </section>
 
