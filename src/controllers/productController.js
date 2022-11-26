@@ -104,6 +104,7 @@ module.exports = {
   },
 
   update: (req, res) => {
+    // TODO validations in update form
     db.Product.update({
       name: req.body.name,
       price: req.body.price,
