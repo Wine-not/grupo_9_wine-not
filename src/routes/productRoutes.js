@@ -21,8 +21,8 @@ let validations = [
     .notEmpty()
     .withMessage('Enter the product name')
     .bail()
-    .isLength({ min: 5, max: 35 })
-    .withMessage('Name must be between 5 and 35 characters'),
+    .isLength({ min: 5, max: 100 })
+    .withMessage('Name must be between 5 and 100 characters'),
   check('price')
     .notEmpty()
     .withMessage('Enter a price for the product')
@@ -30,41 +30,37 @@ let validations = [
     .isNumeric()
     .withMessage('Price must be a number'),
   check('brand')
-    .notEmpty()
-    .withMessage('Enter a brand name')
-    .bail()
-    .isLength({ min: 5, max: 35 })
-    .withMessage('Brand must be between 5 and 35 characters'),
+    .exists({ checkFalsy: true })
+    .withMessage('Brand field is required'),
   check('grape')
-    .notEmpty()
-    .withMessage("Enter product's grape")
-    .bail()
-    .isLength({ min: 5, max: 35 })
-    .withMessage('Grape must be between 5 and 35 characters'),
+    .exists({ checkFalsy: true })
+    .withMessage('Grape field is required'),
   check('rating')
     .notEmpty()
     .withMessage('Enter product rating')
     .bail()
-    .isNumeric()
-    .withMessage('Product rating must be a number'),
+    .isFloat({ min: 1.00, max: 5.00 })
+    .withMessage('Product rating must be between 1 and 5'),
   check('region')
-    .notEmpty()
-    .withMessage("Enter product's region")
-    .bail()
-    .isLength({ min: 5, max: 35 })
-    .withMessage('Region must be between 5 and 35 characters'),
+    .exists({ checkFalsy: true })
+    .withMessage('Region field is required'),
   check('stock')
     .notEmpty()
     .withMessage('Add stock quantity')
     .bail()
-    .isNumeric()
-    .withMessage('Stock must be a number'),
-  check('image')
+    .isInt({ max: 30 })
+    .withMessage('Stock must be a number up to 30'),
+  check('description')
     .notEmpty()
-    .withMessage('An image of the product must be uploaded')
-    .bail(),
+    .withMessage('Description can not be empty')
+    .bail()
+    .isLength({ min: 20 })
+    .withMessage('Description must have at least 20 characters')
+  // TODO validate images
+  // TODO validate values from db
 ];
 
+// TODO path names
 // Product cart
 router.get('/productCart', productController.cart);
 
@@ -77,7 +73,7 @@ router.post('/', uploadImage.single('image'), validations, productController.cre
 
 // Edit products
 router.get('/productEdit/:id', productController.edit);
-router.put('/productEdit/:id', productController.update);
+router.put('/productEdit/:id', validations, productController.update);
 
 //Delete product
 router.delete('/delete/:id', productController.delete);

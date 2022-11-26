@@ -59,32 +59,39 @@ module.exports = {
   },
 
   // Process product create form
-  createProcess: (req, res) => {
-    // let errors = validationResult(req);
-    //
-    // if (!errors.isEmpty()) {
-    //   res.render('./products/productCreate', {
-    //     errors: errors.mapped(),
-    //     old: req.body,
-    //   });
-    // }
+  createProcess: async (req, res) => {
+    let errors = validationResult(req);
     
-    db.Product.create({
-      name: req.body.name,
-      price: req.body.price,
-      rating: req.body.rating,
-      description: req.body.description,
-      stock: req.body.stock,
-      in_sale: req.body.inSale,
-      is_selection: req.body.isSelection,
-      brand_id: req.body.brand,
-      grape_id: req.body.grape,
-      region_id: req.body.region,
-      image_id: 1
-      // image_id: req.file.filename
-    });
+    if (!errors.isEmpty()) {
+      let brands = await db.Brand.findAll();
+      let grapes = await db.Grape.findAll();
+      let regions = await db.Region.findAll();
+      
+      res.render('./products/productCreate', {
+        errors: errors.mapped(),
+        old: req.body,
+        brands: brands,
+        grapes: grapes,
+        regions: regions
+      });
+    } else {
+      db.Product.create({
+        name: req.body.name,
+        price: req.body.price,
+        rating: req.body.rating,
+        description: req.body.description,
+        stock: req.body.stock,
+        in_sale: req.body.inSale,
+        is_selection: req.body.isSelection,
+        brand_id: req.body.brand,
+        grape_id: req.body.grape,
+        region_id: req.body.region,
+        image_id: 1
+        // image_id: req.file.filename
+      });
   
-    res.redirect('./products/shopAll');
+      res.redirect('./products/shopAll');
+    }
   },
 
   edit: async (req, res) => {
