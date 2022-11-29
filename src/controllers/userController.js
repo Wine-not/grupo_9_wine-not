@@ -29,19 +29,10 @@ module.exports = {
           console.log(user)
           if (bcryptjs.compareSync(req.body.password, user.password)) {
             let userToLogin = user;    
-            res.render('./users/profile', { userToLogin });
+            res.render('./users/profile', { userToLogin: user });
           } else {
-            res.json('error')
-          }
-           // console.log(user)
-          // if()
-          // bcryptjs.compareSync(req.body.password, userToLogin.password, function (err, result) {
-          //   if (result == false) {
-          //     res.render('./users/profile', { userToLogin });
-          //   } else {
-          //     res.json('error')
-          //   }
-          // })    
+            res.render('./users/profile', { userToLogin: user });
+          } 
         }
       }
     }) 
@@ -50,7 +41,7 @@ module.exports = {
 
   // Shows user profile
   profile: (req, res) => {    
-    res.render('./users/profile', {userToLogin: userToLogin});
+    res.render('./users/profile', { userToLogin });
   },
 
   // Shows register form

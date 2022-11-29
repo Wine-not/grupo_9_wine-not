@@ -8,10 +8,13 @@
 
 <body>
     <%- include('../partials/navbar') %>
-
-        <h1>Hola <%= user.name %> </h1>
-         <a href="/users/edit/:<%= user.id %>">Editar Usuario</a> 
-
+    <section class="main-profile-container">
+        <div class="main-profile-data">
+            <img class="profile-picture" src="../images/profile-default.png" alt="">
+            <h1 class="user-name">Hola <%= userToLogin.name %>! </h1>
+            <a class="btn btn--primary" href="/users/edit/:<%= userToLogin.id %>">Editar Usuario</a> 
+        </div>
+    </section>
         <%- include('../partials/footer') %>
 
             <script src="/javascripts/utilities.js"></script>

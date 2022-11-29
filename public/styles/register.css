@@ -81,6 +81,40 @@
   color: var(--error);
 }
 
+
+/* Profile ---------------- */
+
+.main-profile-container  {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+} 
+
+.main-profile-data {
+  width: 60%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.profile-picture {  
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid black;
+}
+
+.user-name {
+  font-family: var(--primary-font);
+  font-size: 2rem;
+}
+.user-edit {
+  margin-top: 15px;
+}
+
 @media only screen and (min-width: 1280px) {
   .form {
     max-width: 600px;
