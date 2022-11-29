@@ -16,6 +16,7 @@
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
                     <input type="text" name="name" id="name" class="form__input" value="<%= locals.old && old.name %>">
+                    <small id="name-msg"></small>
                     <% if (locals.errors && errors.name) { %>
                         <small class="form__message" id="name-msg">
                             <%= errors.name.msg %>
@@ -27,6 +28,7 @@
                     <label for="price" class="form__label">Price</label>
                     <input type="number" name="price" id="price" class="form__input" min="0" step="0.01"
                         value="<%= locals.old && old.price %>">
+                    <small id="price-msg"></small>
                     <% if (locals.errors && errors.price) { %>
                         <small class="form__message" id="price-msg">
                             <%= errors.price.msg %>
@@ -44,7 +46,7 @@
                             </option>
                             <% }); %>
                     </select>
-
+                    <small id="brand-msg"></small>
                     <% if (locals.errors && errors.brand) { %>
                         <small class="form__message" id="brand-msg">
                             <%= errors.brand.msg %>
@@ -62,7 +64,7 @@
                             </option>
                             <% }); %>
                     </select>
-
+                    <small id="grape-msg"></small>
                     <% if (locals.errors && errors.grape) { %>
                         <small class="form__message" id="grape-msg">
                             <%= errors.grape.msg %>
@@ -74,6 +76,7 @@
                     <label for="rating" class="form__label">Rating</label>
                     <input type="number" name="rating" id="rating" class="form__input" step="0.1"
                         value="<%= locals.old && old.rating %>">
+                    <small id="rating-msg"></small>
                     <% if (locals.errors && errors.rating) { %>
                         <small class="form__message" id="rating-msg">
                             <%= errors.rating.msg %>
@@ -91,6 +94,7 @@
                             </option>
                             <% }); %>
                     </select>
+                    <small id="region-msg"></small>
                     <% if (locals.errors && errors.region) { %>
                         <small class="form__message" id="region-msg">
                             <%= errors.region.msg %>
@@ -102,6 +106,7 @@
                     <label for="stock" class="form__label">Stock</label>
                     <input type="number" name="stock" id="stock" class="form__input"
                         value="<%= locals.old && old.stock %>">
+                    <small id="stock-msg"></small>
                     <% if (locals.errors && errors.stock) { %>
                         <small class="form__message" id="stock-msg">
                             <%= errors.stock.msg %>
@@ -122,6 +127,7 @@
                 <div class="form__group">
                     <label for="description" class="form__label">Description</label>
                     <textarea name="description" id="description" class="form__input"><%= locals.old && old.description %></textarea>
+                    <small id="desc-msg"></small>
                     <% if (locals.errors && errors.description) { %>
                         <small class="form__message" id="desc-msg">
                             <%= errors.description.msg %>
