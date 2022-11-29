@@ -1,11 +1,23 @@
-// const path = require('path');
-// const multer = require('multer');
+const path = require('path');
+const multer = require('multer');
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const { check } = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware');
 const authMiddleware = require('../middleware/authMiddleware');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/users')
+  },
+  filename: function (req, file, cb) {
+    let filename = `${Date.now()}_img${path.extname(file.originalname)}`
+    cb(null, filename)
+  }
+})
+
+const uploadFile = multer({ storage })
 
 
 let validationsLogin = [
@@ -23,7 +35,7 @@ let validationsLogin = [
 ];
 
 let validationsRegister = [
-  // check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
+  check('nickname').notEmpty().withMessage('Enter your nickname please').bail(),
   check('name').notEmpty().withMessage('Enter your name please').bail(),
   check('lastName').notEmpty().withMessage('Enter your surname please').bail(),
   check('email')
@@ -64,7 +76,7 @@ router.post('/login', validationsLogin , userController.loginProcess);
 
 // Register new user
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', validationsRegister, userController.create);
+router.post('/register', uploadFile.single('profilePicture') ,validationsRegister, userController.create);
 
 // Edit a user
 router.get('/edit/:idUser', userController.edit);

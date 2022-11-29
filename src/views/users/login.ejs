@@ -16,23 +16,28 @@
                 </div>
                 <div class="form__inputs-container">
                     <form class="form-inputs" action="/users/login" method="POST">
+                        <% if (locals.errors) { %> 
+                            <% for (let oneError in errors) { %> 
+                            <p><% errors[oneError].msg %></p> 
+                            <% } %> 
+                            <%  }%> 
                         <div class="email input">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="loginEmail" placeholder="johndoe@gmail.com">
-                            <% if (locals.errors && errors.email) { %>
-                                <small class="form__message" id="emailLogin-msg">
-                                    <%= errors.email.msg %>
-                                </small>
-                                <% } %>
+                            <input type="email" name="email" id="loginEmail" placeholder="johndoe@gmail.com" value="<%= locals.oldData ? oldData.email : null %>">
+                            <% if (locals.errors && errors.email) { %> 
+                                <small class="form__message">
+                                <%=  errors.email.msg %>
+                            </small>
+                            <% } %> 
                         </div>
                         <div class="password input">
                             <label for="password">Password</label>
                             <input placeholder="**********" type="password" name="password">
-                            <% if (locals.errors && errors.password) { %>
-                                <small class="form__message" id="pwdLogin-msg">
-                                    <%= errors.password.msg %>
-                                </small>
-                                <% } %>
+                            <% if (locals.errors && errors.password) { %> 
+                                <small class="form__message">
+                                <%=  errors.password.msg %>
+                            </small>
+                            <% } %> 
                         </div>
                         <div class="">
                             <input type="checkbox" name="rememberMe" id="rememberMe" class="form__checkbox">

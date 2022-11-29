@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require('bcrypt')
-// const bcryptjs = require('bcryptjs')
+// const bcrypt = require('bcrypt')
+const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
 const validationsLogin = require('../routes/userRouter');
@@ -15,26 +15,33 @@ module.exports = {
   },
 
   loginProcess: (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            success: false,
-            errors: errors.array()
-        });
+    const resultValidation = validationResult(req)
+    if(resultValidation.errors.length > 0){
+      return res.render('./users/login', {
+        errors: resultValidation.mapped(),
+        oldData: req.body
+      })
     } else {
       db.User.findAll()
       .then((users) => {
       for (let user of users) {       
         if (req.body.email == user.email) {
-          let userToLogin = user;
-          bcrypt.compare(req.body.password, userToLogin.password, function(err, result) {
-            if (result == false) {
-             req.session.loggedUser = userToLogin;               
-              res.render('./users/profile', { userToLogin });
-            } else {
-               res.json('error')
-            }
-          })
+          console.log(user)
+          if (bcryptjs.compareSync(req.body.password, user.password)) {
+            let userToLogin = user;    
+            res.render('./users/profile', { userToLogin });
+          } else {
+            res.json('error')
+          }
+           // console.log(user)
+          // if()
+          // bcryptjs.compareSync(req.body.password, userToLogin.password, function (err, result) {
+          //   if (result == false) {
+          //     res.render('./users/profile', { userToLogin });
+          //   } else {
+          //     res.json('error')
+          //   }
+          // })    
         }
       }
     }) 
@@ -53,24 +60,26 @@ module.exports = {
 
   // Process register form
   create: (req, res) => {
-    let errors = validationResult(req);
-    console.log(errors)
-    if(!errors.isEmpty()) {
-      return res.render(path.resolve(__dirname, '../views/users/register.ejs'), {
-        errors: errors.errors, old: req.body
-      });
-    } 
+    const resultValidation = validationResult(req)
+    if(resultValidation.errors.length > 0){
+      return res.render('./users/register', {
+        errors: resultValidation.mapped(),
+        oldData: req.body
+      })
+    }
+
 
     db.User.create({
       nickname: 'user',
       name: req.body.name,
       surname: req.body.lastName,
-      email: req.body.email,
-      password: bcrypt.hash(req.body.password, 5),
+      email: req.body.email,      
+      password: bcryptjs.hashSync(req.body.password, 5),
       birthdate: req.body.birthdate,
       role_id: 1,
       address_id: 1
     })
+    
     res.redirect('./login')
   },
 
