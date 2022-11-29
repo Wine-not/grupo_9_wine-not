@@ -94,6 +94,7 @@
                             </option>
                             <% }); %>
                     </select>
+                    <small id="region-msg"></small>
                     <% if (locals.errors && errors.region) { %>
                         <small class="form__message" id="region-msg">
                             <%= errors.region.msg %>
@@ -105,6 +106,7 @@
                     <label for="stock" class="form__label">Stock</label>
                     <input type="number" name="stock" id="stock" class="form__input"
                         value="<%= locals.old && old.stock %>">
+                    <small id="stock-msg"></small>
                     <% if (locals.errors && errors.stock) { %>
                         <small class="form__message" id="stock-msg">
                             <%= errors.stock.msg %>
@@ -125,6 +127,7 @@
                 <div class="form__group">
                     <label for="description" class="form__label">Description</label>
                     <textarea name="description" id="description" class="form__input"><%= locals.old && old.description %></textarea>
+                    <small id="desc-msg"></small>
                     <% if (locals.errors && errors.description) { %>
                         <small class="form__message" id="desc-msg">
                             <%= errors.description.msg %>
