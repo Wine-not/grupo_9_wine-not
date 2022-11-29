@@ -16,6 +16,7 @@
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
                     <input type="text" name="name" id="name" class="form__input" value="<%= locals.old && old.name %>">
+                    <small id="name-msg"></small>
                     <% if (locals.errors && errors.name) { %>
                         <small class="form__message" id="name-msg">
                             <%= errors.name.msg %>

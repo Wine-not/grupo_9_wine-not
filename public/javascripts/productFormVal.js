@@ -20,7 +20,15 @@ stockMsg = document.querySelector('#stock-msg');
 descMsg = document.querySelector('#desc-msg');
 
 const lengthCheck = (input, length) => {
-  return input.value.length >= length;
+  let qty = [];
+  
+  if (input === 'Backspace') {
+    qty.pop();
+  } else {
+    qty.push(input);
+  }
+  
+  return qty.length < length;
 }
 
 const isInt = number => {
@@ -31,17 +39,31 @@ const checkRating = input => {
   return input >= 1 && input <= 5;
 }
 
-const realTimeValidation = (element, validate, messageCont, errMessage) => {
-  element.addEventListener('keydown', e => {
-    if (validate) {
-      e.classList.add('valid');
-      e.classList.remove('invalid');
-    } else {
-      e.classList.remove('valid');
-      e.classList.add('invalid');
-      messageCont.innerText = errMessage;
-    }
-  })
-}
+let lettersQty = []
 
-realTimeValidation(prodName, lengthCheck(prodName, 5), nameMsg, 'Name must have more than 5 characters');
+prodName.addEventListener('keydown', e => {
+  if (e.key === 'Backspace') {
+    lettersQty.pop();
+  } else {
+    lettersQty.push(e.key);
+  }
+  
+  let flag = null;
+  
+  if (lettersQty.length < 20) {
+    nameMsg.innerText = 'Necesito más texto';
+    prodName.classList.remove('valid');
+    prodName.classList.add('invalid');
+    nameMsg.classList.add('form__message');
+    flag = false;
+  } else {
+    nameMsg.innerText = '';
+    prodName.classList.remove('invalid');
+    prodName.classList.add('valid');
+    nameMsg.classList.remove('form__message');
+    flag = true;
+  }
+  
+  console.log(lettersQty);
+  console.log(flag);
+})
