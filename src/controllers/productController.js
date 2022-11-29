@@ -42,7 +42,11 @@ module.exports = {
       },
     });
 
-    res.render('./products/productDetail', { product, recommendations });
+    if (product === null || recommendations === null) {
+      res.render('./404');
+    } else {
+      res.render('./products/productDetail', { product, recommendations });
+    }
   },
 
   // Show product create form
@@ -51,80 +55,94 @@ module.exports = {
     let grapes = await db.Grape.findAll();
     let regions = await db.Region.findAll();
 
-    res.render('./products/productCreate', { brands, grapes, regions });
+    res.render('./products/productCreate', { brands: brands, grapes: grapes, regions: regions });
   },
 
   // Process product create form
-  createProcess: (req, res, next) => {
+  createProcess: async (req, res) => {
     let errors = validationResult(req);
-
+    
     if (!errors.isEmpty()) {
+      let brands = await db.Brand.findAll();
+      let grapes = await db.Grape.findAll();
+      let regions = await db.Region.findAll();
+      
       res.render('./products/productCreate', {
         errors: errors.mapped(),
         old: req.body,
+        brands: brands,
+        grapes: grapes,
+        regions: regions
       });
+    } else {
+      if (req.file.filename !== null) {
+        let newImage = await db.Image.create({
+          path: req.file.filename
+        })
+  
+        db.Product.create({
+          name: req.body.name,
+          price: req.body.price,
+          rating: req.body.rating,
+          description: req.body.description,
+          stock: req.body.stock,
+          in_sale: req.body.inSale,
+          is_selection: req.body.isSelection,
+          brand_id: req.body.brand,
+          grape_id: req.body.grape,
+          region_id: req.body.region,
+          image_id: newImage.id
+        });
+      } else {
+        db.Product.create({
+          name: req.body.name,
+          price: req.body.price,
+          rating: req.body.rating,
+          description: req.body.description,
+          stock: req.body.stock,
+          in_sale: req.body.inSale,
+          is_selection: req.body.isSelection,
+          brand_id: req.body.brand,
+          grape_id: req.body.grape,
+          region_id: req.body.region,
+          image_id: 1
+        });
+      }
+  
+      res.redirect('./products/shopAll');
     }
-
-    // let newProduct = {
-    //   id: products[products.length - 1].id + 1,
-    //   name: req.body.name,
-    //   price: parseFloat(req.body.price),
-    //   brand: req.body.brand,
-    //   stock: parseInt(req.body.stock, 10),
-    //   inSale: req.body.inSale == undefined ? false : true,
-    //   isSelection: req.body.isSelection == undefined ? false : true,
-    //   grape: req.body.grape,
-    //   rating: parseFloat(req.body.rating),
-    //   region: req.body.region,
-    //   image: req.file.filename,
-    // };
-    //
-    // products.push(newProduct);
-    //
-    // let productAdded = JSON.stringify(products, null, ' ');
-    //
-    // fs.writeFile(productsFilePath, productAdded, (err) => {
-    //   if (err) throw err;
-    // });
-    // return;
-    // res.redirect('/');
   },
 
-  edit: (req, res) => {
-    // let id = req.params.id;
-    // let product = products.find((oneProduct) => oneProduct.id == id);
-    // res.render('./products/productEdit.ejs', { product: product });
+  edit: async (req, res) => {
+    let product = await db.Product.findByPk(req.params.id);
+    let brands = await db.Brand.findAll();
+    let grapes = await db.Grape.findAll();
+    let regions = await db.Region.findAll();
+    
+    res.render('./products/productEdit', { product: product, brands: brands, grapes: grapes, regions: regions })
   },
 
-  update: (req, res) => {
-    // let id = req.params.id;
-    // let producToEdit = products.find((product) => product.id == id);
-    //
-    // let errors = validationResult(req);
-    //
-    // if (!errors.isEmpty()) {
-    //   res.render('./products/productCreate', {
-    //     errors: errors.mapped(),
-    //     old: req.body,
-    //   });
-    // }
-    //
-    // producToEdit = {
-    //   id: producToEdit.id,
-    //   ...req.body,
-    //   image: producToEdit.image,
-    // };
-    //
-    // let newProducts = products.map((product) => {
-    //   if (product.id == producToEdit.id) {
-    //     return (product = { ...producToEdit });
-    //   }
-    //   return product;
-    // });
-    //
-    // fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-    // products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-    // res.redirect('/products/shopAll');
+  update: async (req, res) => {
+    db.Product.update({
+      name: req.body.name,
+      price: req.body.price,
+      rating: req.body.rating,
+      description: req.body.description,
+      stock: req.body.stock,
+      in_sale: req.body.inSale,
+      is_selection: req.body.isSelection,
+      brand_id: req.body.brand,
+      grape_id: req.body.grape,
+      region_id: req.body.region,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
+    
+    // TODO validations in update form
+    
+    res.redirect(`/products/productDetail/${req.params.id}`);
   },
 
   shopAll: async (req, res) => {
@@ -138,20 +156,12 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    //   let id = req.params.id;
-    //   let finalProducts = products.filter((product) => product.id != id);
-    //
-    //   fs.writeFileSync(
-    //     productsFilePath,
-    //     JSON.stringify(finalProducts, null, ' ')
-    //   );
-    //
-    //   fs.readFile(productsFilePath, (err, productData) => {
-    //     if (err) throw err;
-    //
-    //     products = JSON.parse(productData);
-    //   });
-    //
-    //   res.redirect('/products/shopAll');
+    db.Product.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    
+    res.redirect('/products/shopAll');
   },
 };

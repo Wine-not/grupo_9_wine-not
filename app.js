@@ -33,5 +33,9 @@ app.use('/', mainRouter);
 app.use('/products', productRouter);
 app.use('/users', userRouter);
 
+app.use((req, res, next) => {
+  res.status(404).render('./404');
+});
+
 //Server
 app.listen(PORT, () => console.log(`[server] running at port ${PORT}`));

@@ -11,11 +11,11 @@
     <%- include('../partials/navbar') %>
 
         <section class="section--padding main__container">
-            <form class="inputs__container form" action="/products/<%=product.id%>?_method=PUT" method="POST" >
+            <form class="inputs__container form" action="/products/productEdit/<%= product.id %>?_method=PUT" method="POST" >
                 <h1 class="form__title">Edit current product</h1>
 
                 <div class="form__group">
-                    <label for="name" class="form__label"> Name  </label>
+                    <label for="name" class="form__label">Name</label>
                     <input type="text" name="name" id="name" class="form__input" value="<%= product.name %>">
                     <% if (locals.errors && errors.name) { %>
                         <small class="form__message" id="name-msg">
@@ -37,8 +37,17 @@
 
                 <div class="form__group">
                     <label for="brand" class="form__label">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form__input"
-                        value="<%= product.brand %>">
+                    <select name="brand" id="brand" class="form__input">
+                        <option value="" disabled selected>- Select brand -</option>
+                        <% brands.forEach(brand => { %>
+                            <% if (brand.id === product.brand_id) { %>
+                                <option value="<%= brand.id %>" selected><%= brand.name %></option>
+                            <% } else { %>
+                                <option value="<%= brand.id %>"><%= brand.name %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+
                     <% if (locals.errors && errors.brand) { %>
                         <small class="form__message" id="brand-msg">
                             <%= errors.brand.msg %>
@@ -48,8 +57,17 @@
 
                 <div class="form__group">
                     <label for="grape" class="form__label">Grape</label>
-                    <input type="text" name="grape" id="grape" class="form__input"
-                        value="<%= product.grape %>">
+                    <select name="grape" id="grape" class="form__input">
+                        <option value="" disabled selected>- Select grape -</option>
+                        <% grapes.forEach(grape => { %>
+                            <% if (grape.id === product.grape_id) {%>
+                                <option value="<%= grape.id %>" selected><%= grape.name %></option>
+                            <% } else { %>
+                                <option value="<%= grape.id %>"><%= grape.name %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+
                     <% if (locals.errors && errors.grape) { %>
                         <small class="form__message" id="grape-msg">
                             <%= errors.grape.msg %>
@@ -70,8 +88,17 @@
 
                 <div class="form__group">
                     <label for="region" class="form__label">Region</label>
-                    <input type="text" name="region" id="region" class="form__input"
-                        value="<%= product.region %>">
+                    <select name="region" id="region" class="form__input">
+                        <option value="" disabled selected>- Select region -</option>
+                        <% regions.forEach(region => {%>
+                            <% if (region.id === product.grape_id) { %>
+                                <option value="<%= region.id %>" selected><%= region.name %></option>
+                            <% } else { %>
+                                <option value="<%= region.id %>"><%= region.name %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+
                     <% if (locals.errors && errors.region) { %>
                         <small class="form__message" id="region-msg">
                             <%= errors.region.msg %>
@@ -81,7 +108,7 @@
 
                 <div class="form__group">
                     <label for="stock" class="form__label">Stock</label>
-                    <input type="text" name="stock" id="stock" class="form__input"
+                    <input type="number" name="stock" id="stock" class="form__input"
                         value="<%= product.stock %>">
                     <% if (locals.errors && errors.stock) { %>
                         <small class="form__message" id="stock-msg">
@@ -101,20 +128,29 @@
                 </div>
 
                 <div class="form__group">
-                    <label for="image" class="form__label">Image</label>
-                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="image"
-                        class="form__input">
-                    <% if (locals.errors && errors.image) { %>
-                        <small class="form__message" id="image-msg">
-                            <%= errors.image.msg %>
+                    <label for="description" class="form__label">Description</label>
+                    <textarea name="description" id="description" class="form__input"><%= product.description %></textarea>
+                    <% if (locals.errors && errors.description) { %>
+                        <small class="form__message" id="desc-msg">
+                            <%= errors.description.msg %>
                         </small>
-                        <% } %>
+                    <% } %>
                 </div>
 
                 <div class="form__group">
-                    <button type="submit" class="btn btn--interactive">Done!</button>
+                    <label for="image" class="form__label">Image</label>
+                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="image"
+                        class="form__input">
                 </div>
 
+                <div class="form__group">
+                    <button type="submit" class="btn btn--interactive">Update</button>
+                </div>
+
+            </form>
+
+            <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn--secondary">Delete</button>
             </form>
         </section>
 

@@ -54,8 +54,12 @@
   align-items: flex-start;
 }
 
-.error {
+.invalid {
   border: 1px solid var(--error);
+}
+
+.valid {
+  border: 1px solid var(--success);
 }
 
 .form__message {
