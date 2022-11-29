@@ -56,8 +56,6 @@ let validations = [
     .bail()
     .isLength({ min: 20 })
     .withMessage('Description must have at least 20 characters')
-  // TODO validate images
-  // TODO validate values from db
 ];
 
 // TODO path names

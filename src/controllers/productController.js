@@ -75,20 +75,39 @@ module.exports = {
         regions: regions
       });
     } else {
-      db.Product.create({
-        name: req.body.name,
-        price: req.body.price,
-        rating: req.body.rating,
-        description: req.body.description,
-        stock: req.body.stock,
-        in_sale: req.body.inSale,
-        is_selection: req.body.isSelection,
-        brand_id: req.body.brand,
-        grape_id: req.body.grape,
-        region_id: req.body.region,
-        image_id: 1
-        // image_id: req.file.filename
-      });
+      if (req.file.filename !== null) {
+        let newImage = await db.Image.create({
+          path: req.file.filename
+        })
+  
+        db.Product.create({
+          name: req.body.name,
+          price: req.body.price,
+          rating: req.body.rating,
+          description: req.body.description,
+          stock: req.body.stock,
+          in_sale: req.body.inSale,
+          is_selection: req.body.isSelection,
+          brand_id: req.body.brand,
+          grape_id: req.body.grape,
+          region_id: req.body.region,
+          image_id: newImage.id
+        });
+      } else {
+        db.Product.create({
+          name: req.body.name,
+          price: req.body.price,
+          rating: req.body.rating,
+          description: req.body.description,
+          stock: req.body.stock,
+          in_sale: req.body.inSale,
+          is_selection: req.body.isSelection,
+          brand_id: req.body.brand,
+          grape_id: req.body.grape,
+          region_id: req.body.region,
+          image_id: 1
+        });
+      }
   
       res.redirect('./products/shopAll');
     }
@@ -100,11 +119,10 @@ module.exports = {
     let grapes = await db.Grape.findAll();
     let regions = await db.Region.findAll();
     
-    res.render('./products/productEdit', { product: product,brands: brands, grapes: grapes, regions: regions })
+    res.render('./products/productEdit', { product: product, brands: brands, grapes: grapes, regions: regions })
   },
 
-  update: (req, res) => {
-    // TODO validations in update form
+  update: async (req, res) => {
     db.Product.update({
       name: req.body.name,
       price: req.body.price,
@@ -122,7 +140,9 @@ module.exports = {
       }
     });
     
-    res.redirect('/products/productDetail/' + req.params.id);
+    // TODO validations in update form
+    
+    res.redirect(`/products/productDetail/${req.params.id}`);
   },
 
   shopAll: async (req, res) => {
