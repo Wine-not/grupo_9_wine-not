@@ -3,12 +3,13 @@
     <head>
         <%- include('./partials/head', {title: 'Page not found' }) %>
         <link rel="stylesheet" href="/styles/404.css">
+        <link rel="stylesheet" href="styles/output.css" >
     </head>
 
     <body>
-        <div class="container">
-            <h1 class="title">404</h1>
-            <p class="subtitle">The page you are looking for doesn't exist or has been moved</p>
+        <div class="h-screen flex flex-col justify-center items-center">
+            <h1 class="text-black text-15xl leading-none">404</h1>
+            <p class="text-2xl mb-12">The page you are looking for doesn't exist or has been moved</p>
             <a href="/" class="btn btn--primary">Go back home</a>
         </div>
     </body>
