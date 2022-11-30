@@ -33,7 +33,7 @@ app.use('/', mainRouter);
 app.use('/products', productRouter);
 app.use('/users', userRouter);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).render('./404');
 });
 

@@ -43,7 +43,7 @@ module.exports = {
     });
 
     if (product === null || recommendations === null) {
-      res.render('./404');
+      res.status(404).render('./404');
     } else {
       res.render('./products/productDetail', { product, recommendations });
     }
