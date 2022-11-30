@@ -72,7 +72,7 @@ let validationsRegister = [
 
 // Log in a user
 router.get('/login', guestMiddleware, userController.login);
-router.post('/login', validationsLogin , userController.loginProcess);
+router.post('/login', validationsLogin, userController.loginProcess);
 
 // Register new user
 router.get('/register', guestMiddleware, userController.register);

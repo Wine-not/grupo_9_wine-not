@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 // const bcrypt = require('bcrypt')
 const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
@@ -14,7 +14,7 @@ module.exports = {
     res.render('./users/login');
   },
 
-  loginProcess: (req, res) => {
+  loginProcess: (req, res) => {    
     const resultValidation = validationResult(req)
     if(resultValidation.errors.length > 0){
       return res.render('./users/login', {
@@ -25,18 +25,27 @@ module.exports = {
       db.User.findAll()
       .then((users) => {
       for (let user of users) {       
-        if (req.body.email == user.email) {
-          console.log(user)
-          if (bcryptjs.compareSync(req.body.password, user.password)) {
-            let userToLogin = user;    
-            res.render('./users/profile', { userToLogin: user });
+        if (req.body.email == user.email) {  
+          // req.session.loggedUser = user;           
+          if (bcryptjs.compareSync(req.body.password, user.password)) { 
+            // Los dos resultados del if son iguales porque bcryptjs no me compara bien las contraseñas y necesitaba
+            // confirmar que funcione la vista y demás. Retorna false en los dos casos, desconozco el motivo. Help;
+            // Session tampoco funciona, puede ser que sea por el scope del if pero no lo pude arreglar.
+            let userToLogin = user;
+            req.session.loggedUser = userToLogin;  
+            res.render('./users/profile', { userToLogin: user  });
+            break;
           } else {
-            res.render('./users/profile', { userToLogin: user });
+            let userToLogin = user;
+            req.session.loggedUser = userToLogin;  
+            console.log(userToLogin)
+            res.render('./users/profile', { userToLogin: user});
+            break;
           } 
+        }        
         }
-      }
-    }) 
-   }  
+      })      
+    }  
 },
 
   // Shows user profile
@@ -76,9 +85,10 @@ module.exports = {
 
   // Shows user to edit
   edit: (req, res) => {    
-    db.User.findByPk(23)
+      // Aca deberia estar ==> req.session.loggedUser.id, puse el 2 para verificar que el metodo funcione -----------
+    db.User.findByPk(1)  // <===---  db.User.findByPk(req.session.loggedUser.id) 
       .then((userToEdit) => {
-        res.render('../views/users/edit.ejs', { userToEdit });
+        res.render('../views/users/edit.ejs', { userToEdit: userToEdit });
     })   
     
   },
@@ -90,8 +100,9 @@ module.exports = {
       surname: req.body.lastName,
       email: req.body.email,
     }, {
+      // Lo mismo en este where -------------------
       where: {
-        id: 23
+        id: 1 // <===---  id: req.session.loggedUser.id
       }
     })
     res.render('./');
@@ -100,7 +111,8 @@ module.exports = {
   // Delete the user
   delete: (req, res) => {
     db.User.destroy({
-      where: {id: 23}
+      // Y lo mismo en este where ---------------
+      where: {id: 1}, // <===---  id: req.session.loggedUser.id
     })
     res.json('deleted')
   },
