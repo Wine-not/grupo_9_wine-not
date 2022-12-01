@@ -1,10 +1,6 @@
-// const fs = require('fs');
-// const path = require('path');
-// const bcrypt = require('bcrypt')
 const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
-const validationsLogin = require('../routes/userRouter');
 const db = require('../databases/models');
 
 
@@ -14,7 +10,7 @@ module.exports = {
     res.render('./users/login');
   },
 
-  loginProcess: (req, res) => {    
+  loginProcess: async (req, res) => {
     const resultValidation = validationResult(req)
     if(resultValidation.errors.length > 0){
       return res.render('./users/login', {
@@ -22,35 +18,28 @@ module.exports = {
         oldData: req.body
       })
     } else {
-      db.User.findAll()
-      .then((users) => {
-      for (let user of users) {       
-        if (req.body.email == user.email) {  
-          // req.session.loggedUser = user;           
-          if (bcryptjs.compareSync(req.body.password, user.password)) { 
-            // Los dos resultados del if son iguales porque bcryptjs no me compara bien las contraseñas y necesitaba
-            // confirmar que funcione la vista y demás. Retorna false en los dos casos, desconozco el motivo. Help;
-            // Session tampoco funciona, puede ser que sea por el scope del if pero no lo pude arreglar.
-            let userToLogin = user;
-            req.session.loggedUser = userToLogin;  
-            res.render('./users/profile', { userToLogin: user  });
-            break;
-          } else {
-            let userToLogin = user;
-            req.session.loggedUser = userToLogin;  
-            console.log(userToLogin)
-            res.render('./users/profile', { userToLogin: user});
-            break;
-          } 
-        }        
+      let userToLogin = await db.User.findOne({
+        where: {
+          email: req.body.email,
         }
-      })      
+      });
+      
+      let pwdExists = await bcryptjs.compare(req.body.password, userToLogin.password);
+      
+      if (pwdExists) {
+        req.session.loggedUser = userToLogin;
+        res.render('./users/profile', { user: userToLogin });
+      } else {
+        res.redirect('./index');
+      }
     }  
-},
+  },
 
   // Shows user profile
-  profile: (req, res) => {    
-    res.render('./users/profile', { userToLogin });
+  profile: async (req, res) => {
+    let userToLogin = await db.User.findByPk(req.session.loggedUser.id);
+    
+    res.render('./users/profile', { user: userToLogin });
   },
 
   // Shows register form
@@ -59,62 +48,73 @@ module.exports = {
   },
 
   // Process register form
-  create: (req, res) => {
+  create: async (req, res) => {
     const resultValidation = validationResult(req)
     if(resultValidation.errors.length > 0){
       return res.render('./users/register', {
         errors: resultValidation.mapped(),
         oldData: req.body
       })
+    } else {
+      let newAddress = await db.Address.create({
+        address: 'Street 123',
+        city: 'Buenos Aires',
+        postal_code: '1248',
+        country: 'Argentina'
+      })
+      
+      let hash = await bcryptjs.hash(req.body.password, 10);
+      
+      db.User.create({
+        nickname: 'user',
+        name: req.body.name,
+        surname: req.body.lastName,
+        email: req.body.email,
+        password: hash,
+        birthdate: req.body.birthdate,
+        role_id: 2,
+        address_id: newAddress.id
+      });
     }
-
-
-    db.User.create({
-      nickname: 'user',
-      name: req.body.name,
-      surname: req.body.lastName,
-      email: req.body.email,      
-      password: bcryptjs.hashSync(req.body.password, 5),
-      birthdate: req.body.birthdate,
-      role_id: 1,
-      address_id: 1
-    })
     
     res.redirect('./login')
   },
 
   // Shows user to edit
-  edit: (req, res) => {    
-      // Aca deberia estar ==> req.session.loggedUser.id, puse el 2 para verificar que el metodo funcione -----------
-    db.User.findByPk(1)  // <===---  db.User.findByPk(req.session.loggedUser.id) 
+  edit: (req, res) => {
+    db.User.findByPk(req.session.loggedUser.id)
       .then((userToEdit) => {
         res.render('../views/users/edit.ejs', { userToEdit: userToEdit });
-    })   
-    
+    })
   },
 
   // Edit the user
   update: (req, res) => {
+    // TODO check user password
     db.User.update({
       name: req.body.name,
       surname: req.body.lastName,
       email: req.body.email,
     }, {
-      // Lo mismo en este where -------------------
       where: {
-        id: 1 // <===---  id: req.session.loggedUser.id
+        id: req.session.loggedUser.id
       }
     })
-    res.render('./');
+    
+    db.User.findByPk(req.session.loggedUser.id).then(user => {
+      res.render('./users/profile', { user: user });
+    })
   },
 
   // Delete the user
   delete: (req, res) => {
     db.User.destroy({
-      // Y lo mismo en este where ---------------
-      where: {id: 1}, // <===---  id: req.session.loggedUser.id
+      where: {
+        id: req.session.loggedUser.id
+      }
     })
-    res.json('deleted')
+    
+    res.redirect('./products/shopAll');
   },
 };
 
