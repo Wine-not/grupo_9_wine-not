@@ -1,11 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
 const { validateLogin } = require('../utilities/validateLogin');
-const db = require('../databases/models')
-// const usersFilePath = path.join(__dirname, '../data/users.json');
-// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+const db = require('../databases/models');
 
 
 module.exports = {
@@ -14,33 +10,36 @@ module.exports = {
     res.render('./users/login');
   },
 
-  // Process login form
-  loginProcess: (req, res) => {
-    // let errors = validateLogin(req);
-    //
-    // if (errors) {
-    //   res.render('./users/login', {
-    //     errors: errors.mapped(),
-    //     old: req.body,
-    //   });
-    //   return
-    // }
-
-    // let userToLogin = users.find(user => user.email === req.body.email);
-
-    // const { password, ...user} = userToLogin;
-    // req.session.loggedUser = user;
-    //
-    // if (req.body.rememberMe) {
-    //   res.cookie('userMail', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
-    // }
-    // res.redirect('/users/profile');
+  loginProcess: async (req, res) => {
+    const resultValidation = validationResult(req)
+    if(resultValidation.errors.length > 0){
+      return res.render('./users/login', {
+        errors: resultValidation.mapped(),
+        oldData: req.body
+      })
+    } else {
+      let userToLogin = await db.User.findOne({
+        where: {
+          email: req.body.email,
+        }
+      });
+      
+      let pwdExists = await bcryptjs.compare(req.body.password, userToLogin.password);
+      
+      if (pwdExists) {
+        req.session.loggedUser = userToLogin;
+        res.render('./users/profile', { user: userToLogin });
+      } else {
+        res.redirect('./index');
+      }
+    }  
   },
 
   // Shows user profile
-  profile: (req, res) => {
-    // res.render('./users/profile', { user: req.session.loggedUser });
-    res.render('./users/profile');
+  profile: async (req, res) => {
+    let userToLogin = await db.User.findByPk(req.session.loggedUser.id);
+    
+    res.render('./users/profile', { user: userToLogin });
   },
 
   // Shows register form
@@ -49,78 +48,73 @@ module.exports = {
   },
 
   // Process register form
-  create: (req, res) => {
-    db.User.create({
-      username: req.body.nickname,
-      email: req.body.email,
-      password: req.body.password,
-      name: req.body.name,
-      lastname: req.body.lastName,
-      birthdate: req.body.birthdate
-    });
-    // let errors = validationResult(req);
-    //
-    // console.log(errors.mapped());
-    //
-    // if (!errors.isEmpty()) {
-    //   let oldData = req.body;
-    //   res.render('./users/register', {
-    //     errors: errors.mapped(),
-    //     old: oldData,
-    //   });
-    // } else {
-    //   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    //   let newUser = {
-    //     id: Date.now().toString(),
-    //     userId: req.body.userId,
-    //     name: req.body.name,
-    //     lastName: req.body.lastName,
-    //     email: req.body.email,
-    //     password: hashedPassword,
-    //     birthdate: req.body.birthdate,
-    //   };
-    //   // users.push(newUser);
-    //   // fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-    //   res.redirect('/users/login');
-    // }
+  create: async (req, res) => {
+    const resultValidation = validationResult(req)
+    if(resultValidation.errors.length > 0){
+      return res.render('./users/register', {
+        errors: resultValidation.mapped(),
+        oldData: req.body
+      })
+    } else {
+      let newAddress = await db.Address.create({
+        address: 'Street 123',
+        city: 'Buenos Aires',
+        postal_code: '1248',
+        country: 'Argentina'
+      })
+      
+      let hash = await bcryptjs.hash(req.body.password, 10);
+      
+      db.User.create({
+        nickname: 'user',
+        name: req.body.name,
+        surname: req.body.lastName,
+        email: req.body.email,
+        password: hash,
+        birthdate: req.body.birthdate,
+        role_id: 2,
+        address_id: newAddress.id
+      });
+    }
+    
+    res.redirect('./login')
   },
 
   // Shows user to edit
   edit: (req, res) => {
-    // let userId = req.params.idUser;
-    // let userToEdit = users.find((user) => user.userId == userId);
-    // res.render('./users/edit', { userToEdit: userToEdit });
+    db.User.findByPk(req.session.loggedUser.id)
+      .then((userToEdit) => {
+        res.render('../views/users/edit.ejs', { userToEdit: userToEdit });
+    })
   },
 
   // Edit the user
   update: (req, res) => {
-    // let userId = req.params.userId;
-    // let userToEdit = users.find((user) => user.userId == userId);
-
-    // userToEdit = {
-    //   userId: req.body.nickname,
-    //   ...req.body,
-    // };
-
-    // let usersUpdated = users.map((user) => {
-      // if (user.userId == userToEdit.userId) {
-      //   return (user = { ...userToEdit });
-      // }
-      // return user;
-    // });
-
-    // fs.writeFileSync(usersFilePath, JSON.stringify(usersUpdated, null, ' '));
-    // users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    // res.redirect('./users/profile');
+    // TODO check user password
+    db.User.update({
+      name: req.body.name,
+      surname: req.body.lastName,
+      email: req.body.email,
+    }, {
+      where: {
+        id: req.session.loggedUser.id
+      }
+    })
+    
+    db.User.findByPk(req.session.loggedUser.id).then(user => {
+      res.render('./users/profile', { user: user });
+    })
   },
 
   // Delete the user
   delete: (req, res) => {
-    // let userId = req.params.userId;
-    // let finalUsers = users.filter((user) => user.userId != userId);
-    // console.log(finalUsers);
-    // fs.writeFileSync(usersFilePath, JSON.stringify(finalUsers, null, ' '));
-    // res.redirect('/');
+    db.User.destroy({
+      where: {
+        id: req.session.loggedUser.id
+      }
+    })
+    
+    res.redirect('./products/shopAll');
   },
 };
 

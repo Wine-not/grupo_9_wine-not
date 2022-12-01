@@ -10,69 +10,80 @@
     <%- include('../partials/navbar') %>
 
         <section class="section--padding">
-            <form action="/users/register" method="POST" class="form" id="form">
+            <form action="/users/register" method="POST" class="form" id="form" enctype="multipart/form-data">
+                <% if (locals.errors) { %> 
+                    <% for (let oneError in errors) { %> 
+                    <p><% errors[oneError].msg %></p> 
+                    <% } %> 
+                    <%  }%> 
                 <h1 class="form__title">Create your account</h1>
-                <div class="form__group">
+                 <div class="form__group">
                     <label for="nickname" class="form__label">Nickname</label>
-                    <input type="text" name="nickname" id="nickname" class="form__input"
-                        value="<%= //locals.old && old.nickname %>">
-                    <% if (locals.errors && errors.nickname) { %>
+                    <input type="text" name="nickname" id="nickname" class="form__input"  value="<%= locals.oldData ? oldData.nickname : null %>">                       
+                    <% if (locals.errors && errors.nickname) { %> 
                         <small class="form__message">
-                            <%=// errors.nickname.msg %>
-                        </small>
-                        <% } %>
-                </div>
+                        <%=  errors.nickname.msg %>
+                    </small>
+                    <% } %> 
+                </div> 
                 <div class="form__group">
                     <label for="name" class="form__label">First Name</label>
-                    <input type="text" name="name" id="name" class="form__input" value="<%=// locals.old && old.name %>">
-                    <% if (locals.errors && errors.name) { %>
+                    <input type="text" name="name" id="name" class="form__input" value="<%= locals.oldData ? oldData.name : null %>">
+                    <% if (locals.errors && errors.name) { %> 
                         <small class="form__message">
-                            <%= //errors.name.msg %>
-                        </small>
+                        <%=  errors.name.msg %>
+                    </small>
                         <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="lastName" class="form__label">Last Name</label>
                     <input type="text" name="lastName" id="lastName" class="form__input"
-                        value="<%= //locals.old && old.lastName %>">
-                    <% if (locals.errors && errors.lastName) { %>
-                        <small class="form__message">
-                            <%= //errors.lastName.msg %>
+                    value="<%= locals.oldData ? oldData.lastName : null %>">
+                        <% if (locals.errors && errors.lastName) { %> 
+                            <small class="form__message">
+                            <%=  errors.lastName.msg %>
                         </small>
-                        <% } %>
+                            <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="email" class="form__label">Email</label>
                     <input type="email" name="email" id="email" class="form__input"
-                        value="<%=// locals.old && old.email %>">
-                    <% if (locals.errors && errors.email) { %>
-                        <small class="form__message">
-                            <%= //errors.email.msg %>
+                    value="<%= locals.oldData ? oldData.email : null %>">
+                        <% if (locals.errors && errors.email) { %> 
+                            <small class="form__message">
+                            <%=  errors.email.msg %>
                         </small>
-                        <% } %>
+                            <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
-                    <input type="password" name="password" id="password" class="form__input"
-                        value="<%= //locals.old && old.password %>">
-                    <% if (locals.errors && errors.password) { %>
-                        <small class="form__message">
-                            <%= //errors.password.msg %>
+                    <input type="password" name="password" id="password" class="form__input" >
+                        <% if (locals.errors && errors.password) { %> 
+                            <small class="form__message">
+                            <%=  errors.password.msg %>
                         </small>
-                        <% } %>
+                            <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="passwordRepeat" class="form__label">Repeat your password</label>
-                    <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input"
-                        value="<%= //locals.old && old.passwordRepeat %>">
-                    <% if (locals.errors && errors.passwordRepeat) { %>
+                    <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input">
+                    <% if (locals.errors && errors.passwordRepeat) { %> 
                         <small class="form__message">
-                            <%= //errors.passwordRepeat.msg %>
-                        </small>
+                        <%=  errors.passwordRepeat.msg %>
+                    </small>
+                        <% } %>
+                </div>
+                <div class="form__group">
+                    <label for="profile-picture" class="form__label">Choose profile picturse</label>
+                    <input type="file" name="profilePicture" id="profile-picture" class="form__input" >
+                    <% if (locals.errors && errors.profilePicture) { %> 
+                        <small class="form__message">
+                        <%=  errors.profilePicture.msg %>
+                    </small>
                         <% } %>
                 </div>
 
