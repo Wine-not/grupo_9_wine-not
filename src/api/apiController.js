@@ -11,7 +11,8 @@ module.exports = {
     res.status(200).json({
       count: users.length,
       data: users,
-      status: 200
+      status: 200,
+      detail: `http://localhost:3000/api/users/`
     });
   },
   
@@ -45,8 +46,7 @@ module.exports = {
       count: products.length,
       data: products,
       status: 200,
-
-      
+      detail: `http://localhost:3000/api/products/`
     })
   },
 
@@ -68,6 +68,10 @@ module.exports = {
         },
         {
           model: db.Image
+        },
+        {
+          model: db.Region,
+          as: 'product_region'
         }
       ]
     })
