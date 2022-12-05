@@ -44,10 +44,39 @@ module.exports = {
     res.status(200).json({
       count: products.length,
       data: products,
+      status: 200,
+
+      
     })
   },
+
+  //API for product detail
   
   detailProduct: async (req, res) => {
+
+    let product = await db.Product.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', 'name', 'price', 'rating', 'description', 'stock', 'in_sale', 'is_selection'],
+      include: [
+        {
+          model: db.Brand
+        },
+        {
+          model: db.Grape
+        },
+        {
+          model: db.Image
+        }
+      ]
+    })
+    
+    res.status(200).json({
+      data: product,
+      status: 200,
+      detail: `http://localhost:3000/api/products/${product.id}`
+    });
   
   }
 }
