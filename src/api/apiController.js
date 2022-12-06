@@ -7,12 +7,12 @@ module.exports = {
       attributes: ['id', 'name', 'email']
     });
   
-    // TODO detail endpoint
+    
     res.status(200).json({
       count: users.length,
       data: users,
       status: 200,
-      detail: `http://localhost:3000/api/users/`
+      detail: `/api/users/`
     });
   },
   
@@ -27,7 +27,7 @@ module.exports = {
     res.status(200).json({
       data: user,
       status: 200,
-      detail: `http://localhost:3000/api/users/${user.id}`
+      detail: `/api/users/${user.id}`
     });
   },
   
@@ -39,18 +39,33 @@ module.exports = {
         }
       ]
     })
-    
-    // TODO object con una propiedad por categoria
-    // TODO detail endpoint
+
+    let productsByCategory = await db.Grape.findAll({
+      attributes: ['name'],
+      include: [
+        {
+          model: db.Product
+        }
+      ]
+    })
+
+    const productsByCategoryArray = productsByCategory.map(category => {
+      return {
+        name: category.name,
+        count: category.Products.length
+      }
+  })
+
     res.status(200).json({
       count: products.length,
-      data: products,
+      data: {
+        products,
+        productsByCategoryArray
+      },
       status: 200,
-      detail: `http://localhost:3000/api/products/`
+      detail: `/api/products`
     })
   },
-
-  //API for product detail
   
   detailProduct: async (req, res) => {
 
@@ -79,7 +94,7 @@ module.exports = {
     res.status(200).json({
       data: product,
       status: 200,
-      detail: `http://localhost:3000/api/products/${product.id}`
+      detail: `/api/products/${product.id}`
     });
   
   }
