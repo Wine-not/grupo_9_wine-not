@@ -8,3 +8,5 @@ package-lock.json
 *.orig
 log.txt
 logDB.txt
+.editorconfig
+.eslintrc.json

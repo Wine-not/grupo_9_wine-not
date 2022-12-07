@@ -29,9 +29,12 @@ app.use(rememberLoggedUser);
 const userRouter = require('./src/routes/userRouter');
 const mainRouter = require('./src/routes/mainRouter');
 const productRouter = require('./src/routes/productRoutes');
+const apiRouter = require('./src/routes/api');
+
 app.use('/', mainRouter);
 app.use('/products', productRouter);
 app.use('/users', userRouter);
+app.use('/api', apiRouter);
 
 app.use((req, res, next) => {
   res.status(404).render('./404');
