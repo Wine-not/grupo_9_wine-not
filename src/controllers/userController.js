@@ -97,7 +97,7 @@ module.exports = {
   update: (req, res) => {
     // TODO check user password
     db.User.update({
-      name: req.body.name,
+      name: req.body.firstName,
       surname: req.body.lastName,
       email: req.body.email,
     }, {
@@ -117,9 +117,21 @@ module.exports = {
       where: {
         id: req.session.loggedUser.id
       }
-    })
-    
-    res.redirect('./products/shopAll');
+    })    
+    res.render('./users/login');
   },
+
+  //Logout user
+  logout: (req, res) => {
+    if (req.session) {
+      req.session.destroy(err => {
+        if (err) {
+          res.status(400).send('Unable to log out')
+        } else {
+          res.render('./users/login');
+        }
+      });
+    }
+  }  
 };
 
