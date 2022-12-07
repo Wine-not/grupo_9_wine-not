@@ -1,4 +1,8 @@
-module.exports = (roleCheck) => (req, res, next) => {
-  // Check role of user
-  next();
+module.exports = roleCheck = (req, res, next) => {
+  if (req.session.loggedUser.id == 1) {
+    console.log('hola')
+  } else {
+    console.log('chau')
+  }
+  next()
 };

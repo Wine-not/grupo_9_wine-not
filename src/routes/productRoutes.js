@@ -4,6 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const productController = require('../controllers/productController');
 const { check } = require('express-validator');
+const roleCheck = require('../middleware/roleCheck');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -60,7 +61,7 @@ let validations = [
 
 // TODO path names
 // Product cart
-router.get('/productCart', productController.cart);
+router.get('/productCart',productController.cart);
 
 // Show products
 router.get('/productDetail/:id', productController.detail);

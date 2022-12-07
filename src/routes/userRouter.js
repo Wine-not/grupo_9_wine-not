@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 const { check } = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware');
 const authMiddleware = require('../middleware/authMiddleware');
+const roleCheck = require('../middleware/roleCheck');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

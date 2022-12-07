@@ -28,6 +28,7 @@ module.exports = {
       
       if (pwdExists) {
         req.session.loggedUser = userToLogin;
+        console.log(req.session.loggedUser.role_id)
         res.render('./users/profile', { user: userToLogin });
       } else {
         res.redirect('./index');
@@ -72,7 +73,7 @@ module.exports = {
         email: req.body.email,
         password: hash,
         birthdate: req.body.birthdate,
-        role_id: 2,
+        role_id: 1,
         address_id: newAddress.id
       });
     }
