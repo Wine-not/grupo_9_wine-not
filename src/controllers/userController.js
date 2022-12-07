@@ -28,7 +28,11 @@ module.exports = {
       
       if (pwdExists) {
         req.session.loggedUser = userToLogin;
-        console.log(req.session.loggedUser.role_id)
+        if (req.body.rememberMe != undefined) {
+          res.cookie('rememberMe', userToLogin.email, {
+            maxAge: 60000
+          })
+        }
         res.render('./users/profile', { user: userToLogin });
       } else {
         res.redirect('./index');
