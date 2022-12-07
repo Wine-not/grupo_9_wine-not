@@ -28,6 +28,11 @@ module.exports = {
       
       if (pwdExists) {
         req.session.loggedUser = userToLogin;
+        if (req.body.rememberMe != undefined) {
+          res.cookie('rememberMe', userToLogin.email, {
+            maxAge: 60000
+          })
+        }
         res.render('./users/profile', { user: userToLogin });
       } else {
         res.redirect('./index');
@@ -72,7 +77,7 @@ module.exports = {
         email: req.body.email,
         password: hash,
         birthdate: req.body.birthdate,
-        role_id: 2,
+        role_id: 1,
         address_id: newAddress.id
       });
     }
@@ -92,7 +97,7 @@ module.exports = {
   update: (req, res) => {
     // TODO check user password
     db.User.update({
-      name: req.body.name,
+      name: req.body.firstName,
       surname: req.body.lastName,
       email: req.body.email,
     }, {
@@ -112,9 +117,21 @@ module.exports = {
       where: {
         id: req.session.loggedUser.id
       }
-    })
-    
-    res.redirect('./products/shopAll');
+    })    
+    res.render('./users/login');
   },
+
+  //Logout user
+  logout: (req, res) => {
+    if (req.session) {
+      req.session.destroy(err => {
+        if (err) {
+          res.status(400).send('Unable to log out')
+        } else {
+          res.render('./users/login');
+        }
+      });
+    }
+  }  
 };
 

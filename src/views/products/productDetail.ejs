@@ -36,8 +36,10 @@
                         <button type="button" class="qty__button plus">+</button>
                     </div>
                     <button type="submit" class="btn btn--primary btn--qty">Add to cart</button>
+                    <% if(loggedUser.role_id == 1) { %>                         
                     <a href="/products/productEdit/<%= product.id %>" class="btn btn--primary btn--qty">Edit</a>
                     <button type="submit" class="btn btn--primary btn--qty delete">Delete</button>
+                    <% } %> 
                 </form>
                 <p class="product-hero__description">
                     <%= product.description %>
