@@ -14,6 +14,6 @@ module.exports = rememberLoggedUser = async (req, res, next) => {
       req.session.loggedUser = userToLogin;
     }
   }
-
+  
   next();
 }

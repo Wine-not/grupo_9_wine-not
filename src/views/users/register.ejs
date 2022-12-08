@@ -29,19 +29,21 @@
                 <div class="form__group">
                     <label for="name" class="form__label">First Name</label>
                     <input type="text" name="name" id="name" class="form__input" value="<%= locals.oldData ? oldData.name : null %>">
-                    <% if (locals.errors && errors.name) { %> 
-                        <small class="form__message">
-                        <%=  errors.name.msg %>
-                    </small>
-                        <% } %>
+                    <small class="form__message" id="userName-msg"></small>
+                    <% if (locals.errors && errors.name) { %>
+                        <small class="form__message" id="userName-msg">
+                            <%=  errors.name.msg %>
+                        </small>
+                    <% } %>
                 </div>
 
                 <div class="form__group">
                     <label for="lastName" class="form__label">Last Name</label>
                     <input type="text" name="lastName" id="lastName" class="form__input"
                     value="<%= locals.oldData ? oldData.lastName : null %>">
+                    <small class="form__message" id="lastName-msg"></small>
                         <% if (locals.errors && errors.lastName) { %> 
-                            <small class="form__message">
+                            <small class="form__message" id="lastName-msg">
                             <%=  errors.lastName.msg %>
                         </small>
                             <% } %>
@@ -52,7 +54,7 @@
                     <input type="email" name="email" id="email" class="form__input"
                     value="<%= locals.oldData ? oldData.email : null %>">
                         <% if (locals.errors && errors.email) { %> 
-                            <small class="form__message">
+                            <small class="form__message" id="email-msg">
                             <%=  errors.email.msg %>
                         </small>
                             <% } %>
@@ -62,7 +64,7 @@
                     <label for="password" class="form__label">Password</label>
                     <input type="password" name="password" id="password" class="form__input" >
                         <% if (locals.errors && errors.password) { %> 
-                            <small class="form__message">
+                            <small class="form__message" id="password-msg">
                             <%=  errors.password.msg %>
                         </small>
                             <% } %>
@@ -72,7 +74,7 @@
                     <label for="passwordRepeat" class="form__label">Repeat your password</label>
                     <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input">
                     <% if (locals.errors && errors.passwordRepeat) { %> 
-                        <small class="form__message">
+                        <small class="form__message" id="passwordRepeat-msg">
                         <%=  errors.passwordRepeat.msg %>
                     </small>
                         <% } %>
@@ -92,7 +94,7 @@
                     <input type="date" name="birthdate" id="birthdate" class="form__input"
                         value="<%= //locals.old && old.birthdate %>">
                     <% if (locals.errors && errors.birthdate) { %>
-                        <small class="form__message">
+                        <small class="form__message" id="birthdate-msg">
                             <%= //errors.birthdate.msg %>
                         </small>
                         <% } %>
@@ -104,7 +106,7 @@
                     <label for="terms" class="form__checkbox__label">Please confirm you agree with the <a href="#"
                             target="_blank" rel="noopener noreferrer">Terms & Conditions</a></label>
                     <% if (locals.errors && errors.terms) { %>
-                        <small class="form__message">
+                        <small class="form__message" id="terms-msg">
                             <%= //errors.terms.msg %>
                         </small>
                         <% } %>
@@ -119,8 +121,9 @@
 
         <%- include('../partials/footer') %>
 
-            <script src="/javascripts/utilities.js"></script>
-            <!-- <script src="/javascripts/productFormVal.js"></script> -->
+        <script src="/javascripts/utilities.js"></script>
+        <script src="/javascripts/registerFormVal.js"></script>
+
 </body>
 
 </html>

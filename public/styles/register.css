@@ -62,15 +62,21 @@
   text-align: center;
 }
 
-/* .form__message {
-  display: none;
-} */
-
-.error {
+.invalid {
   border: 1px solid var(--error);
 }
 
-.success {
+.invalid:focus {
+  outline: none !important;
+  border:1px solid var(--error);
+}
+
+.valid {
+  border: 1px solid var(--success);
+}
+
+.valid:focus {
+  outline: none !important;
   border: 1px solid var(--success);
 }
 
@@ -79,6 +85,13 @@
   font-weight: var(--book);
   font-family: var(--secondary-font);
   color: var(--error);
+}
+
+.form__correct-msg {
+  font-size: var(--small-body);
+  font-weight: var(--book);
+  font-family: var(--secondary-font);
+  color: var(--success);
 }
 
 
