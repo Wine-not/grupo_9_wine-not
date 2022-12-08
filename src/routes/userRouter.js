@@ -72,7 +72,7 @@ let validationsRegister = [
 ];
 
 // Log in a user
-router.get('/login', guestMiddleware, userController.login);
+router.get('/login', guestMiddleware ,userController.login);
 router.post('/login', validationsLogin, userController.loginProcess);
 
 // Register new user
@@ -88,5 +88,9 @@ router.delete('/delete/:idUser', userController.delete);
 
 // Show user profile
 router.get('/profile', authMiddleware, userController.profile);
+
+//Logout
+router.get('/logout/:idUser', userController.logout)
+
 
 module.exports = router;
