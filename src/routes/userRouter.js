@@ -90,7 +90,7 @@ router.delete('/delete/:idUser', userController.delete);
 router.get('/profile', authMiddleware, userController.profile);
 
 //Logout
-router.post('/logout/:idUser', userController.logout)
+router.get('/logout/:idUser', userController.logout)
 
 
 module.exports = router;

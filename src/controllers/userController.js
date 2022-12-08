@@ -22,8 +22,20 @@ module.exports = {
         where: {
           email: req.body.email,
         }
-      });
-      
+      });           
+
+      console.log(userToLogin);
+
+      if (userToLogin === null) {
+          return res.render('./users/login', {
+            errors: {
+              email: {
+                msg: 'User does not exists'
+              }
+            },
+          })        
+      }
+
       let pwdExists = await bcryptjs.compare(req.body.password, userToLogin.password);
       
       if (pwdExists) {
@@ -34,8 +46,11 @@ module.exports = {
           })
         }
         res.render('./users/profile', { user: userToLogin });
-      } else {
-        res.redirect('./index');
+      } else {        
+        return res.render('./users/login', {
+          errors: resultValidation.mapped(),
+          oldData: req.body
+        })
       }
     }  
   },
@@ -77,7 +92,7 @@ module.exports = {
         email: req.body.email,
         password: hash,
         birthdate: req.body.birthdate,
-        role_id: 1,
+        role_id: 2,
         address_id: newAddress.id
       });
     }
@@ -123,15 +138,10 @@ module.exports = {
 
   //Logout user
   logout: (req, res) => {
-    if (req.session) {
-      req.session.destroy(err => {
-        if (err) {
-          res.status(400).send('Unable to log out')
-        } else {
-          res.render('./users/login');
-        }
-      });
-    }
+    req.session = null;
+    res.clearCookie('rememberMe')
+    res.clearCookie('connect.sid')
+    res.render('./users/login');
   }  
 };
 
