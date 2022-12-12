@@ -49,7 +49,9 @@ let validationsRegister = [
      .notEmpty()
      .withMessage('Please enter a secure password')
      .bail()
-    //  .isStrongPassword()
+     .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+     )
      .withMessage(
        'Make sure your password is at least 8 characters long and has 1 lowercase, 1 uppercase and 1 number.'
      ),
