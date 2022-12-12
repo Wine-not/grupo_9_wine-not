@@ -22,16 +22,35 @@ module.exports = {
         where: {
           email: req.body.email,
         }
-      });
-      
+      });           
+
+      console.log(userToLogin);
+
+      if (userToLogin === null) {
+          return res.render('./users/login', {
+            errors: {
+              email: {
+                msg: 'User does not exists'
+              }
+            },
+          })        
+      }
+
       let pwdExists = await bcryptjs.compare(req.body.password, userToLogin.password);
       
       if (pwdExists) {
         req.session.loggedUser = userToLogin;
-        console.log(req.session.loggedUser.role_id)
+        if (req.body.rememberMe != undefined) {
+          res.cookie('rememberMe', userToLogin.email, {
+            maxAge: 60000
+          })
+        }
         res.render('./users/profile', { user: userToLogin });
-      } else {
-        res.redirect('./index');
+      } else {        
+        return res.render('./users/login', {
+          errors: resultValidation.mapped(),
+          oldData: req.body
+        })
       }
     }  
   },
@@ -73,7 +92,7 @@ module.exports = {
         email: req.body.email,
         password: hash,
         birthdate: req.body.birthdate,
-        role_id: 1,
+        role_id: 2,
         address_id: newAddress.id
       });
     }
@@ -93,7 +112,7 @@ module.exports = {
   update: (req, res) => {
     // TODO check user password
     db.User.update({
-      name: req.body.name,
+      name: req.body.firstName,
       surname: req.body.lastName,
       email: req.body.email,
     }, {
@@ -113,9 +132,16 @@ module.exports = {
       where: {
         id: req.session.loggedUser.id
       }
-    })
-    
-    res.redirect('./products/shopAll');
+    })    
+    res.render('./users/login');
   },
+
+  //Logout user
+  logout: (req, res) => {
+    req.session = null;
+    res.clearCookie('rememberMe')
+    res.clearCookie('connect.sid')
+    res.render('./users/login');
+  }  
 };
 

@@ -92,10 +92,12 @@
                 <div class="form__group">
                     <label for="birthdate" class="form__label">Birth date</label>
                     <input type="date" name="birthdate" id="birthdate" class="form__input"
-                        value="<%= //locals.old && old.birthdate %>">
+                        value="<%= locals.old && old.birthdate %>">
                     <% if (locals.errors && errors.birthdate) { %>
                         <small class="form__message" id="birthdate-msg">
                             <%= //errors.birthdate.msg %>
+                        <small class="form__message">
+                            <%= errors.birthdate.msg %>
                         </small>
                         <% } %>
                 </div>

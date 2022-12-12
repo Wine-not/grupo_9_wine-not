@@ -21,6 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(rememberLoggedUser);
 
 //Middlewares
 app.use(rememberLoggedUser);
