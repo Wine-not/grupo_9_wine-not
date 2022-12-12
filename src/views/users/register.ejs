@@ -94,7 +94,7 @@
                     <input type="date" name="birthdate" id="birthdate" class="form__input"
                         value="<%= locals.old && old.birthdate %>">
                     <% if (locals.errors && errors.birthdate) { %>
-                        <small class="form__message" id="birthdate-msg">
+                    <small class="form__message" id="birthdate-msg"></small>
                             <%= //errors.birthdate.msg %>
                         <small class="form__message">
                             <%= errors.birthdate.msg %>
