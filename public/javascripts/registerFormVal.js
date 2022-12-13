@@ -118,9 +118,12 @@ rePassword.addEventListener('keyup', () => {
 // terms
 let btnSubmit = document.querySelector('button[type=submit]');
 
-if (!terms.checked) {
-  btnSubmit.disabled = true;
-}
+btnSubmit.addEventListener('click', () => {
+  if (!terms.checked) {
+    btnSubmit.disabled = true;
+    termsMsg.innerText = 'You must agree with terms and conditions to create an account';
+  }
+})
 
 terms.addEventListener('change', () => {
   if (!terms.checked) {
@@ -129,5 +132,6 @@ terms.addEventListener('change', () => {
     termsMsg.classList.add('form__message');
   } else {
     btnSubmit.disabled = false;
+    termsMsg.innerText = '';
   }
 })
