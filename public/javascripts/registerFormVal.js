@@ -63,13 +63,71 @@ lastName.addEventListener('keyup', () => {
   }
 });
 
-let mailre = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-
 // Email check
+let mailre = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 email.addEventListener('keyup', () => {
   let chars = email.value;
   
-  console.log(chars);
-  
+  if (mailre.test(chars)) {
+    emailMsg.innerText = '';
+    email.classList.remove('invalid');
+    email.classList.add('valid');
+    emailMsg.classList.add('form__message');
+  } else {
+    emailMsg.innerText = 'Please enter a valid email direction';
+    email.classList.remove('valid');
+    email.classList.add('invalid');
+    emailMsg.classList.add('form__message');
+  }
 });
+
+// passwords
+
+let passwordre = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+password.addEventListener('keyup', () => {
+  let pwdToCheck =  password.value;
+  if (passwordre.test(pwdToCheck)) {
+    pwdMsg.innerText = '';
+    password.classList.remove('invalid');
+    password.classList.add('valid');
+    pwdMsg.classList.add('form__message');
+  } else {
+    pwdMsg.innerText = 'Password must have at least one uppercase, one lowercase and one number and 8 characters';
+    password.classList.remove('valid');
+    password.classList.add('invalid');
+    pwdMsg.classList.add('form__message');
+  }
+})
+
+rePassword.addEventListener('keyup', () => {
+  if (rePassword.value === password.value) {
+    pwdRepeatMsg.innerText = '';
+    rePassword.classList.remove('invalid');
+    rePassword.classList.add('valid');
+    pwdRepeatMsg.classList.add('form__message');
+  } else {
+    pwdRepeatMsg.innerText = 'Both password must match';
+    rePassword.classList.remove('valid');
+    rePassword.classList.add('invalid');
+    pwdRepeatMsg.classList.add('form__message');
+  }
+})
+
+// terms
+let btnSubmit = document.querySelector('button[type=submit]');
+
+if (!terms.checked) {
+  btnSubmit.disabled = true;
+}
+
+terms.addEventListener('change', () => {
+  if (!terms.checked) {
+    btnSubmit.disabled = true;
+    termsMsg.innerText = 'You must agree with terms and conditions to create an account';
+    termsMsg.classList.add('form__message');
+  } else {
+    btnSubmit.disabled = false;
+  }
+})
