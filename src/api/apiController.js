@@ -2,7 +2,9 @@ const db = require('../databases/models');
 const Op = db.Sequelize.Op;
 
 module.exports = {
+  
   listUsers: async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let users = await db.User.findAll({
       attributes: ['id', 'name', 'email']
     });
@@ -16,7 +18,8 @@ module.exports = {
     });
   },
   
-  detailUser: async (req, res) => {
+  detailUser: async (req, res) => {    
+    res.set('Access-Control-Allow-Origin', '*');
     let user = await db.User.findOne({
       where: {
         id: req.params.id
@@ -32,6 +35,7 @@ module.exports = {
   },
   
   listProducts: async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let products = await db.Product.findAll({
       include: [
         {
@@ -68,7 +72,7 @@ module.exports = {
   },
   
   detailProduct: async (req, res) => {
-
+    res.set('Access-Control-Allow-Origin', '*');
     let product = await db.Product.findOne({
       where: {
         id: req.params.id
