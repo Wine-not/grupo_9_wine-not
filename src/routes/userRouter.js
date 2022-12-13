@@ -31,8 +31,8 @@ let validationsLogin = [
   check('password')
     .notEmpty()
     .withMessage('Please enter your password')
-    .isLength({ min: 10 })
-    .withMessage('The password must be at least 10 characters long'),
+    .isLength({ min: 8 })
+    .withMessage('The password must be at least 8 characters long'),
 ];
 
 let validationsRegister = [

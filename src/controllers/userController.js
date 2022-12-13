@@ -132,7 +132,10 @@ module.exports = {
       where: {
         id: req.session.loggedUser.id
       }
-    })    
+    })
+    req.session = null;
+    res.clearCookie('rememberMe')
+    res.clearCookie('connect.sid')
     res.render('./users/login');
   },
 
