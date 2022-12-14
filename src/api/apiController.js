@@ -1,5 +1,5 @@
 const db = require('../databases/models');
-const Op = db.Sequelize.Op;
+const Op = db.Sequelize.Op; 
 
 module.exports = {
   
