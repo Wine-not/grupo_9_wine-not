@@ -53,6 +53,7 @@
                     <label for="email" class="form__label">Email</label>
                     <input type="email" name="email" id="email" class="form__input"
                     value="<%= locals.oldData ? oldData.email : null %>">
+                    <small class="form__message" id="email-msg"></small>
                         <% if (locals.errors && errors.email) { %> 
                             <small class="form__message" id="email-msg">
                             <%=  errors.email.msg %>
@@ -63,6 +64,7 @@
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
                     <input type="password" name="password" id="password" class="form__input" >
+                    <small class="form__message" id="password-msg"></small>
                         <% if (locals.errors && errors.password) { %> 
                             <small class="form__message" id="password-msg">
                             <%=  errors.password.msg %>
@@ -73,6 +75,7 @@
                 <div class="form__group">
                     <label for="passwordRepeat" class="form__label">Repeat your password</label>
                     <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input">
+                    <small class="form__message" id="passwordRepeat-msg"></small>
                     <% if (locals.errors && errors.passwordRepeat) { %> 
                         <small class="form__message" id="passwordRepeat-msg">
                         <%=  errors.passwordRepeat.msg %>
@@ -80,7 +83,7 @@
                         <% } %>
                 </div>
                 <div class="form__group">
-                    <label for="profile-picture" class="form__label">Choose profile picturse</label>
+                    <label for="profile-picture" class="form__label">Choose profile picture</label>
                     <input type="file" name="profilePicture" id="profile-picture" class="form__input" >
                     <% if (locals.errors && errors.profilePicture) { %> 
                         <small class="form__message">
@@ -103,15 +106,14 @@
                 </div>
 
                 <div class="form__group form__group--check">
-                    <input type="checkbox" name="terms" id="terms" class="form__checkbox"
-                        value="accept<%= //locals.old && old.terms %>">
+                    <input type="checkbox" name="terms" id="terms" class="form__checkbox">
                     <label for="terms" class="form__checkbox__label">Please confirm you agree with the <a href="#"
                             target="_blank" rel="noopener noreferrer">Terms & Conditions</a></label>
-                    <% if (locals.errors && errors.terms) { %>
+                    <%# if (locals.errors && errors.terms) { %>
                         <small class="form__message" id="terms-msg">
-                            <%= //errors.terms.msg %>
+                            <%# //errors.terms.msg %>
                         </small>
-                        <% } %>
+                        <%# } %>
                 </div>
 
                 <div class="form__group">
